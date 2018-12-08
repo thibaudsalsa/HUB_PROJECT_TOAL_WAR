@@ -1,0 +1,17 @@
+<div class="head_heandlebars" style="font-size: 35px">
+  <ul class="list-inline">
+    {{#if user}}
+    <li><a class="text_btn" href="/" style="font-family: Bubblegum">Jeu</a></li>
+    {{/if}}
+    <li><a class="text_btn" href="/contact" style="font-family: Bubblegum">Contacts</a></li>
+  </ul>
+  <ul class="list-inline">
+  {{#if user}}
+    <li><a class="text_btn" href="/account" style="font-family: Bubblegum">Mon compte</a></li>
+    <li><a class="text_btn" href="/logout" style="font-family: Bubblegum">Deconnexion</a></li>
+  {{else}}
+    <li><a class="text_btn" href="/login" style="font-family: Bubblegum">Connexion</a></li>
+    <li><a class="text_btn" href="/signup" style="font-family: Bubblegum">Inscription</a></li>
+  {{/if}}
+  </ul>
+</div>

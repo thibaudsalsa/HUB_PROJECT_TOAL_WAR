@@ -1,0 +1,93 @@
+/*Bare nous contacter,connexion,inscription  (head_heandlebars) */
+
+.head_heandlebars{/*aspect genral*/
+     text-align: center;
+
+}
+
+.btn{/* style des boutons*/
+    
+     font-size: 1.6em;
+     width: 180px;
+     height: center;
+     color: #000;
+     background: #444;
+     /* donne du volume au bouton*/
+     background: linear-gradient( #555, #2C2C2C);
+     border-radius: 1000px;
+}
+.btn:hover{/*couleur bouton passage sourie*/
+     color: #222;
+     background: #555;
+     background: linear-gradient( #777, #333);
+
+}     
+.btn:active{/*couleur bouton clic*/
+     color: #000;
+     background: #444;
+     background: linear-gradient( #555, #2C2C2C);
+     /* donne l'impression que le bouton s'enfonce*/
+     box-shadow: 1px 1px 10px red inset,0 1px 0 rgba( 255, 255, 255, 0.4);
+}
+.text_btn{/*text lié aux boutons*/
+     color: white;
+	 text-decoration:none;
+}
+/*bare du bas (foot_heandlebars)*/
+.foot_heandlebars{
+	 color: white;
+}
+/* page de creation de compte (signup_page)*/
+.signup_page{/*page general*/
+	 margin-top: 5%;
+	 margin-left: 50px;
+	 color: white;
+	 float: left;
+}
+.creat_acount{/*aspect creation compte*/
+	 float: left;
+	 background-color: #7B7B7B  ;
+	 text-align: center;
+     box-shadow: 1px 1px 10px black;
+}
+.lien{
+	font-weight: bold;
+	margin-top:10%;
+}
+.video{
+	float: left;
+	margin-left: 70px;
+	margin-top: 5%;
+}
+/* page de connexion (login_handlebars)*/
+.login_handlebars{
+	background-color: #7B7B7B  ;
+	width: 400px;
+	margin: 0 auto;
+	margin-top: 10%;
+	box-shadow: 1px 1px 10px black;
+}
+.text{
+	text-align: center;
+}
+/* page oublie de mdp(Forgot_handlebars)*/
+.Forgot_handlebars{
+	background-color: #7B7B7B  ;
+	width: 400px;
+	height: 200px;
+	margin: 0 auto;
+	margin-top: 10%;
+	text-align: center;
+    box-shadow: 1px 1px 10px black;
+}
+
+
+
+
+
+
+
+
+
+
+
