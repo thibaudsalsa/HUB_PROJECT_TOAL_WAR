@@ -1,7 +1,7 @@
 {
-  "name": "autumn-snowflake",
+  "name": "Toal_war",
   "version": "1.0.0",
-  "description": "My app description",
+  "description": "Game",
   "scripts": {
     "start": "node server.js"
   },
