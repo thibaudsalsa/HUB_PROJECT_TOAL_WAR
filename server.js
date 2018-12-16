@@ -10,7 +10,6 @@ var expressValidator = require('express-validator');
 var dotenv = require('dotenv');
 var exphbs = require('express-handlebars');
 var passport = require('passport');
-var Data_file = require('./models/Data_file.js');
 
 // Load environment variables from .env file
 dotenv.load();
@@ -47,7 +46,6 @@ app.use(compression());
 app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-//app.use(formidable());
 app.use(expressValidator());
 app.use(methodOverride('_method'));
 app.use(session({ secret: process.env.SESSION_SECRET, resave: true, saveUninitialized: true }));
@@ -84,13 +82,6 @@ app.get('/contact', contactController.contactGet);
 app.post('/contact', contactController.contactPost);
 app.get('/account', userController.ensureAuthenticated, userController.accountGet);
 app.put('/account', userController.ensureAuthenticated, userController.accountPut);
-
-//Formidable
-app.post('/home', userController.ensureAuthenticated, HomeController.homePost);
-app.put('/home', userController.ensureAuthenticated, HomeController.homePut);
-app.delete('/home', userController.ensureAuthenticated, HomeController.homeDelete);
-app.get('/upbrowser', userController.ensureAuthenticated, HomeController.upbrowserGet);
-
 app.delete('/account', userController.ensureAuthenticated, userController.accountDelete);
 app.get('/signup', userController.signupGet);
 app.post('/signup', userController.signupPost);
