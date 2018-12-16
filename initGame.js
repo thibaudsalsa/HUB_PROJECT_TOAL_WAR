@@ -17,7 +17,6 @@ function init_game()
 	game.move = move_unit;
 	game.info = "";
 	game.carte = init_card();
-	game.get_nation = get_nation;
 	return (game);
 }
 
