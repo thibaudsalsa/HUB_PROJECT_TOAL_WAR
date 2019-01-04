@@ -1,0 +1,7 @@
+sudo apt-get update;
+sudo apt-get install npm;
+sudo apt-get install mysql-server;
+sudo apt-get install nodejs;
+sudo npm install;
+sudo npm install ws;
+sudo npm install -g forever;

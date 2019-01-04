@@ -36,7 +36,7 @@ exports.contactPost = function(req, res) {
   var mailOptions = {
     from: req.body.name + ' ' + '<'+ req.body.email + '>',
     to: 'thibaud.salsa@upscribers.org',
-    subject: 'feedback from Upstore',
+    subject: 'feedback',
     text: req.body.message
   };
 
