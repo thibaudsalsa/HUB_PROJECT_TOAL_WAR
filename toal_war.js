@@ -11,6 +11,7 @@ vm.runInThisContext(fs.readFileSync(__dirname + "/game_server.js"));
 /*global connect do_msg game:true respond init_game start:true player_in:true player_wait:true check_connection*/
 start = false;
 game = init_game();
+console.log("toal_war is active\n");
 
 wss.on('connection', function (ws)
 {
