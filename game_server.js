@@ -49,14 +49,11 @@ function do_msg(team, message_get)
     else if (message_get.type === "carte")
     {
         if (message_get.order === "buy")
-        {
-            team.get_card(-1);
-        }
+            team.get_card();
         else if (message_get.order === "use")
         {
             nb = message_get.nb;
             team.use_card(nb);
-            //use card
         }
     }
 }
