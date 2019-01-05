@@ -85,20 +85,17 @@ function calcule_proba(Icard)
 function use_card(num_card)/* dans l'objet team */
 {
 	var color = ["bleu", "orange" , "rouge"];
-	if (this.carte.length - 1 < num_card || num_card < 0)
+	if (this.carte.length - 1 < num_card || num_card < 0 || num_card > 5)
 		return ;
-	if (num_card != 0)
+	game.info += "La team " + color[this.id - 1] + " " + this.carte[num_card].text + "\n"  ;
+	this.carte[num_card].use(this);
+	var tab_divise = [];
+	for (let i = 0; i < this.carte.length; i++)
 	{
-		game.info += "La team " + color[this.id - 1] + " " + this.carte[num_card].text + "\n"  ;
-		this.carte[num_card].use(this);
-		var tab_divise = [];
-		for (let i = 0; i < this.carte.length; i++)
-		{
-			if (i != num_card)
-				tab_divise.push(this.carte[i]);
-		}
-		this.carte = tab_divise;
+		if (i != num_card)
+			tab_divise.push(this.carte[i]);
 	}
+	this.carte = tab_divise;
 }
 function return_card()
 {
