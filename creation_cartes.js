@@ -1,3 +1,4 @@
+/*global game:true create_tab_nation add_fct*/
 var id_cartes = ["plagiat",
 			"soin",
 			"Prêt a la banque", 
@@ -25,7 +26,8 @@ var text_cartes = ["a utilisé un atout.",
 				"a utilisé un atout.",
 				"a une information à vous donner."];
 
-var fonction_cartes = [plagiat, soin,
+var fonction_cartes = [plagiat,
+						soin,
 						pret_a_la_banque,
 						appuie_aerien,
 						incendie,
@@ -37,20 +39,12 @@ var fonction_cartes = [plagiat, soin,
 						retentez_votre_chance,
 						espion2];
 
-var proba_cartes = [4, 4, 6, 1, 4, 5, 1 , 6, 4, 2, 2, 4];
+var proba_cartes = [4, 2, 6, 1, 4, 5, 1, 6, 4, 2, 2, 4];
 
-/*global game:true create_tab_nation add_fct*/
-function init_card()
-{
-	var Icard = new Object();
-	Icard.tab_bonus = create_tab_bonus();
-	Icard.tab_proba_carte = calcule_proba(Icard);
-	return (Icard);
-}
+
 /* creation des cartes bonus */
-function create_tab_bonus()
+function create_carte_template()
 {
-	//propreté ???? nombre de ligne dans une fonction ??????
 	var tab_card = [];
 	var id = id_cartes;
 	var img = image_cartes;
@@ -70,19 +64,20 @@ function create_tab_bonus()
 	return (tab_card);
 }
 
-function calcule_proba(Icard)
+function init_deck()
 {
+	var Template_carte = create_carte_template();
 	var tab_proba_carte = [];
-	for ( let i = 0; i < Icard.tab_bonus.length; i++)
+	for ( let i = 0; i < Template_carte.length; i++)
 	{
-		for (let j = 0; j < Icard.tab_bonus[i].prob; j++)
-			tab_proba_carte.push(Icard.tab_bonus[i]);
+		for (let j = 0; j < Template_carte[i].prob; j++)
+			tab_proba_carte.push(Template_carte[i]);
 	}
 	return (tab_proba_carte);
 }
 
-/* Function pour thibaud*/
-function use_card(num_card)/* dans l'objet team */
+
+function use_card(num_card)
 {
 	var color = ["bleu", "orange" , "rouge"];
 	if (this.carte.length - 1 < num_card || num_card < 0 || num_card > 5)
@@ -97,14 +92,34 @@ function use_card(num_card)/* dans l'objet team */
 	}
 	this.carte = tab_divise;
 }
-function return_card()
+function buy_card()
 {
 	var price = 20;
 	if (this.carte.length > 5 || this.money < price)
 		return;
 	this.money -= price;
-	this.carte.push(game.carte.tab_proba_carte[(Math.floor(Math.random() * (game.carte.tab_proba_carte.length + 0)))]);
+	this.carte.push(game.carte.tab_proba_carte[(Math.floor(Math.random() * (game.deck.tab_proba_carte.length + 0)))]);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* functions des cartes bonus */
 function plagiat(team)
@@ -146,7 +161,7 @@ function pret_a_la_banque(team)
 {
 	team.money += (Math.floor(Math.random() * (30 + 0))+30);
 }
-/* modification */
+
 function appuie_aerien(team)
 {
 	var tab = return_enemie_team(team);
@@ -162,31 +177,31 @@ function appuie_aerien(team)
 function incendie(team)
 {
 	/*team unesed*/
-	var aleatoire = Math.floor(Math.random() * (3));
+	var target = Math.floor(Math.random() * (3));
 	var moins_char = Math.floor(Math.random() * (26));
 	var moins_avion = Math.floor(Math.random() * (26 - moins_char));
 	var moins_soldat = Math.floor(Math.random() * (26 - moins_avion - moins_soldat));
-	if (aleatoire === 0)
+	if (target === 0)
 	{
-		no_negativ_unit(game.team1.unit.char, moins_char);
-		no_negativ_unit(game.team1.unit.avion, moins_avion);
-		no_negativ_unit(game.team1.unit.soldat, moins_soldat);
+		kill_unit(game.team1.unit.char, moins_char);
+		kill_unit(game.team1.unit.avion, moins_avion);
+		kill_unit(game.team1.unit.soldat, moins_soldat);
 	}
-	else if (aleatoire === 1)
+	else if (target === 1)
 	{
-		no_negativ_unit(game.team2.unit.char, moins_char);
-		no_negativ_unit(game.team2.unit.avion, moins_avion);
-		no_negativ_unit(game.team2.unit.soldat, moins_soldat);
+		kill_unit(game.team2.unit.char, moins_char);
+		kill_unit(game.team2.unit.avion, moins_avion);
+		kill_unit(game.team2.unit.soldat, moins_soldat);
 	}
 	else
 	{
-		no_negativ_unit(game.team3.unit.char, moins_char);
-		no_negativ_unit(game.team3.unit.avion, moins_avion);
-		no_negativ_unit(game.team3.unit.soldat, moins_soldat);
+		kill_unit(game.team3.unit.char, moins_char);
+		kill_unit(game.team3.unit.avion, moins_avion);
+		kill_unit(game.team3.unit.soldat, moins_soldat);
 	}
 }
 
-function no_negativ_unit(unit, nb)
+function kill_unit(unit, nb)
 {
 	for (let i = 0; i < nb && unit.length; i++)
 		unit.pop();
@@ -194,8 +209,8 @@ function no_negativ_unit(unit, nb)
 
 function seisme(team)
 {
-	var aleatoire = Math.floor(Math.random() * (3));
-	switch (aleatoire)
+	var target = Math.floor(Math.random() * (3));
+	switch (target)
 	{
 		case (0):
 			delete_unit(game.team1.unit.unit_left, game.team2.unit.unit_right)
@@ -219,10 +234,10 @@ function allie_inattendu(team)
 function forcer_le_jeu(team)
 {
 	var tab = return_enemie_team(team);
-	var aleatoire = Math.floor(Math.random() * (2));
-	if (aleatoire == 0 && tab[0].carte.length > 0)
+	var target = Math.floor(Math.random() * (2));
+	if (target == 0 && tab[0].carte.length > 0)
 		tab[0].use_card(Math.floor(Math.random() * (tab[0].carte.length)));
-	else if (aleatoire == 1 && tab[tab.length - 1].carte.length > 0)
+	else if (target == 1 && tab[tab.length - 1].carte.length > 0)
 		tab[tab.length - 1].use_card(Math.floor(Math.random() * (tab[tab.length - 1].carte.length)));
 }
 
@@ -231,13 +246,7 @@ function d_une_pierre_de_carte(team)
 	if (team.carte.length <= 4 )
 	{	
 		team.money += 40;
-		team.get_card(-1);
-		team.get_card(-1);
-	}
-	if (team.carte.length == 5)
-	{
-		team.money += 20;
-		team.get_card(-1);
+		team.get_card();
 	}
 }
 
@@ -250,8 +259,8 @@ function espion2(team)
 {
 	var tab = return_enemie_team(team);
 	var color = ["bleu", "orange" , "rouge"];
-	var aleatoire = Math.floor(Math.random() * (2));
-	if (aleatoire == 0)
+	var target = Math.floor(Math.random() * (2));
+	if (target == 0)
 		game.info += "La team " + color[tab[0].id - 1] + " posséde : " + 
 						tab[0].unit.char.length + " char, " + 
 						tab[0].unit.avion.length + " avion, " +
@@ -272,6 +281,7 @@ function delete_unit(unit1, unit2)
 	unit2.avion = [];
 	unit2.soldat = [];
 }
+
 function return_enemie_team(team)
 {
 	var tab_team = [game.team1, game.team2, game.team3];
