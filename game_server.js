@@ -96,6 +96,7 @@ function check_win(game, ws, msg, start)
     if (msg.winner != "")
     {
         msg.win = true;
+        player_in = [];
         game = init_game();
         start = false;
     }
