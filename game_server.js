@@ -141,6 +141,7 @@ function respond(team, ws, wss)
         }
         if (player_in.length <= 1)
         {
+            player_in = [];
             ws.qquit = 0;
             start = false;
             game = init_game();

@@ -8,7 +8,7 @@ vm.runInThisContext(fs.readFileSync(__dirname + "/initGame.js"));
 vm.runInThisContext(fs.readFileSync(__dirname + "/creation_cartes.js"));
 vm.runInThisContext(fs.readFileSync(__dirname + "/game_server.js"));
 
-/*global connect do_msg game:true respond init_game start:true player_in:true player_wait:true check_connection*/
+/*global connect do_msg game:true respond init_game start:true player_in:true player_wait:true*/
 start = false;
 game = init_game();
 console.log("toal_war is active\n");
@@ -20,8 +20,7 @@ wss.on('connection', function (ws)
   ws.on('message', function (message)
   {
     message = JSON.parse(message);
-    console.log("team" + ws.me + " send: ");
-    console.log(message);
+    console.log("team" + ws.me + " send: " + message);
     if (message.order === "connect")
       ws.me = check_connection(message.msg, ws);
     else if (start === true)

@@ -22,7 +22,6 @@ function do_dmg(unit, target, attack_type, defense_type)
 function die(tab)
 {
 	var tmp = [];
-	
 	for (let i = 0; i < tab.length; i++)
 	{
 		if (tab[i].pv > 0.001)
