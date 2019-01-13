@@ -6,8 +6,6 @@ Notification.requestPermission(function(status) {
         Notification.permission = status;
 });
 
-var co = false;
-
 wss.onmessage = function (ev)
 {
     if (ev.data == "start")
@@ -17,8 +15,7 @@ wss.onmessage = function (ev)
         document.getElementById("canvas01").style.display = "none";
         document.getElementById("canvas02").style.display = "none";
         document.getElementById("sound").src = "audio.ogg";
-        var notification = new Notification("La partie à commencée");
-        co = true;
+        let notification = new Notification("La partie à commencée");
     }
     else if (ev.data == "reset")
         replay();
@@ -74,7 +71,7 @@ function display_unit(team)
 function replay()
 {
     var notification = new Notification("La partie est finie");
-    document.location.href="http://145.239.47.23:3000/";
+    document.location.href="145.239.222.226";
 }
 
 function display_carte(tab_carte, info)
@@ -106,7 +103,7 @@ function display_carte(tab_carte, info)
     }
 }
 
-function confort_de_jeu(color, msg)
+function button_for_team(color, msg)
 {
     if (color == "BLEU")
     {
@@ -132,11 +129,8 @@ function confort_de_jeu(color, msg)
 }
 
 var notif = 0;
-function refresh_game(msg)
+function check_win(msg)
 {
-    unit_to_draw = [];
-    //get unit on the left
-    msg = JSON.parse(msg);
     if (msg.win === true)
     {
         document.getElementById("display_game").style.display = "none";
@@ -144,10 +138,18 @@ function refresh_game(msg)
         document.getElementById("winner").innerHTML = msg.winner;
         if (notif == 0)
         {
-            var notification = new Notification("L'équipe "+ msg.winner + " à gagnée");
+            let notification = new Notification("L'équipe "+ msg.winner + " à gagnée");
             notif++;
         }
     }
+}
+function refresh_game(msg)
+{
+    unit_to_draw = [];
+    //get unit on the left
+    msg = JSON.parse(msg);
+    check_win(msg);
+    //get unit on the left
     display_unit(msg.team1.unit.unit_left);
     display_unit(msg.team2.unit.unit_left);
     display_unit(msg.team3.unit.unit_left);
@@ -162,16 +164,16 @@ function refresh_game(msg)
     red_city = msg.team3.city;
     // actualise les informations sur la page
     document.getElementById("couleur_ville").innerHTML = msg.couleur_ville;
-    confort_de_jeu(msg.couleur_ville, msg);
+    button_for_team(msg.couleur_ville, msg);
     if (msg.city < 0 && document.getElementById("gameplay").style.display != "none")
     {
-        var notification = new Notification("Votre ville est détruite");
+        let notification = new Notification("Votre ville est détruite");
         document.getElementById("gameplay").style.display = "none";
     }
     else
     {
         document.getElementById("argent").innerHTML = "Argent: " + parseInt(msg.argent, 10);
-        document.getElementById("cité").innerHTML = "Cité: " + parseInt(msg.city) + "pv";
+        document.getElementById("cité").innerHTML = "Cité: " + parseInt(msg.city, 10) + "pv";
         document.getElementById("soldat").innerHTML = msg.soldat;
         document.getElementById("char").innerHTML = msg.char;
         document.getElementById("avion").innerHTML = msg.avion;

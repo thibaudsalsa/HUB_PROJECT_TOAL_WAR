@@ -3,9 +3,7 @@ var blue_city = 1;
 var red_city = 1;
 
 var unit_to_draw = [];
-
 var me = new Object();
-
 me.soldat = [-1];
 me.char = [-1];
 me.avion = [-1];
@@ -34,7 +32,7 @@ function make_game()
     var color = Isomer.Color;
     var Point = Isomer.Point;
     var Path = Isomer.Path;
-    var Shape = Isomer.Shape
+    var Shape = Isomer.Shape;
 
     //               couleur
     var Color = new Object();
@@ -45,7 +43,7 @@ function make_game()
     Color.water = new color(0, 0, 0, 0.4);
     
 
-    //              init objet
+    // init objet
     // objet position
     var pos = new Object();
     pos.x = 0;
