@@ -12,11 +12,13 @@
 <!--Matchmaking-->
 <div id="choose" style="font-family: Bubblegum; font-size: 50px; width: 40%; padding-left: 30%; z-index: 1; padding-top: 10%; text-align: center;">
     <p style="color: white;">Choisissez votre nation</p>
-    <select id="choose_nation">
+    <select id="choose_nation" onchange="nation_explain(this)">
     </select>
     <button onclick="try_connect()">
         Aller au combat
     </button>
+    <br>
+    <p style="color: white;" id="nation_explain">La Russie supprime tous les soldats, chars, avions et cartes dans le jeux. L'argent de tous les joueurs est aussi a 0. La Russi est affectee par sa competence.</p>
 </div>
 
 
@@ -99,7 +101,7 @@
             </select>
             <button onclick="order('use', 'carte', parseInt(document.getElementById('len_carte').value, 10))">Utiliser la carte</button>
             <button onclick="order('buy', 'carte', 1)">Acheter une carte</button>
-            <button onclick="order('use', 'nation', 1)">Utiliser le pouvoir de votre nation</button>
+            <button onclick="order('use', 'nation', 1)" id="nation_power">Utiliser le pouvoir de votre nation</button>
         </div>
     </div>
     <canvas width="1000" height="750" id="art" style="padding-left: 40%"></canvas>

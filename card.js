@@ -342,23 +342,32 @@ function France(team)
 {
     if (team.nation_available === false)
         return;
-    team.unit.unit_left.soldat.speed = 0;
-    team.unit.unit_left.char.speed = 0;
-    team.unit.unit_left.avion.speed = 0;
-    team.unit.unit_right.soldat.speed = 0;
-    team.unit.unit_right.char.speed = 0;
-    team.unit.unit_right.avion.speed = 0;
+    set_unit_France(team.unit.unit_left.soldat);
+    set_unit_France(team.unit.unit_left.char);
+    set_unit_France(team.unit.unit_left.avion);
+    set_unit_France(team.unit.unit_right.soldat);
+    set_unit_France(team.unit.unit_right.char);
+    set_unit_France(team.unit.unit_right.avion);
     team.money -= PRICE_TEAM_POWER;
     team.nation_available = false;
 }
 
+function set_unit_France(unit)
+{
+    for (let i = 0; i < unit.length; i++)
+    {
+        unit.speed = 0;
+        unit.pv = 2;
+    }
+}
 
 function set_unit_vatican(unit)
 {
     for (let i = 0; i < unit.length; i++)
     {
-        unit.speed *= 2;
-        unit.pv *= 2;
+        unit.speed *= 1.5;
+        unit.pv *= 1.5;
+        unit.dmg *= 1.5;
     }
 }
 
