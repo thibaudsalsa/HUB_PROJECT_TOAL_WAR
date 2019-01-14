@@ -46,6 +46,10 @@ function do_msg(team, message_get)
         else if (message_get.direction === "right")
             team.launch_right(type, nb);
     }
+    else if (message_get.order === "use" && message_get.type === "nation")
+    {
+        console.log("nation powa");
+    }
     else if (message_get.type === "carte")
     {
         if (message_get.order === "buy")
