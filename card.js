@@ -358,9 +358,9 @@ function set_unit_France(unit)
     for (let i = 0; i < unit.length; i++)
     {
         unit.speed = 0;
-        unit.pv = 2;
+        unit.pv *= 2;
     }
-    console.log (unit);
+    console.log(unit);
 }
 
 function set_unit_vatican(unit)
@@ -371,6 +371,7 @@ function set_unit_vatican(unit)
         unit.pv *= 1.5;
         unit.dmg *= 1.5;
     }
+    console.log(unit);
 }
 
 // boost vos unités sur le terrain
@@ -379,6 +380,7 @@ function Vatican(team)
     if (team.nation_available === false)
         return;
     set_unit_vatican(team.unit.unit_left.soldat);
+    console.log(team.unit.unit_left.soldat);
     set_unit_vatican(team.unit.unit_left.char);
     set_unit_vatican(team.unit.unit_left.avion);
     set_unit_vatican(team.unit.unit_right.soldat);
