@@ -358,7 +358,7 @@ function set_unit_France(unit)
     for (let i = 0; i < unit.length; i++)
     {
         unit.speed = 0;
-        unit.pv *= 2;
+        unit.pv = unit.pv * 2;
     }
     console.log(unit);
 }
@@ -367,9 +367,9 @@ function set_unit_vatican(unit)
 {
     for (let i = 0; i < unit.length; i++)
     {
-        unit.speed *= 1.5;
-        unit.pv *= 1.5;
-        unit.dmg *= 1.5;
+        unit.speed = unit.speed * 1.5;
+        unit.pv = unit.pv * 1.5;
+        unit.dmg = unit.dmg * 1.5;
     }
     console.log(unit);
 }
