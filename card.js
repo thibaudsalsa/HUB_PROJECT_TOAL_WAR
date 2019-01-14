@@ -318,7 +318,8 @@ function use_nation_power()
         if (this.name === nation_liste[i] && this.money >= this.nation_price)
             value = nation_fcnt[i](this);
     }
-    return (value);
+    if (value === "OK")
+    	game.info += "La/Le " + this.name + " a utilisé sa capacité\n"  ;
 }
 
 function Coree_du_nord(team)
@@ -338,7 +339,7 @@ function Coree_du_nord(team)
 function USA(team)
 {
 	team.pv -= 200;
-	team.money = 300;
+	team.money = 250;
 	return ("OK");
 }
 

@@ -1,4 +1,4 @@
-/*global unit_to_draw:true red_city:true blue_city:true orange_city:true Notification*/
+/*global unit_to_draw:true red_city:true blue_city:true orange_city:true Notification rename_button_nation*/
 var wss = new WebSocket('ws://145.239.222.226:40510');
 
 Notification.requestPermission(function(status) {
@@ -16,7 +16,6 @@ wss.onmessage = function (ev)
         document.getElementById("canvas02").style.display = "none";
         document.getElementById("sound").src = "audio.ogg";
         let notification = new Notification("La partie à commencée");
-        console.log("hey the game start");
     }
     else if (ev.data == "reset")
         replay();
@@ -26,7 +25,6 @@ wss.onmessage = function (ev)
 
 function try_connect()
 {
-    console.log("I'm trying to connect");
     var msg = new Object();
     msg.order = "connect";
     msg.msg = document.getElementById("choose_nation").value;
@@ -175,6 +173,7 @@ function refresh_game(msg)
     }
     else
     {
+        document.getElementById("price_nation").innerHTML = msg.nation_price;
         document.getElementById("argent").innerHTML = "Argent: " + parseInt(msg.argent, 10);
         document.getElementById("cité").innerHTML = "Cité: " + parseInt(msg.city, 10) + "pv";
         document.getElementById("soldat").innerHTML = msg.soldat;

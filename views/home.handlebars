@@ -1,8 +1,9 @@
 {{#if user}}
 
 
-<!--Recherche de partie-->
 <div style="color: black">
+    
+<!--Recherche de partie-->
 <canvas id="canvas01" width="500" height="490" style="position: absolute; padding-top: 175px; z-index: 0"></canvas>
 <canvas id="canvas02" width="500" height="490" style="position: absolute; right: 0;  padding-top: 175px; z-index: 0"></canvas>
 <p id="wait" style="color: white; font-size: 50px; font-family: Bubblegum; width: 40%; padding-left: 30%; padding-top: 10%; display: none; z-index: 1; text-align: center;">Recherche de partie ...</p>
@@ -42,9 +43,9 @@
         <label >Votre ville: <p id="couleur_ville"></p></label>
         <p id="argent">Argent: 200</p>
         <p id="cité">Cité: 200pv</p>
-        <p>Soldat: <span id="soldat">0</span> <button onclick="order('buy', 'soldat', 1)">Acheter un soldat</button></p>
-        <p>Char: <span id="char">0</span>  <button onclick="order('buy', 'char', 1)">Acheter un char</button></p>
-        <p>Avion: <span id="avion">0</span> <button onclick="order('buy', 'avion', 1)">Acheter un avion</button></p>
+        <p>Soldat: <span id="soldat">0</span> <button onclick="order('buy', 'soldat', 1)">Acheter un soldat</button>prix: 5</p>
+        <p>Char: <span id="char">0</span>  <button onclick="order('buy', 'char', 1)">Acheter un char</button>prix: 5</p>
+        <p>Avion: <span id="avion">0</span> <button onclick="order('buy', 'avion', 1)">Acheter un avion</button>prix: 5</p>
         <div><p class="en_right">Attaquer à droite</p>
         <select id="attaque_right_nb">
             <option>1</option>
@@ -100,8 +101,8 @@
                 <option>4</option>
             </select>
             <button onclick="order('use', 'carte', parseInt(document.getElementById('len_carte').value, 10))">Utiliser la carte</button>
-            <button onclick="order('buy', 'carte', 1)">Acheter une carte</button>
-            <button onclick="order('use', 'nation', 1)" id="nation_power">Utiliser le pouvoir de votre nation</button>
+            <button onclick="order('buy', 'carte', 1)">Acheter une carte</button><p>prix: 20</p>
+            <button onclick="order('use', 'nation', 1)" id="nation_power">Utiliser le pouvoir de votre nation</button><p>prix: <span id="price_nation">10</span></p>
         </div>
     </div>
     <canvas width="1000" height="750" id="art" style="padding-left: 40%"></canvas>
