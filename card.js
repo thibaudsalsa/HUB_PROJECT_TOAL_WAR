@@ -316,7 +316,11 @@ function use_nation_power()
     for (var i = 0; i < nation_liste.length; i++)
     {
         if (this.name === nation_liste[i] && this.money >= this.nation_price)
+        {
             value = nation_fcnt[i](this);
+            if (value === "OK")
+            	this.nation_price = this.nation_price * PRICE_TEAM_POWER;
+        }
     }
     if (value === "OK")
     	game.info += "La/Le " + this.name + " a utilisé sa capacité\n"  ;
@@ -329,7 +333,6 @@ function Coree_du_nord(team)
     	team.unit.avion[team.unit.avion.length - 1].pv = 100;
     	team.unit.avion[team.unit.avion.length - 1].dmg = 0;
     	team.money -= team.nation_price;
-    	team.nation_price = team.nation_price * PRICE_TEAM_POWER;
     	return ("OK");
     }
     return ("KO");
@@ -350,7 +353,6 @@ function Russie(team)
     reset_russia(game.team2);
     reset_russia(game.team3);
     team.money -= team.nation_price;
-    team.nation_price = team.nation_price * PRICE_TEAM_POWER;
     return ("OK");
 }
 
@@ -379,7 +381,6 @@ function France(team)
     set_unit_France(team.unit.unit_right.char);
     set_unit_France(team.unit.unit_right.avion);
     team.money -= team.nation_price;
-    team.nation_price = team.nation_price * PRICE_TEAM_POWER;
     return ("OK");
 }
 
@@ -412,7 +413,6 @@ function Vatican(team)
     set_unit_vatican(team.unit.unit_right.char);
     set_unit_vatican(team.unit.unit_right.avion);
     team.money -= team.nation_price;
-    team.nation_price = team.nation_price * PRICE_TEAM_POWER;
     return ("OK");
 }
 
@@ -421,7 +421,6 @@ function Portugal(team)
 {
     team.money -= team.nation_price;
     team.city = (600 - team.city) / 2;
-    team.nation_price = team.nation_price * PRICE_TEAM_POWER;
     return ("OK");
 }
 
@@ -430,6 +429,5 @@ function Monaco(team)
 {
     team.money -= team.nation_price;
     team.money += team.nation_price + 50;
-    team.nation_price = team.nation_price * PRICE_TEAM_POWER;
     return ("OK");
 }
