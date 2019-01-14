@@ -31,7 +31,7 @@ function rename_button_nation(nation)
     var txt_nation = ["Demander à Poutine de tout détruire", "Gréve !", "Battez vous pour moi, mais battez vous mieux !", "Mon mur a besoin d'être reparé", "Bling Bling !"];
     for (let i = 0; i < nation_name.length; i++)
     {
-        if (nation === nation_name)
+        if (nation === nation_name[i])
             document.getElementById("nation_power").innerHTML = nation + " " + txt_nation[i];
     }
 }

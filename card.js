@@ -357,7 +357,7 @@ function set_unit_France(unit)
     for (let i = 0; i < unit.length; i++)
     {
         unit[i].speed = 0;
-        unit[i].pv = unit.pv[i] * 2;
+        unit[i].pv = unit[i].pv * 2;
     }
 }
 
