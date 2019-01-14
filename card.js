@@ -354,11 +354,10 @@ function France(team)
 
 function set_unit_France(unit)
 {
-	console.log(unit);
     for (let i = 0; i < unit.length; i++)
     {
-        unit.speed = 0;
-        unit.pv = unit.pv * 2;
+        unit[i].speed = 0;
+        unit[i].pv = unit.pv[i] * 2;
     }
 }
 
@@ -366,9 +365,9 @@ function set_unit_vatican(unit)
 {
     for (let i = 0; i < unit.length; i++)
     {
-        unit.speed = unit.speed * 1.5;
-        unit.pv = unit.pv * 1.5;
-        unit.dmg = unit.dmg * 1.5;
+        unit[i].speed = unit[i].speed * 1.5;
+        unit[i].pv = unit[i].pv * 1.5;
+        unit[i].dmg = unit[i].dmg * 1.5;
     }
 }
 
