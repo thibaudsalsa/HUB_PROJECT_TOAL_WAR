@@ -365,6 +365,7 @@ function set_unit_France(unit)
 
 function set_unit_vatican(unit)
 {
+	console.log(unit);
     for (let i = 0; i < unit.length; i++)
     {
         unit.speed = unit.speed * 1.5;
