@@ -1,4 +1,7 @@
 /*global game:true create_tab_nation add_fct*/
+
+var PRICE_TEAM_POWER = 5;
+var PRICE_CARD = 20;
 var id_cartes = ["plagiat",
 			"soin",
 			"Prêt a la banque", 
@@ -9,10 +12,11 @@ var id_cartes = ["plagiat",
 			"forcer le jeu", 
 			"d'une pierre de carte",
 			"retentez votre chance",
-			"espion2"];
-
-var image_cartes = ["", "", "", "", "", "", "", "", "", "", "", "", ""];
-
+			"espion2",
+			"boost de dégat",
+			"boost de vie",
+			"boost de vitesse"];
+var image_cartes = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""];
 var text_cartes = ["a utilisé un atout.", 
 				"a utilisé un atout.", 
 				"a utilisé un atout.",
@@ -24,8 +28,10 @@ var text_cartes = ["a utilisé un atout.",
 				"vous a forcé à utiliser une carte.",
 				"a utilisé un atout.",
 				"a utilisé un atout.",
-				"a une information à vous donner."];
-
+				"a une information à vous donner.",
+				"a utilisé un atout.",
+				"a utilisé un atout.",
+				"a utilisé un atout."];
 var fonction_cartes = [plagiat,
 						soin,
 						pret_a_la_banque,
@@ -37,12 +43,12 @@ var fonction_cartes = [plagiat,
 						forcer_le_jeu, 
 						d_une_pierre_de_carte,
 						retentez_votre_chance,
-						espion2];
+						espion2,
+						boost_dmg,
+						boost_pv,
+						boost_speed];
+var proba_cartes = [4, 2, 6, 1, 4, 5, 1, 6, 4, 2, 2, 4, 4, 4, 4];
 
-var proba_cartes = [4, 2, 6, 1, 4, 5, 1, 6, 4, 2, 2, 4];
-
-
-/* creation des cartes bonus */
 function create_carte_template()
 {
 	var tab_card = [];
@@ -94,34 +100,13 @@ function use_card(num_card)
 }
 function buy_card()
 {
-	var price = 20;
+	var price = PRICE_CARD;
 	if (this.carte.length > 5 || this.money < price)
 		return;
 	this.money -= price;
-	this.carte.push(game.carte.tab_proba_carte[(Math.floor(Math.random() * (game.deck.tab_proba_carte.length + 0)))]);
+	this.carte.push(game.deck[(Math.floor(Math.random() * (game.deck.length)))]);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* functions des cartes bonus */
 function plagiat(team)
 {
 	var tab_team = [game.team1, game.team2, game.team3];
@@ -144,6 +129,36 @@ function plagiat(team)
 		if (tab_team[num - 1].carte.length != 0)
 			team.carte.push(tab_team[num - 1].carte[tab_team[num - 1].carte.length - 1]);
 	}
+}
+
+function boost_dmg(team)
+{
+	if (team.unit.soldat.length >= 1)
+		team.unit.soldat[team.unit.soldat.length - 1].dmg = team.unit.soldat[team.unit.soldat.length - 1].dmg * 2;
+	if (team.unit.char.length >= 1)
+		team.unit.char[team.unit.char.length - 1].dmg = team.unit.char[team.unit.char.length - 1].dmg * 2;
+	if (team.unit.avion.length >= 1)
+		team.unit.avion[team.unit.avion.length - 1].dmg = team.unit.avion[team.unit.avion.length - 1].dmg * 2;
+}
+
+function boost_pv(team)
+{
+	if (team.unit.soldat.length >= 1)
+		team.unit.soldat[team.unit.soldat.length - 1].pv = team.unit.soldat[team.unit.soldat.length - 1].pv * 2;
+	if (team.unit.char.length >= 1)
+		team.unit.char[team.unit.char.length - 1].pv = team.unit.char[team.unit.char.length - 1].pv * 2;
+	if (team.unit.avion.length >= 1)
+		team.unit.avion[team.unit.avion.length - 1].pv = team.unit.avion[team.unit.avion.length - 1].pv * 2;
+}
+
+function boost_speed(team)
+{
+	if (team.unit.soldat.length >= 1)
+		team.unit.soldat[team.unit.soldat.length - 1].speed = team.unit.soldat[team.unit.soldat.length - 1].speed * 2;
+	if (team.unit.char.length >= 1)
+		team.unit.char[team.unit.char.length - 1].speed = team.unit.char[team.unit.char.length - 1].speed * 2;
+	if (team.unit.avion.length >= 1)
+		team.unit.avion[team.unit.avion.length - 1].speed = team.unit.avion[team.unit.avion.length - 1].speed * 2;
 }
 
 function bluff(team)
@@ -293,33 +308,49 @@ function return_enemie_team(team)
 	return (tab);
 }
 
-
-
-
-
-var PRICE_TEAM_POWER = 0;
-
 function use_nation_power()
 {
-    var nation_liste = ["Russie", "France", "Vatican", "Portugal", "Monaco"];
-    var nation_fcnt  = [Russie, France, Vatican, Portugal, Monaco];
+    var nation_liste = ["Russie", "France", "Vatican", "Portugal", "Monaco", "USA", "Coree du nord"];
+    var nation_fcnt  = [Russie, France, Vatican, Portugal, Monaco, USA, Coree_du_nord];
+    var value = "KO";
     for (var i = 0; i < nation_liste.length; i++)
     {
-        if (this.name === nation_liste[i])
-            nation_fcnt[i](this);
+        if (this.name === nation_liste[i] && this.money >= this.nation_price)
+            value = nation_fcnt[i](this);
     }
+    return (value);
+}
+
+function Coree_du_nord(team)
+{
+    if (team.unit.avion.length >= 1)
+    {
+    	team.unit.avion[team.unit.avion.length - 1].pv = 100;
+    	team.unit.avion[team.unit.avion.length - 1].dmg = 0;
+    	team.money -= team.nation_price;
+    	team.nation_price = team.nation_price * PRICE_TEAM_POWER;
+    	return ("OK");
+    }
+    return ("KO");
+}
+
+/* transforme des pv en argent */
+function USA(team)
+{
+	team.pv -= 200;
+	team.money = 300;
+	return ("OK");
 }
 
 //detruit les cartes et les unités de tous les joeurs
 function Russie(team)
 {
-    if (this.nation_available === false)
-        return;
     reset_russia(game.team1);
     reset_russia(game.team2);
     reset_russia(game.team3);
-    team.money -= PRICE_TEAM_POWER;
-    team.nation_available = false;
+    team.money -= team.nation_price;
+    team.nation_price = team.nation_price * PRICE_TEAM_POWER;
+    return ("OK");
 }
 
 function reset_russia(team)
@@ -340,16 +371,15 @@ function reset_russia(team)
 // vos unité s'arretent 
 function France(team)
 {
-    if (team.nation_available === false)
-        return;
     set_unit_France(team.unit.unit_left.soldat);
     set_unit_France(team.unit.unit_left.char);
     set_unit_France(team.unit.unit_left.avion);
     set_unit_France(team.unit.unit_right.soldat);
     set_unit_France(team.unit.unit_right.char);
     set_unit_France(team.unit.unit_right.avion);
-    team.money -= PRICE_TEAM_POWER;
-    team.nation_available = false;
+    team.money -= team.nation_price;
+    team.nation_price = team.nation_price * PRICE_TEAM_POWER;
+    return ("OK");
 }
 
 function set_unit_France(unit)
@@ -374,34 +404,31 @@ function set_unit_vatican(unit)
 // boost vos unités sur le terrain
 function Vatican(team)
 {
-    if (team.nation_available === false)
-        return;
     set_unit_vatican(team.unit.unit_left.soldat);
     set_unit_vatican(team.unit.unit_left.char);
     set_unit_vatican(team.unit.unit_left.avion);
     set_unit_vatican(team.unit.unit_right.soldat);
     set_unit_vatican(team.unit.unit_right.char);
     set_unit_vatican(team.unit.unit_right.avion);
-    team.money -= PRICE_TEAM_POWER;
-    team.nation_available = false;
+    team.money -= team.nation_price;
+    team.nation_price = team.nation_price * PRICE_TEAM_POWER;
+    return ("OK");
 }
 
 // la cité recupere des pv
 function Portugal(team)
 {
-    if (team.nation_available === false)
-        return;
-    team.money -= PRICE_TEAM_POWER;
+    team.money -= team.nation_price;
     team.city = (600 - team.city) / 2;
-    team.nation_available = false;
+    team.nation_price = team.nation_price * PRICE_TEAM_POWER;
+    return ("OK");
 }
 
 // recupere un peu d'argent
 function Monaco(team)
 {
-    if (team.nation_available === false)
-        return;
-    team.money -= PRICE_TEAM_POWER;
-    team.money += PRICE_TEAM_POWER + 50;
-    team.nation_available = false;
+    team.money -= team.nation_price;
+    team.money += team.nation_price + 50;
+    team.nation_price = team.nation_price * PRICE_TEAM_POWER;
+    return ("OK");
 }

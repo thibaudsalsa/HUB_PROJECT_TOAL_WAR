@@ -24,18 +24,6 @@ wss.onmessage = function (ev)
         refresh_game(ev.data);
 };
 
-
-function rename_button_nation(nation)
-{
-    var nation_name = ["Russie", "France", "Vatican", "Portugal", "Monaco"];
-    var txt_nation = ["Demander à Poutine de tout détruire", "Gréve !", "Battez vous pour moi, mais battez vous mieux !", "Mon mur a besoin d'être reparé", "Bling Bling !"];
-    for (let i = 0; i < nation_name.length; i++)
-    {
-        if (nation === nation_name[i])
-            document.getElementById("nation_power").innerHTML = nation + " " + txt_nation[i];
-    }
-}
-
 function try_connect()
 {
     console.log("I'm trying to connect");

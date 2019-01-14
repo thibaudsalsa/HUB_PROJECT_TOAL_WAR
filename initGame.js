@@ -41,7 +41,7 @@ function create_team(rgb, pos_unit, numero_team)
 	team.use_card = use_card;
 	team.get_card = buy_card;
 	team.use_nation = use_nation_power;
-	team.nation_available = true;
+	team.nation_price = 0;
 	return (team);
 }
 
