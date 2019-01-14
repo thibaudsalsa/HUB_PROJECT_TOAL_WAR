@@ -338,8 +338,8 @@ function Coree_du_nord(team)
 /* transforme des pv en argent */
 function USA(team)
 {
-	team.pv -= 200;
-	team.money = 250;
+	team.city -= 200;
+	team.money += 250;
 	return ("OK");
 }
 

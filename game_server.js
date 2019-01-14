@@ -85,6 +85,7 @@ function fill_msg(msg, team, game)
     msg.city = team.city;
     msg.carte = team.carte;
     msg.argent = team.money;
+    msg.nation_price = team.nation_price;
 }
 
 function check_win(game, ws, msg, start)
