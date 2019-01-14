@@ -1,4 +1,4 @@
-/*global attack attack_city move_unit launch_right launch_left use_card buy_card init_deck*/
+/*global attack attack_city move_unit launch_right launch_left use_card buy_card init_deck use_nation_power*/
 function init_game()
 {
 	var game = new Object();
@@ -40,6 +40,7 @@ function create_team(rgb, pos_unit, numero_team)
 	team.launch_left = launch_left;
 	team.use_card = use_card;
 	team.get_card = buy_card;
+	team.use_nation = use_nation_power;
 	return (team);
 }
 

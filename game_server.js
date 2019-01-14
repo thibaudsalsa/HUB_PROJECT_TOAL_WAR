@@ -48,7 +48,7 @@ function do_msg(team, message_get)
     }
     else if (message_get.order === "use" && message_get.type === "nation")
     {
-        console.log("nation powa");
+        team.use_nation_power();
     }
     else if (message_get.type === "carte")
     {

@@ -152,7 +152,7 @@ function bluff(team)
 
 function soin(team)
 {
-		team.city += 25;
+	team.city += 15;
 	if (team.city > 600)
 		team.city = 600;
 }
@@ -176,7 +176,6 @@ function appuie_aerien(team)
 
 function incendie(team)
 {
-	/*team unesed*/
 	var target = Math.floor(Math.random() * (3));
 	var moins_char = Math.floor(Math.random() * (26));
 	var moins_avion = Math.floor(Math.random() * (26 - moins_char));
@@ -292,4 +291,108 @@ function return_enemie_team(team)
 			tab.push(tab_team[i]);
 	}
 	return (tab);
+}
+
+
+
+
+
+var PRICE_TEAM_POWER = 0;
+
+function use_nation_power()
+{
+    var nation_liste = ["Russie", "France", "Vatican", "Portugal", "Monaco"];
+    var nation_fcnt  = [Russie, France, Vatican, Portugal, Monaco];
+    for (var i = 0; i < nation_liste.length; i++)
+    {
+        if (this.name === nation_liste[i])
+            nation_fcnt[i](this);
+    }
+}
+
+//detruit les cartes et les unités de tous les joeurs
+function Russie(team)
+{
+    if (this.nation_available === false)
+        return;
+    reset_russia(game.team1);
+    reset_russia(game.team2);
+    reset_russia(game.team3);
+    team.money -= PRICE_TEAM_POWER;
+    team.nation_available = false;
+}
+
+function reset_russia(team)
+{
+    team.money = 0;
+    team.carte = [];
+    team.unit.unit_left.soldat = [];
+    team.unit.unit_left.char = [];
+    team.unit.unit_left.avion = [];
+    team.unit.unit_right.soldat = [];
+    team.unit.unit_right.char = [];
+    team.unit.unit_right.avion = [];
+    team.unit.soldat = [];
+    team.unit.char = [];
+    team.unit.avion = [];
+}
+
+// vos unité s'arretent 
+function France(team)
+{
+    if (team.nation_available === false)
+        return;
+    team.unit.unit_left.soldat.speed = 0;
+    team.unit.unit_left.char.speed = 0;
+    team.unit.unit_left.avion.speed = 0;
+    team.unit.unit_right.soldat.speed = 0;
+    team.unit.unit_right.char.speed = 0;
+    team.unit.unit_right.avion.speed = 0;
+    team.money -= PRICE_TEAM_POWER;
+    team.nation_available = false;
+}
+
+
+function set_unit_vatican(unit)
+{
+    for (let i = 0; i < unit.length; i++)
+    {
+        unit.speed *= 2;
+        unit.pv *= 2;
+    }
+}
+
+// boost vos unités sur le terrain
+function Vatican(team)
+{
+    if (team.nation_available === false)
+        return;
+    set_unit_vatican(team.unit.unit_left.soldat);
+    set_unit_vatican(team.unit.unit_left.char);
+    set_unit_vatican(team.unit.unit_left.avion);
+    set_unit_vatican(team.unit.unit_right.soldat);
+    set_unit_vatican(team.unit.unit_right.char);
+    set_unit_vatican(team.unit.unit_right.avion);
+    team.money -= PRICE_TEAM_POWER;
+    team.nation_available = false;
+}
+
+// la cité recupere des pv
+function Portugal(team)
+{
+    if (team.nation_available === false)
+        return;
+    team.money -= PRICE_TEAM_POWER;
+    team.city = (600 - team.city) / 2;
+    team.nation_available = false;
+}
+
+// recupere un peu d'argent
+function Monaco(team)
+{
+    if (team.nation_available === false)
+        return;
+    team.money -= PRICE_TEAM_POWER;
+    team.money += PRICE_TEAM_POWER + 50;
+    team.nation_available = false;
 }
