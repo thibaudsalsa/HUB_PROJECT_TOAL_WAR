@@ -343,6 +343,7 @@ function France(team)
     if (team.nation_available === false)
         return;
     set_unit_France(team.unit.unit_left.soldat);
+    console.log(team.unit.unit_left.soldat);
     set_unit_France(team.unit.unit_left.char);
     set_unit_France(team.unit.unit_left.avion);
     set_unit_France(team.unit.unit_right.soldat);
@@ -359,6 +360,7 @@ function set_unit_France(unit)
         unit.speed = 0;
         unit.pv = 2;
     }
+    console.log (unit);
 }
 
 function set_unit_vatican(unit)
