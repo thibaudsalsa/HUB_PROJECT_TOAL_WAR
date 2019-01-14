@@ -343,7 +343,6 @@ function France(team)
     if (team.nation_available === false)
         return;
     set_unit_France(team.unit.unit_left.soldat);
-    console.log(team.unit.unit_left.soldat);
     set_unit_France(team.unit.unit_left.char);
     set_unit_France(team.unit.unit_left.avion);
     set_unit_France(team.unit.unit_right.soldat);
@@ -355,17 +354,16 @@ function France(team)
 
 function set_unit_France(unit)
 {
+	console.log(unit);
     for (let i = 0; i < unit.length; i++)
     {
         unit.speed = 0;
         unit.pv = unit.pv * 2;
     }
-    console.log(unit);
 }
 
 function set_unit_vatican(unit)
 {
-	console.log(unit);
     for (let i = 0; i < unit.length; i++)
     {
         unit.speed = unit.speed * 1.5;
