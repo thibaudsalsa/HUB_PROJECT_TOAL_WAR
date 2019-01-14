@@ -16,6 +16,7 @@ wss.onmessage = function (ev)
         document.getElementById("canvas02").style.display = "none";
         document.getElementById("sound").src = "audio.ogg";
         let notification = new Notification("La partie à commencée");
+        console.log("hey the game start");
     }
     else if (ev.data == "reset")
         replay();
@@ -37,6 +38,7 @@ function rename_button_nation(nation)
 
 function try_connect()
 {
+    console.log("I'm trying to connect");
     var msg = new Object();
     msg.order = "connect";
     msg.msg = document.getElementById("choose_nation").value;
