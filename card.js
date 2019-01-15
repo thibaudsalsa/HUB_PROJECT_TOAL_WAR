@@ -482,6 +482,7 @@ function Japon(team)
 	set_unit_japon(game.team1);
 	set_unit_japon(game.team2);
 	set_unit_japon(game.team3);
+	return ("OK");
 }
 
 function Bresil(team)
@@ -492,6 +493,7 @@ function Bresil(team)
 	other_team[0].nation_price = 10;
 	other_team[1].nation_price = 10;
 	team.money += 20 - (tmp_money1 / 2 + tmp_money2 / 2);
+	return ("OK");
 }
 
 function Italie(team)
@@ -500,4 +502,5 @@ function Italie(team)
 	team.unit.soldat[team.unit.soldat.length - 1].pv = 10;
 	team.unit.soldat[team.unit.soldat.length - 1].dmg = 2;
 	team.unit.soldat[team.unit.soldat.length - 1].speed = 0.1;
+	return ("OK");
 }
