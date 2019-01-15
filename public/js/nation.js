@@ -7,9 +7,9 @@ function nation_explain(select)
     var nation_explain_txt = ["La Russie supprime tous les soldats, chars, avions et cartes dans le jeux. L'argent de tous les joueurs est aussi a 0. La Russi est affectee par sa competence.",
     "La France fait greve ... Voila vos unites ne bougent plus et constitue un solide rempart. <br> vitesse 0 - pv * 2",
     "Le Vatican motive ses troupes, les unites deviennent plus rapides et plus fortes. <br> vitesse * 1.5 - pv * 1.5 - degat * 1.5",
-    "Le Portugal ce permet de reparer sa ville. Moins le Portugale a de point de vie, plus le Portugal ce soigne. <br> pv joueur = (600 - pv joueur actuel) / 2",
-    "Monaco puise dans ses reserves afin de gagner un peu plus d'argent, ils ne sont pas a ca pres... <br> argent + 50",
-    "Les USA Detruisent la planete pour l'argent mais en periode de guerre on s'en fiche non ? <br> argent + 300 - pv joueur - 100",
+    "Le Portugal ce permet de reparer sa ville. Moins le Portugale a de point de vie, plus le Portugal ce soigne. <br> pv joueur = (400 - pv joueur actuel) / 2",
+    "Monaco puise dans ses reserves afin de gagner un peu plus d'argent, ils ne sont pas a ca pres... <br> argent + (prix de la competence / 2)",
+    "Les USA Detruisent la planete pour l'argent mais en periode de guerre on s'en fiche non ? <br> argent + 150 - pv joueur - 150",
     "Les menaces de la Coree du nord sont elles a prendre au serieux ? <br> prochain avion mis sur le terrain: pv 100 - degat 0"];
     for (let i = 0; i < tab.length; i++)
     {
