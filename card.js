@@ -364,13 +364,10 @@ function use_nation_power()
 
 function Coree_du_nord(team)
 {
-    if (team.unit.avion.length >= 1)
-    {
-    	team.unit.avion[team.unit.avion.length - 1].pv = 150;
-    	team.unit.avion[team.unit.avion.length - 1].dmg = 0;
-    	team.money -= team.nation_price;
-    	return ("OK");
-    }
+    team.add("avion", 1);
+    team.unit.avion[team.unit.avion.length - 1].pv = 250;
+    team.unit.avion[team.unit.avion.length - 1].dmg = 0;
+    team.money -= team.nation_price;
     return ("KO");
 }
 
