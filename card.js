@@ -5,7 +5,8 @@ var id_cartes = ["plagiat",
 			"soin",
 			"Prêt a la banque", 
 			"appuie aérien",
-			"incendie","bluff", 
+			"incendie",
+			"bluff", 
 			"séismes",
 			"allié inattendu",
 			"forcer le jeu", 
@@ -18,13 +19,14 @@ var id_cartes = ["plagiat",
 			"attentat",
 			"maitre_des_cartes",
 			"inflation"];
+			
 var image_cartes = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""];
 var text_cartes = ["a utilisé un atout.", 
 				"a utilisé un atout.", 
 				"a utilisé un atout.",
 				"a utilisé un Appuie aérien.",
 				"a declanché un incendie.",
-				"a utilisé un atout.",
+				"La/Le USA a utilisé sa capacité",
 				"a fait tremblé le sol.",
 				"a utilisé un atout.",
 				"vous a forcé à utiliser une carte.",
@@ -37,6 +39,7 @@ var text_cartes = ["a utilisé un atout.",
 				"BOOM 3 morts",
 				"a utilisé un atout.",
 				"a utilisé un atout."];
+				
 var fonction_cartes = [plagiat,
 						soin,
 						pret_a_la_banque,
@@ -346,8 +349,8 @@ function return_enemie_team(team)
 
 function use_nation_power()
 {
-    var nation_liste = ["Russie", "France", "Vatican", "Portugal", "Monaco", "USA", "Coree du nord", "Japon", "Bresil", "Italie"];
-    var nation_fcnt  = [Russie, France, Vatican, Portugal, Monaco, USA, Coree_du_nord, Japon, Bresil, Italie];
+    var nation_liste = ["Russie", "France", "Vatican", "Portugal", "Monaco", "USA", "Coree du nord", "Japon", "Bresil", "Italie", "Grece"];
+    var nation_fcnt  = [Russie, France, Vatican, Portugal, Monaco, USA, Coree_du_nord, Japon, Bresil, Italie, Grece];
     var value = "KO";
     for (var i = 0; i < nation_liste.length; i++)
     {
@@ -429,9 +432,9 @@ function set_unit_vatican(unit)
 {
     for (let i = 0; i < unit.length; i++)
     {
-        unit[i].speed = unit[i].speed * 2;
-        unit[i].pv = unit[i].pv * 2;
-        unit[i].dmg = unit[i].dmg * 2;
+        unit[i].speed = unit[i].speed * 1.5;
+        unit[i].pv = unit[i].pv * 1.5;
+        unit[i].dmg = unit[i].dmg * 1.5;
     }
 }
 
@@ -502,5 +505,28 @@ function Italie(team)
 	team.unit.soldat[team.unit.soldat.length - 1].pv = 10;
 	team.unit.soldat[team.unit.soldat.length - 1].dmg = 2;
 	team.unit.soldat[team.unit.soldat.length - 1].speed = 0.1;
+	return ("OK");
+}
+
+function Grece(team)
+{
+	var target = return_enemie_team(team);
+	var gain1 = 20;
+	var gain2 = 20;
+	if (target[0].money >= 20)
+		target[0].money -= 20;
+	else
+	{
+		gain1 = target[0].money
+		target[0].money = 0;
+	}
+	if (target[1].money >= 20)
+		target[1].money -= 20;
+	else
+	{
+		gain2 = target[1].money;
+		target[1].money = 0;
+	}
+	team.money += gain1 + gain2;
 	return ("OK");
 }

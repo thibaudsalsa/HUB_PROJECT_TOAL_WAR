@@ -183,5 +183,21 @@ function refresh_game(msg)
         document.getElementsByClassName("price_unit")[0].innerHTML = msg.price_unit;
         document.getElementsByClassName("price_unit")[1].innerHTML = msg.price_unit;
         document.getElementsByClassName("price_unit")[3].innerHTML = msg.price_unit;
+        if (msg.argent < msg.price_card)
+            document.getElementById("nation_power").style.display = "none";
+        else
+            document.getElementById("nation_power").style.display = "";
+        if (msg.argent < msg.price_unit)
+        {
+            document.getElementsByClassName("buy_unit")[0].style.display = "none";
+            document.getElementsByClassName("buy_unit")[1].style.display = "none";
+            document.getElementsByClassName("buy_unit")[2].style.display = "none";
+        }
+        else
+        {
+            document.getElementsByClassName("buy_unit")[0].style.display = "";
+            document.getElementsByClassName("buy_unit")[1].style.display = "";
+            document.getElementsByClassName("buy_unit")[2].style.display = "";
+        }
     }
 }
