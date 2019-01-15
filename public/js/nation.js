@@ -11,7 +11,7 @@ function nation_explain(select)
     "Monaco puise dans ses reserves afin de gagner un peu plus d'argent, ils ne sont pas a ca pres... <br> Gagne (prix de la competence / 2) d'argent",
     "Les USA Detruisent la planete pour l'argent mais en periode de guerre on s'en fiche non ? <br> Gagne 150 d'argent mais la ville perd 150 pv",
     "Les menaces de la Coree du nord sont elles a prendre au serieux ? <br> Le prochain avion mis sur le terrain aura 250 pv et 0 de degat",
-    "Le Japon et ses radiations ...<br> Toutes les villes perdent 50 pv et les soldat, char et avion dans toutes les casernes ont une vitesse de 0.01",
+    "Le Japon et ses radiations ...<br> Toutes les villes perdent 50 pv et les soldat, char et avion dans toutes les casernes ont une vitesse de 0.08",
     "Le Bresil detruit la foret amazionienne pour l'argent... il y a un avantage a ce oui ! <br> Le prix des capacite de nation des joueurs ennemie est a nouveau a 10 et vous gagner la difference entre le prix que vos ennemie aurait du payer divisé par deux",
     "L'Italie appel le big boss de la mafia<br>Creer un soldat avec 10 pv, 2 de degat et 0.1 de vitesse"];
     for (let i = 0; i < tab.length; i++)

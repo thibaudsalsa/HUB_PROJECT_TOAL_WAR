@@ -467,11 +467,11 @@ function Monaco(team)
 function set_unit_japon(team)
 {
 	for (let i = 0; i < team.unit.soldat.length; i++)
-		team.unit.soldat[i].speed = 0.01;
+		team.unit.soldat[i].speed = 0.08;
 	for (let i = 0; i < team.unit.char.length; i++)
-		team.unit.soldat[i].char = 0.01;
+		team.unit.soldat[i].char = 0.08;
 	for (let i = 0; i < team.unit.avion.length; i++)
-		team.unit.soldat[i].char = 0.01;
+		team.unit.soldat[i].char = 0.08;
 }
 
 function Japon(team)
@@ -488,11 +488,11 @@ function Japon(team)
 function Bresil(team)
 {
 	var other_team = return_enemie_team(team);
-	var tmp_money1 = other_team[0].nation_price;
-	var tmp_money2 = other_team[1].nation_price;
+	var gain1 = other_team[0].nation_price / 2;
+	var gain2 = other_team[1].nation_price / 2;
 	other_team[0].nation_price = 10;
 	other_team[1].nation_price = 10;
-	team.money += 20 - (tmp_money1 / 2 + tmp_money2 / 2);
+	team.money += gain1 + gain2;
 	return ("OK");
 }
 
