@@ -187,6 +187,10 @@ function refresh_game(msg)
             document.getElementById("nation_power").style.display = "none";
         else
             document.getElementById("nation_power").style.display = "";
+        if (msg.argent < msg.price_card)
+            document.getElementById("buy_card").style.display = "none";
+        else
+            document.getElementById("buy_card").style.display = "";
         if (msg.argent < msg.price_unit)
         {
             document.getElementsByClassName("buy_unit")[0].style.display = "none";
