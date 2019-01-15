@@ -486,6 +486,7 @@ function Japon(team)
 	set_unit_japon(game.team1);
 	set_unit_japon(game.team2);
 	set_unit_japon(game.team3);
+	team.money -= team.nation_price;
 	return ("OK");
 }
 
@@ -498,6 +499,7 @@ function Bresil(team)
 	other_team[0].nation_price = 10;
 	other_team[1].nation_price = 10;
 	team.money += gain1 + gain2;
+	team.money -= team.nation_price;
 	return ("OK");
 }
 
@@ -508,6 +510,7 @@ function Italie(team)
 	team.unit.soldat[team.unit.soldat.length - 1].pv = 10;
 	team.unit.soldat[team.unit.soldat.length - 1].dmg = 2;
 	team.unit.soldat[team.unit.soldat.length - 1].speed = 0.1;
+	team.money -= team.nation_price;
 	return ("OK");
 }
 
@@ -532,20 +535,26 @@ function Grece(team)
 		target[1].money = 0;
 	}
 	team.money += gain1 + gain2;
+	team.money -= team.nation_price;
 	return ("OK");
 }
 
 //gagne de l'argent moi doit absolument le rendre (peu entrer dans le negatif)
 function Suisse(team)
 {
+	if (team.bool == false)
+		return ("KO");
 	team.money += 160 + team.nation_price;
-	setTimeout(function(){team.money -= 160 + team.nation_price}, (60000 * 4));
+	team.bool = false;
+	setTimeout(function(){team.money -= 160 + team.nation_price; team.bool = true}, (60000 * 1));
+	team.money -= team.nation_price;
 	return("OK");
 }
 
 //Gagne plus d'argent par secondes
 function Quatar(team)
 {
-	team.money_bonus += 0.005;
+	team.money_bonus += 0.002;
+	team.money -= team.nation_price;
 	return("OK");
 }

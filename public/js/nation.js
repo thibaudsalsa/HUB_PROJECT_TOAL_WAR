@@ -16,7 +16,7 @@ function nation_explain(select)
     "L'Italie appel le big boss de la mafia<br>Creer un soldat avec 10 pv, 2 de degat et 0.1 de vitesse",
     "La Grece touche les aides de l'Europe<br>Vole 20 d'argent aux autres joueurs",
     "Le Quatar possede du petrole et du gaz a revendre<br>Le joueur gagne plus d'argent au fil du temps chaque fois qu'il utilise sa competence",
-    "Tous les sportif vont mettre leur argent dans les banques suisse, cependant il faut faire attention qu'on fait un pret...<br> Le joueur gagne (160 + prix de la competence) d'argent mais doit il perd l'argent au bout de 4 minutes (il peut etre en negatif!!)"];
+    s"Tous les sportif vont mettre leur argent dans les banques suisse, cependant il faut faire attention qu'on fait un pret...<br> Le joueur gagne (160 + prix de la competence) d'argent mais doit il perd l'argent au bout de 1 minute, il peut etre en negatif, on ne peut pas cumuler les prets"];
     for (let i = 0; i < tab.length; i++)
     {
         if (select.value == tab[i])
@@ -27,7 +27,7 @@ function nation_explain(select)
 function rename_button_nation(nation)
 {
     var nation_name = tab;
-    var txt_nation = ["Demander à Poutine de tout détruire", "Gréve !", "Battez vous pour moi, mais battez vous mieux !", "Mon mur a besoin d'être reparé", "Bling Bling !", "Mon empire pour du pétrol", "Armée fantome", "Radiation", "Déforestation", "Mafia", "Aides de l'UE", "Puits de pétrole"];
+    var txt_nation = ["Demander à Poutine de tout détruire", "Gréve !", "Battez vous pour moi, mais battez vous mieux !", "Mon mur a besoin d'être reparé", "Bling Bling !", "Mon empire pour du pétrol", "Armée fantome", "Radiation", "Déforestation", "Mafia", "Aides de l'UE", "Puits de pétrole", "Pret à la banque de losane"];
     for (let i = 0; i < nation_name.length; i++)
     {
         if (nation === nation_name[i])

@@ -25,6 +25,7 @@ function create_team(rgb, pos_unit, numero_team)
 	var team = new Object();
 	team.name = "";
 	team.id = numero_team;
+	team.bool = true;
 	team.player = "";
 	team.color = "";
 	team.money = 50;

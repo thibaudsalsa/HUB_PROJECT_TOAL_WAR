@@ -88,6 +88,7 @@ function fill_msg(msg, team, game)
     msg.price_card = team.price_card;
     msg.price_unit = team.price_unit;
     msg.nation_price = team.nation_price;
+    msg.bool = team.bool;
 }
 
 function check_win(game, ws, msg, start)
