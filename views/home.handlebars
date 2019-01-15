@@ -11,15 +11,15 @@
 
 
 <!--Matchmaking-->
-<div id="choose" style="font-family: Bubblegum; font-size: 50px; width: 40%; padding-left: 30%; z-index: 1; padding-top: 10%; text-align: center;">
-    <p style="color: white;">Choisissez votre nation</p>
+<div id="choose" style="font-family: Bubblegum; width: 40%; padding-left: 30%; z-index: 1; padding-top: 10%; text-align: center;">
+    <p style="font-size: 50px; color: white;">Choisissez votre nation</p>
     <select id="choose_nation" onchange="nation_explain(this)">
     </select>
     <button onclick="try_connect()">
         Aller au combat
     </button>
     <br>
-    <p style="color: white;" id="nation_explain">La Russie supprime tous les soldats, chars, avions et cartes dans le jeux. L'argent de tous les joueurs est aussi a 0. La Russi est affectee par sa competence.</p>
+    <p style="color: white; font-size: 25px;" id="nation_explain">La Russie supprime tous les soldats, chars, avions et cartes dans le jeux. L'argent de tous les joueurs est aussi a 0. La Russi est affectee par sa competence.</p>
 </div>
 
 
@@ -43,9 +43,9 @@
         <label >Votre ville: <p id="couleur_ville"></p></label>
         <p id="argent">Argent: 200</p>
         <p id="cité">Cité: 200pv</p>
-        <p>Soldat: <span id="soldat">0</span> <button onclick="order('buy', 'soldat', 1)">Acheter un soldat</button>prix: 5</p>
-        <p>Char: <span id="char">0</span>  <button onclick="order('buy', 'char', 1)">Acheter un char</button>prix: 5</p>
-        <p>Avion: <span id="avion">0</span> <button onclick="order('buy', 'avion', 1)">Acheter un avion</button>prix: 5</p>
+        <p>Soldat: <span id="soldat">0</span> <button onclick="order('buy', 'soldat', 1)">Acheter un soldat</button>prix: <span id="price_unit">5</span></p>
+        <p>Char: <span id="char">0</span>  <button onclick="order('buy', 'char', 1)">Acheter un char</button>prix: <span id="price_unit">5</span></p>
+        <p>Avion: <span id="avion">0</span> <button onclick="order('buy', 'avion', 1)">Acheter un avion</button>prix: <span id="price_unit">5</span></p>
         <div><p class="en_right">Attaquer à droite</p>
         <select id="attaque_right_nb">
             <option>1</option>
@@ -101,7 +101,7 @@
                 <option>4</option>
             </select>
             <button onclick="order('use', 'carte', parseInt(document.getElementById('len_carte').value, 10))">Utiliser la carte</button>
-            <p><button onclick="order('buy', 'carte', 1)">Acheter une carte</button>prix: 20</p>
+            <p><button onclick="order('buy', 'carte', 1)">Acheter une carte</button>prix: <span id="price_card">20</span></p>
             <p><button onclick="order('use', 'nation', 1)" id="nation_power">Utiliser le pouvoir de votre nation</button>prix: <span id="price_nation">10</span></p>
         </div>
     </div>

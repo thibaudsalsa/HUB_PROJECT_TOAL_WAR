@@ -42,6 +42,8 @@ function create_team(rgb, pos_unit, numero_team)
 	team.get_card = buy_card;
 	team.use_nation = use_nation_power;
 	team.nation_price = 10;
+	team.price_card = 20;
+	team.price_unit = 5;
 	return (team);
 }
 
@@ -67,9 +69,9 @@ function create_team_unit()
 
 function add_unit(type, nbr)
 {
-	if (this.unit.soldat.length + this.unit.char.length + this.unit.avion.length < 100 && this.money >= 5)
+	if (this.unit.soldat.length + this.unit.char.length + this.unit.avion.length < 100 && this.money >= this.price_unit)
 	{
-		this.money -= 5;
+		this.money -= this.price_unit;
 		for (let i = 0; i < nbr && type == "char"; i++)
 			this.unit.char.push(create_char(this.r, this.g, this.b, this.pos_unit));
 		for (let i = 0; i < nbr && type == "avion"; i++)

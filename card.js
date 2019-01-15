@@ -1,7 +1,6 @@
 /*global game:true create_tab_nation add_fct*/
 
 var PRICE_TEAM_POWER = 5;
-var PRICE_CARD = 20;
 var id_cartes = ["plagiat",
 			"soin",
 			"Prêt a la banque", 
@@ -15,8 +14,11 @@ var id_cartes = ["plagiat",
 			"espion2",
 			"boost de dégat",
 			"boost de vie",
-			"boost de vitesse"];
-var image_cartes = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""];
+			"boost de vitesse",
+			"attentat",
+			"maitre_des_cartes",
+			"inflation"];
+var image_cartes = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""];
 var text_cartes = ["a utilisé un atout.", 
 				"a utilisé un atout.", 
 				"a utilisé un atout.",
@@ -30,6 +32,9 @@ var text_cartes = ["a utilisé un atout.",
 				"a utilisé un atout.",
 				"a une information à vous donner.",
 				"a utilisé un atout.",
+				"a utilisé un atout.",
+				"a utilisé un atout.",
+				"BOOM 3 morts",
 				"a utilisé un atout.",
 				"a utilisé un atout."];
 var fonction_cartes = [plagiat,
@@ -46,8 +51,11 @@ var fonction_cartes = [plagiat,
 						espion2,
 						boost_dmg,
 						boost_pv,
-						boost_speed];
-var proba_cartes = [4, 2, 6, 1, 4, 5, 1, 6, 4, 2, 2, 4, 4, 4, 4];
+						boost_speed,
+						attentat,
+						maitre_des_cartes,
+						inflation];
+var proba_cartes = [4, 2, 6, 2, 4, 5, 1, 6, 4, 2, 2, 4, 4, 4, 4, 2, 1, 2];
 
 function create_carte_template()
 {
@@ -98,13 +106,31 @@ function use_card(num_card)
 	}
 	this.carte = tab_divise;
 }
+
 function buy_card()
 {
-	var price = PRICE_CARD;
+	var price = this.price_card;
 	if (this.carte.length > 5 || this.money < price)
 		return;
 	this.money -= price;
 	this.carte.push(game.deck[(Math.floor(Math.random() * (game.deck.length)))]);
+}
+
+function maitre_des_cartes(team)
+{
+	if (team.price_card > 5)
+		team.price_card -= 5;
+}
+
+function attentat(team)
+{
+	var tab = return_enemie_team(team);
+	var target = Math.floor(Math.random() * (2));
+	if (target === 1)
+		tab[0].city -= 10;
+	else
+		tab[1].city -= 10;
+	team.city -= 10;
 }
 
 function plagiat(team)
@@ -115,8 +141,8 @@ function plagiat(team)
 	num += 1;
 	if (num == 4)
 		num = 1;
-	var aleatoire = Math.floor(Math.random() * (2));
-	if (aleatoire == 1)
+	var target = Math.floor(Math.random() * (2));
+	if (target == 1)
 	{
 		if (tab_team[num - 1].carte.length != 0)
 			team.carte.push(tab_team[num - 1].carte[tab_team[num - 1].carte.length - 1]);
@@ -168,8 +194,8 @@ function bluff(team)
 function soin(team)
 {
 	team.city += 15;
-	if (team.city > 600)
-		team.city = 600;
+	if (team.city > 400)
+		team.city = 400;
 }
 
 function pret_a_la_banque(team)
@@ -177,15 +203,25 @@ function pret_a_la_banque(team)
 	team.money += (Math.floor(Math.random() * (30 + 0))+30);
 }
 
+function inflation(team)
+{
+	var tab = return_enemie_team(team);
+	var target = Math.floor(Math.random() * (2));
+	if (target == 1)
+		tab[0].price_unit += 1;
+	else 
+		tab[tab.length - 1].price_unit += 1;
+}
+
 function appuie_aerien(team)
 {
 	var tab = return_enemie_team(team);
-	var aleatoire = Math.floor(Math.random() * (2));
-	if (aleatoire == 1)
-		tab[0].city -= 60;
+	var target = Math.floor(Math.random() * (2));
+	if (target == 1)
+		tab[0].city -= 5;
 	else 
 	{
-		tab[tab.length - 1].city -= 60;
+		tab[tab.length - 1].city -= 5;
 	}
 }
 
@@ -310,8 +346,8 @@ function return_enemie_team(team)
 
 function use_nation_power()
 {
-    var nation_liste = ["Russie", "France", "Vatican", "Portugal", "Monaco", "USA", "Coree du nord"];
-    var nation_fcnt  = [Russie, France, Vatican, Portugal, Monaco, USA, Coree_du_nord];
+    var nation_liste = ["Russie", "France", "Vatican", "Portugal", "Monaco", "USA", "Coree du nord", "Japon", "Bresil", "Italie"];
+    var nation_fcnt  = [Russie, France, Vatican, Portugal, Monaco, USA, Coree_du_nord, Japon, Bresil, Italie];
     var value = "KO";
     for (var i = 0; i < nation_liste.length; i++)
     {
@@ -396,9 +432,9 @@ function set_unit_vatican(unit)
 {
     for (let i = 0; i < unit.length; i++)
     {
-        unit[i].speed = unit[i].speed * 1.5;
-        unit[i].pv = unit[i].pv * 1.5;
-        unit[i].dmg = unit[i].dmg * 1.5;
+        unit[i].speed = unit[i].speed * 2;
+        unit[i].pv = unit[i].pv * 2;
+        unit[i].dmg = unit[i].dmg * 2;
     }
 }
 
@@ -419,7 +455,7 @@ function Vatican(team)
 function Portugal(team)
 {
     team.money -= team.nation_price;
-    team.city = (400 - team.city) / 2;
+    team.city += (400 - team.city) / 2;
     return ("OK");
 }
 
@@ -429,4 +465,42 @@ function Monaco(team)
     team.money -= team.nation_price;
     team.money += team.nation_price + parseInt((team.nation_price / 2), 10);
     return ("OK");
+}
+
+function set_unit_japon(team)
+{
+	for (let i = 0; i < team.unit.soldat.length; i++)
+		team.unit.soldat[i].speed = 0.01;
+	for (let i = 0; i < team.unit.char.length; i++)
+		team.unit.soldat[i].char = 0.01;
+	for (let i = 0; i < team.unit.avion.length; i++)
+		team.unit.soldat[i].char = 0.01;
+}
+
+function Japon(team)
+{
+	game.team1.city -= 50;
+	game.team2.city -= 50;
+	game.team3.city -= 50;
+	set_unit_japon(game.team1);
+	set_unit_japon(game.team2);
+	set_unit_japon(game.team3);
+}
+
+function Bresil(team)
+{
+	var other_team = return_enemie_team(team);
+	var tmp_money1 = other_team[0].nation_price;
+	var tmp_money2 = other_team[1].nation_price;
+	other_team[0].nation_price = 10;
+	other_team[1].nation_price = 10;
+	team.money += 20 - (tmp_money1 / 2 + tmp_money2 / 2);
+}
+
+function Italie(team)
+{
+	team.add("soldat", 1);
+	team.unit.soldat[team.unit.soldat.length - 1].pv = 10;
+	team.unit.soldat[team.unit.soldat.length - 1].dmg = 2;
+	team.unit.soldat[team.unit.soldat.length - 1].speed = 0.1;
 }

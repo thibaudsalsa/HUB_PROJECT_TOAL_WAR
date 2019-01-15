@@ -85,6 +85,8 @@ function fill_msg(msg, team, game)
     msg.city = team.city;
     msg.carte = team.carte;
     msg.argent = team.money;
+    msg.price_card = team.price_card;
+    msg.price_unit = team.price_unit;
     msg.nation_price = team.nation_price;
 }
 

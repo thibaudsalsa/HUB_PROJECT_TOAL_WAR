@@ -179,5 +179,7 @@ function refresh_game(msg)
         document.getElementById("soldat").innerHTML = msg.soldat;
         document.getElementById("char").innerHTML = msg.char;
         document.getElementById("avion").innerHTML = msg.avion;
+        document.getElementById("price_card").innerHTML = msg.price_card;
+        document.getElementById("price_unit").innerHTML = msg.price_unit;
     }
 }
