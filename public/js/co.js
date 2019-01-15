@@ -180,6 +180,8 @@ function refresh_game(msg)
         document.getElementById("char").innerHTML = msg.char;
         document.getElementById("avion").innerHTML = msg.avion;
         document.getElementById("price_card").innerHTML = msg.price_card;
-        document.getElementById("price_unit").innerHTML = msg.price_unit;
+        document.getElementsByClassName("price_unit")[0].innerHTML = msg.price_unit;
+        document.getElementsByClassName("price_unit")[1].innerHTML = msg.price_unit;
+        document.getElementsByClassName("price_unit")[3].innerHTML = msg.price_unit;
     }
 }
