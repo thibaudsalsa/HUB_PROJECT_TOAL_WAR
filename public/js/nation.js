@@ -16,7 +16,7 @@ function nation_explain(select)
     "L'Italie appel le big boss de la mafia<br>Creer un soldat avec 10 pv, 2 de degat et 0.1 de vitesse",
     "La Grece touche les aides de l'Europe<br>Vole 20 d'argent aux autres joueurs",
     "Le Quatar possede du petrole et du gaz a revendre<br>Le joueur gagne plus d'argent au fil du temps chaque fois qu'il utilise sa competence",
-    s"Tous les sportif vont mettre leur argent dans les banques suisse, cependant il faut faire attention qu'on fait un pret...<br> Le joueur gagne (160 + prix de la competence) d'argent mais doit il perd l'argent au bout de 1 minute, il peut etre en negatif, on ne peut pas cumuler les prets"];
+    "Tous les sportif vont mettre leur argent dans les banques suisse, cependant il faut faire attention qu'on fait un pret...<br> Le joueur gagne (160 + prix de la competence) d'argent mais doit il perd l'argent au bout de 1 minute, il peut etre en negatif, on ne peut pas cumuler les prets"];
     for (let i = 0; i < tab.length; i++)
     {
         if (select.value == tab[i])
