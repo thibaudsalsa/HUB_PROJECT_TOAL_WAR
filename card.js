@@ -330,7 +330,7 @@ function Coree_du_nord(team)
 {
     if (team.unit.avion.length >= 1)
     {
-    	team.unit.avion[team.unit.avion.length - 1].pv = 100;
+    	team.unit.avion[team.unit.avion.length - 1].pv = 150;
     	team.unit.avion[team.unit.avion.length - 1].dmg = 0;
     	team.money -= team.nation_price;
     	return ("OK");
@@ -341,7 +341,7 @@ function Coree_du_nord(team)
 /* transforme des pv en argent */
 function USA(team)
 {
-	team.city -= 200;
+	team.city -= 100;
 	team.money += 250;
 	return ("OK");
 }
@@ -352,7 +352,6 @@ function Russie(team)
     reset_russia(game.team1);
     reset_russia(game.team2);
     reset_russia(game.team3);
-    team.money -= team.nation_price;
     return ("OK");
 }
 
@@ -420,7 +419,7 @@ function Vatican(team)
 function Portugal(team)
 {
     team.money -= team.nation_price;
-    team.city = (600 - team.city) / 2;
+    team.city = (400 - team.city) / 2;
     return ("OK");
 }
 
@@ -428,6 +427,6 @@ function Portugal(team)
 function Monaco(team)
 {
     team.money -= team.nation_price;
-    team.money += team.nation_price + 50;
+    team.money += team.nation_price + parseInt((team.nation_price / 2), 10);
     return ("OK");
 }
