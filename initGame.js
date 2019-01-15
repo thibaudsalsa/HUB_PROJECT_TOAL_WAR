@@ -27,7 +27,8 @@ function create_team(rgb, pos_unit, numero_team)
 	team.id = numero_team;
 	team.player = "";
 	team.color = "";
-	team.money = 100;
+	team.money = 50;
+	team.money_bonus = 0;
 	team.city = 400;
 	team.carte = [];
 	team.r = rgb[0];

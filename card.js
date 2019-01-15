@@ -349,8 +349,8 @@ function return_enemie_team(team)
 
 function use_nation_power()
 {
-    var nation_liste = ["Russie", "France", "Vatican", "Portugal", "Monaco", "USA", "Coree du nord", "Japon", "Bresil", "Italie", "Grece"];
-    var nation_fcnt  = [Russie, France, Vatican, Portugal, Monaco, USA, Coree_du_nord, Japon, Bresil, Italie, Grece];
+    var nation_liste = ["Russie", "France", "Vatican", "Portugal", "Monaco", "USA", "Coree du nord", "Japon", "Bresil", "Italie", "Grece", "Quatar", "Suisse"];
+    var nation_fcnt  = [Russie, France, Vatican, Portugal, Monaco, USA, Coree_du_nord, Japon, Bresil, Italie, Grece, Quatar, Suisse];
     var value = "KO";
     for (var i = 0; i < nation_liste.length; i++)
     {
@@ -477,6 +477,7 @@ function set_unit_japon(team)
 		team.unit.soldat[i].char = 0.08;
 }
 
+//degat sur les villes et reduit la vittesse de toutes les unité dans les caserne
 function Japon(team)
 {
 	game.team1.city -= 50;
@@ -488,6 +489,7 @@ function Japon(team)
 	return ("OK");
 }
 
+//reset le prix de competence de nation et gagne en argent ce que les autres joueur auraient du payer ur la prochaine utilisation des competence de nation
 function Bresil(team)
 {
 	var other_team = return_enemie_team(team);
@@ -499,6 +501,7 @@ function Bresil(team)
 	return ("OK");
 }
 
+//achete un soldat tres puissant
 function Italie(team)
 {
 	team.add("soldat", 1);
@@ -508,6 +511,7 @@ function Italie(team)
 	return ("OK");
 }
 
+//vole de l'argent
 function Grece(team)
 {
 	var target = return_enemie_team(team);
@@ -517,7 +521,7 @@ function Grece(team)
 		target[0].money -= 20;
 	else
 	{
-		gain1 = target[0].money
+		gain1 = target[0].money;
 		target[0].money = 0;
 	}
 	if (target[1].money >= 20)
@@ -529,4 +533,19 @@ function Grece(team)
 	}
 	team.money += gain1 + gain2;
 	return ("OK");
+}
+
+//gagne de l'argent moi doit absolument le rendre (peu entrer dans le negatif)
+function Suisse(team)
+{
+	team.money += 160 + team.nation_price;
+	setTimeout(function(){team.money -= 160 + team.nation_price}, (60000 * 4));
+	return("OK");
+}
+
+//Gagne plus d'argent par secondes
+function Quatar(team)
+{
+	team.money_bonus += 0.005;
+	return("OK");
 }

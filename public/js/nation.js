@@ -1,4 +1,4 @@
-var tab = ["Russie", "France", "Vatican", "Portugal", "Monaco", "USA", "Coree du nord", "Japon", "Bresil", "Italie", "Grece"];
+var tab = ["Russie", "France", "Vatican", "Portugal", "Monaco", "USA", "Coree du nord", "Japon", "Bresil", "Italie", "Grece", "Quatar", "Suisse"];
 for (let i = 0; i < tab.length; i++)
     document.getElementById("choose_nation").innerHTML += "<option>" + tab[i] + "</option>";
     
@@ -14,7 +14,9 @@ function nation_explain(select)
     "Le Japon et ses radiations ...<br> Toutes les villes perdent 50 pv et les soldat, char et avion dans toutes les casernes ont une vitesse de 0.08",
     "Le Bresil detruit la foret amazionienne pour l'argent... il y a un avantage a ce oui ! <br> Le prix des capacite de nation des joueurs ennemie est a nouveau a 10 et vous gagner la difference entre le prix que vos ennemie aurait du payer divisé par deux",
     "L'Italie appel le big boss de la mafia<br>Creer un soldat avec 10 pv, 2 de degat et 0.1 de vitesse",
-    "LA Grece touche les aides de l'Europe<br>Vole 20 d'argent aux autres joueurs"];
+    "La Grece touche les aides de l'Europe<br>Vole 20 d'argent aux autres joueurs",
+    "Le Quatar possede du petrole et du gaz a revendre<br>Le joueur gagne plus d'argent au fil du temps chaque fois qu'il utilise sa competence",
+    "Tous les sportif vont mettre leur argent dans les banques suisse, cependant il faut faire attention qu'on fait un pret...<br> Le joueur gagne (160 + prix de la competence) d'argent mais doit il perd l'argent au bout de 4 minutes (il peut etre en negatif!!)"];
     for (let i = 0; i < tab.length; i++)
     {
         if (select.value == tab[i])
@@ -25,7 +27,7 @@ function nation_explain(select)
 function rename_button_nation(nation)
 {
     var nation_name = tab;
-    var txt_nation = ["Demander à Poutine de tout détruire", "Gréve !", "Battez vous pour moi, mais battez vous mieux !", "Mon mur a besoin d'être reparé", "Bling Bling !", "Mon empire pour du pétrol", "Armée fantome", "Radiation", "Déforestation", "Mafia", "Aides de l'UE"];
+    var txt_nation = ["Demander à Poutine de tout détruire", "Gréve !", "Battez vous pour moi, mais battez vous mieux !", "Mon mur a besoin d'être reparé", "Bling Bling !", "Mon empire pour du pétrol", "Armée fantome", "Radiation", "Déforestation", "Mafia", "Aides de l'UE", "Puits de pétrole"];
     for (let i = 0; i < nation_name.length; i++)
     {
         if (nation === nation_name[i])
