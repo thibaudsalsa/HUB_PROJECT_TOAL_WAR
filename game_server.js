@@ -2,6 +2,7 @@
 
 var start = false;
 var player_in = [];
+var player_wait = [];
 var players = [false, false, false];
 
 function connect(name)
@@ -110,6 +111,17 @@ function check_win(game, ws, msg, start)
         player_in = [];
     }
 }
+
+
+/*function add_connection_wait(name, ws)
+{
+    ws.name = name;
+    var me = connect(name);
+    player_in.push(ws);
+    if (start === true && me != 0 && ws.readyState != 2)
+        ws.send("start");
+    ws.me = me;
+}*/
 
 function respond(team, ws, wss)
 {
