@@ -14,6 +14,7 @@ var timer = [];
 start = false;
 game = init_game();
 start_server(wss);
+setInterval(() => check_server(), 14);
 console.log("toal_war is active\n");
 
 
