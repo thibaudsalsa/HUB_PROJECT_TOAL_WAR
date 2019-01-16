@@ -45,7 +45,7 @@ function check_connection(name, ws)
   else
   {
     ws.send("full");
-    return (0);
+    return;
   }
   if (me === 3 && start === false)
   {

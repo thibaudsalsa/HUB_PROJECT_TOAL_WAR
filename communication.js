@@ -2,6 +2,7 @@
 
 var start = false;
 var player_in = [];
+
 var players = [false, false, false];
 
 function connect(name)
