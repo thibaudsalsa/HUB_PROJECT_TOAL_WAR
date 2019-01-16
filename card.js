@@ -91,7 +91,7 @@ function create_carte_template()
 	{
 		var card = new Object();
 		card.id = id[i];
-		card.description = description[i];
+		card.desc = description[i];
 		card.text = text[i];
 		card.prob = prob[i];
 		card.use = tab_fct_bonus[i];
