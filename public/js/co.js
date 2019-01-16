@@ -110,23 +110,19 @@ function display_carte(tab_carte, info)
     if (document.getElementById("information").innerHTML != tmp_info_msg)
         document.getElementById("information").innerHTML = tmp_info_msg;
     var equal = true;
-    if (save_card.length === tab_carte.length)
+    for (let i = 0; i < tab_carte.length; i++)
     {
+        if (tab_carte[i] != save_card[i])
+            equal = false;
+    }
+    if (equal === false || save_card.length != tab_carte.length)
+    {
+        document.getElementById("carte_display").innerHTML = "";
         for (let i = 0; i < tab_carte.length; i++)
         {
-            if (tab_carte[i] != save_card[i])
-                equal = false;
+            document.getElementById("carte_display").innerHTML += i + ": " + tab_carte[i].id + "<button title="+tab_carte[i].desc+">?</button>"+ "<br>";
         }
-        if (equal === false)
-        {
-            document.getElementById("carte_display").innerHTML = "";
-            for (let i = 0; i < tab_carte.length; i++)
-            {
-                document.getElementById("carte_display").innerHTML += i + ": " + tab_carte[i].id + "<button title="+tab_carte[i].desc+">?</button>"+ "<br>";
-                
-            }
-            save_card = tab_carte;
-        }
+        save_card = tab_carte;
     }
 }
 
@@ -225,12 +221,12 @@ function refresh_base(msg)
         document.getElementsByClassName("buy_unit")[2].style.display = "";
         display_buy_unit = true;
     }
-    if ((msg.argent < msg.nation_price || msg.bool === false) && save_display_nation != false)
+    if ((msg.argent <= msg.nation_price || msg.bool === false) && save_display_nation != false)
     {
         document.getElementById("nation_power").style.display = "none";
         save_display_nation = false;
     }
-    else if ((msg.argent > msg.nation_price && msg.bool === true) && save_display_nation != true)
+    else if (msg.argent >= msg.nation_price && msg.bool === true && save_display_nation != true)
     {
         document.getElementById("nation_power").style.display = "";
         save_display_nation = true;
