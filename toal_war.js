@@ -80,6 +80,7 @@ function refresh_game()
     return;
   if (players[0] === false && players[1] === false && players[2] === false)
   {
+    player_in = [];
     console.log("toal war is re-starting\n");
     wss.close();
     wss = new WebSocketServer({port: 40510});
