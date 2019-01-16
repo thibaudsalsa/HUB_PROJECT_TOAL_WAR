@@ -109,8 +109,6 @@ function check_win(game, ws, msg, start)
     {
         msg.win = true;
         player_in = [];
-        /*game = init_game();
-        start = false;*/
     }
 }
 
@@ -127,73 +125,29 @@ function check_win(game, ws, msg, start)
 
 function respond(team, ws, wss)
 {
-    /*if (ws.readyState == 2 && start == true && ws.qquit == 1 && ws.me != 0)
+    if (start === false || team === 0)
+        return;
+    var msg = new Object();
+    var msg_json;
+    msg.team1 = game.team1;
+    msg.team2 = game.team2;
+    msg.team3 = game.team3;
+    msg.soldat = 0;
+    msg.char = 0;
+    msg.avion = 0;
+    msg.city = 0;
+    msg.money = 0;
+    msg.info = game.info;
+    fill_msg(msg, team, game);
+    check_win(game, ws, msg, start);
+    msg_json = JSON.stringify(msg);
+    if (players[ws.me - 1] === true)
     {
-        var tab = [];
-        for (let i = 0; i < player_in.length; i++)
+        try {ws.send(msg_json);}
+        catch(err)
         {
-            if (ws != player_in[i])
-                tab.push(player_in[i]);
-        }
-        player_in = tab;
-        if (ws.me === 1)
-            game.team1.name = "";
-        else if (ws.me === 2)
-            game.team2.name = "";
-        else if (ws.me === 3)
-            game.team3.name = "";
-        console.log("someone quite the game");
-        if (player_wait.length >= 1)
-        {
-            add_connection_wait(player_wait.name, player_wait[0]);
-            player_in.push(player_wait[0]);
-            var tmp_player_wait = [];
-            for (let i = 1; i < player_wait.length; i++)
-                tmp_player_wait.push(player_wait[i]);
-            player_wait = tmp_player_wait;
-        }
-        if (player_in.length <= 1)
-        {
-            player_in = [];
-            ws.qquit = 0;
-            start = false;
-            game = init_game();
-            wss.broadcast("reset");
-        }
-    }*/
-    if (start != false && team != 0/* && ws.readyState == 1*/)
-    {
-        var msg = new Object();
-        var msg_json;
-        /*game.attack();
-        game.attack_city();
-        game.move();*/
-        msg.team1 = game.team1;
-        msg.team2 = game.team2;
-        msg.team3 = game.team3;
-        msg.soldat = 0;
-        msg.char = 0;
-        msg.avion = 0;
-        msg.city = 0;
-        msg.money = 0;
-        msg.info = game.info;
-        /*if (game.team1.city > 0)
-            game.team1.money += 0.015 + game.team1.money_bonus;
-        if (game.team2.city > 0)
-            game.team2.money += 0.015 + game.team2.money_bonus;
-        if (game.team3.city > 0)
-            game.team3.money += 0.015 + game.team3.money_bonus;*/
-        fill_msg(msg, team, game);
-        check_win(game, ws, msg, start);
-        msg_json = JSON.stringify(msg);
-        if (players[ws.me - 1] === true)
-        {
-            try {ws.send(msg_json);}
-            catch(err)
-            {
-                console.log("player " + ws.me + " left the game.");
-                players[ws.me - 1] = false;
-            }
+            console.log("player " + ws.me + " left the game.");
+            players[ws.me - 1] = false;
         }
     }
 }
