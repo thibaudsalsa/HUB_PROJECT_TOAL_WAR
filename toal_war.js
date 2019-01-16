@@ -10,12 +10,12 @@ vm.runInThisContext(fs.readFileSync(__dirname + "/card.js"));
 vm.runInThisContext(fs.readFileSync(__dirname + "/game_server.js"));
 
 /*global connect do_msg game:true respond init_game start:true player_in:true player_wait:true players*/
+var timer = [];
 start = false;
 game = init_game();
 start_server(wss);
 console.log("toal_war is active\n");
-setInterval(() => refresh_game(), 13);
-var message_timer = [];
+
 
 
 
@@ -63,6 +63,7 @@ function check_connection(name, ws)
 
 function start_server(wss)
 {
+  timer.push(setInterval(() => refresh_game(), 13));
   wss.on('connection', function (ws)
   {
     ws.me = 0;
@@ -76,20 +77,18 @@ function start_server(wss)
       else if (start === true)
         interpret_msg(ws.me, message);
     });
-      message_timer = setInterval(() => respond(ws.me, ws, wss), 40);
+      timer.push(setInterval(() => respond(ws.me, ws, wss), 40));
   });
 }
 
-function refresh_game()
+function check_server()
 {
-  if (start === false)
-    return;
   if (players[0] === false && players[1] === false && players[2] === false)
   {
     console.log("toal war is re-starting\n");
     player_in = [];
-    for (let i = 0; i < message_timer.length; i++)
-      clearInterval(message_timer[i]);
+    for (let i = 0; i < timer.length; i++)
+      clearInterval(timer[i]);
     wss.close();
     wss = new WebSocketServer({port: 40510});
     wss.broadcast = broadcast;
@@ -99,6 +98,12 @@ function refresh_game()
     console.log("toal_war is active\n");
     return;
   }
+}
+
+function refresh_game()
+{
+  if (start === false)
+    return;
   game.attack();
   game.attack_city();
   game.move();
