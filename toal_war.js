@@ -40,12 +40,11 @@ function check_connection(name, ws)
   var me = connect(name);
   if (me != 0)
     player_in.push(ws);
-  else
-    player_wait.push(ws);
   if (me === 3 && start === false)
   {
     try
     {
+      console.log("the game start")
       wss.broadcast("start");
       start = true;
     }

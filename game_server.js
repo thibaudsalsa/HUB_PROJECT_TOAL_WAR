@@ -2,7 +2,6 @@
 
 var start = false;
 var player_in = [];
-var player_wait = [];
 var players = [false, false, false];
 
 function connect(name)
