@@ -20,7 +20,25 @@ var id_cartes = ["plagiat",
 			"maitre_des_cartes",
 			"inflation"];
 			
-var image_cartes = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""];
+var txt_cartes = ["Copie une carte d'un joueur adverse",
+				"Soigne votre Ville de 15 pv",
+				"Gagne X d'argent",
+				"Une ville ennemie perd X pv",
+				"Une ville perd X soldats, Xchars et X avions",
+				"Fait croire aux adversaire que vous avez utiliser une carte nation USA",
+				"Détruit toutes les unités sur un trajet entre deux villes aléatoire",
+				"Gagne X soldats, X chars, X avions",
+				"Force un ennemie au hasard a utiliser une carte",
+				"Remplace votre carte",
+				"Gagne 20 argents",
+				"Donne au public le nombre d'unités dans la caserne d'un joueur ennemie au hasard",
+				"Multipli par 2 les dégat du prochain soldat, char et avion",
+				"Multipli par 2 les pv du prochain soldat, char et avion",
+				"Multipli par 2 la vitesse du prochain soldat, char et avion",
+				"Inflige X dégats sur une ville ennemie, mais vous perdez X dégats sur votre ville",
+				"Diminue le prix d'achat de vos carte de 5",
+				"Augmente le prix des unités d'un ennemie de 1"];
+				
 var text_cartes = ["a utilisé un atout.", 
 				"a utilisé un atout.", 
 				"a utilisé un atout.",
@@ -64,7 +82,7 @@ function create_carte_template()
 {
 	var tab_card = [];
 	var id = id_cartes;
-	var img = image_cartes;
+	var txt = txt_cartes;
 	var text = text_cartes;
 	var tab_fct_bonus = fonction_cartes;
 	var prob = proba_cartes;
@@ -72,7 +90,7 @@ function create_carte_template()
 	{
 		var card = new Object();
 		card.id = id[i];
-		card.img = img[i];
+		card.img = txt[i];
 		card.text = text[i];
 		card.prob = prob[i];
 		card.use = tab_fct_bonus[i];
