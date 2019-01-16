@@ -3,6 +3,7 @@
 var start = false;
 var player_in = [];
 var player_wait = [];
+var players = [false, false, false];
 
 function connect(name)
 {
@@ -11,16 +12,19 @@ function connect(name)
     {
         game.team1.name = name;
         team = 1;
+        players[0] = true;
     }
     else if (game.team2.name === "")
     {
         game.team2.name = name;
         team = 2;
+        players[1] = true;
     }
     else if (game.team3.name === "")
     {
         game.team3.name = name;
         team = 3;
+        players[2] = true;
     }
     return (team);
 }
@@ -105,13 +109,13 @@ function check_win(game, ws, msg, start)
     {
         msg.win = true;
         player_in = [];
-        game = init_game();
-        start = false;
+        /*game = init_game();
+        start = false;*/
     }
 }
 
 
-function add_connection_wait(name, ws)
+/*function add_connection_wait(name, ws)
 {
     ws.name = name;
     var me = connect(name);
@@ -119,11 +123,11 @@ function add_connection_wait(name, ws)
     if (start === true && me != 0 && ws.readyState != 2)
         ws.send("start");
     ws.me = me;
-}
+}*/
 
 function respond(team, ws, wss)
 {
-    if (ws.readyState == 2 && start == true && ws.qquit == 1 && ws.me != 0)
+    /*if (ws.readyState == 2 && start == true && ws.qquit == 1 && ws.me != 0)
     {
         var tab = [];
         for (let i = 0; i < player_in.length; i++)
@@ -156,14 +160,14 @@ function respond(team, ws, wss)
             game = init_game();
             wss.broadcast("reset");
         }
-    }
-    if (start != false && team != 0 && ws.readyState == 1)
+    }*/
+    if (start != false && team != 0/* && ws.readyState == 1*/)
     {
         var msg = new Object();
         var msg_json;
-        game.attack();
+        /*game.attack();
         game.attack_city();
-        game.move();
+        game.move();*/
         msg.team1 = game.team1;
         msg.team2 = game.team2;
         msg.team3 = game.team3;
@@ -173,15 +177,23 @@ function respond(team, ws, wss)
         msg.city = 0;
         msg.money = 0;
         msg.info = game.info;
-        if (game.team1.city > 0)
+        /*if (game.team1.city > 0)
             game.team1.money += 0.015 + game.team1.money_bonus;
         if (game.team2.city > 0)
             game.team2.money += 0.015 + game.team2.money_bonus;
         if (game.team3.city > 0)
-            game.team3.money += 0.015 + game.team3.money_bonus;
+            game.team3.money += 0.015 + game.team3.money_bonus;*/
         fill_msg(msg, team, game);
         check_win(game, ws, msg, start);
         msg_json = JSON.stringify(msg);
-        ws.send(msg_json);
+        if (players[ws.me - 1] === true)
+        {
+            try {ws.send(msg_json);}
+            catch(err)
+            {
+                console.log("player " + ws.me + " left the game.");
+                players[ws.me - 1] = false;
+            }
+        }
     }
 }
