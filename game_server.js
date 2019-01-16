@@ -26,6 +26,8 @@ function connect(name)
         team = 3;
         players[2] = true;
     }
+    else
+        console.log("not enought place for a new player");
     return (team);
 }
 
@@ -112,16 +114,6 @@ function check_win(game, ws, msg, start)
     }
 }
 
-
-/*function add_connection_wait(name, ws)
-{
-    ws.name = name;
-    var me = connect(name);
-    player_in.push(ws);
-    if (start === true && me != 0 && ws.readyState != 2)
-        ws.send("start");
-    ws.me = me;
-}*/
 
 function respond(team, ws, wss)
 {
