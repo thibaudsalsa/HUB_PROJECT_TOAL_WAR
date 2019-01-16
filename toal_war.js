@@ -7,13 +7,13 @@ wss.broadcast = broadcast;
 vm.runInThisContext(fs.readFileSync(__dirname + "/fight.js"));
 vm.runInThisContext(fs.readFileSync(__dirname + "/initGame.js"));
 vm.runInThisContext(fs.readFileSync(__dirname + "/card.js"));
-vm.runInThisContext(fs.readFileSync(__dirname + "/game_server.js"));
+vm.runInThisContext(fs.readFileSync(__dirname + "/communication.js"));
 
 /*global connect do_msg game:true respond init_game start:true player_in:true player_wait:true players*/
 var timer = [];
 start = false;
 game = init_game();
-start_server(wss);
+server(wss);
 setInterval(() => check_server(), 14);
 console.log("toal_war is active\n");
 
@@ -45,7 +45,7 @@ function check_connection(name, ws)
   else
   {
     ws.send("full");
-    return;
+    return (0);
   }
   if (me === 3 && start === false)
   {
@@ -62,7 +62,7 @@ function check_connection(name, ws)
   return (me);
 }
 
-function start_server(wss)
+function server(wss)
 {
   timer.push(setInterval(() => refresh_game(), 13));
   wss.on('connection', function (ws)
@@ -78,6 +78,7 @@ function start_server(wss)
       else if (start === true)
         interpret_msg(ws.me, message);
     });
+    if (ws.me != 0)
       timer.push(setInterval(() => respond(ws.me, ws, wss), 40));
   });
 }
@@ -95,7 +96,7 @@ function check_server()
     wss.broadcast = broadcast;
     game = init_game();
     start = false;
-    start_server(wss);
+    server(wss);
     console.log("toal_war is active\n");
     return;
   }
