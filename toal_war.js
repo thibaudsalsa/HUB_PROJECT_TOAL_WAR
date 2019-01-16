@@ -84,7 +84,7 @@ function start_server(wss)
 
 function check_server()
 {
-  if (players[0] === false && players[1] === false && players[2] === false)
+  if (players[0] === false && players[1] === false && players[2] === false && start === true)
   {
     console.log("toal war is re-starting\n");
     player_in = [];
