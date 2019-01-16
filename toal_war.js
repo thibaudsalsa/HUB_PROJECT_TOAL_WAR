@@ -78,8 +78,7 @@ function server(wss)
       else if (start === true)
         interpret_msg(ws.me, message);
     });
-    if (ws.me != 0)
-      timer.push(setInterval(() => respond(ws.me, ws, wss), 40));
+    timer.push(setInterval(() => respond(ws.me, ws, wss), 40));
   });
 }
 
