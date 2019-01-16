@@ -117,7 +117,7 @@ function display_carte(tab_carte, info)
             if (tab_carte[i] != save_card[i])
                 equal = false;
         }
-        if (equal === true)
+        if (equal === false)
         {
             document.getElementById("carte_display").innerHTML = "";
             for (let i = 0; i < tab_carte.length; i++)
@@ -218,7 +218,7 @@ function refresh_base(msg)
         document.getElementsByClassName("buy_unit")[2].style.display = "none";
         display_buy_unit = false;
     }
-    else if (display_buy_unit != true)
+    else if (msg.argent >= msg.price_unit && display_buy_unit != true)
     {
         document.getElementsByClassName("buy_unit")[0].style.display = "";
         document.getElementsByClassName("buy_unit")[1].style.display = "";
@@ -230,7 +230,7 @@ function refresh_base(msg)
         document.getElementById("nation_power").style.display = "none";
         save_display_nation = false;
     }
-    else if (save_display_nation != true)
+    else if ((msg.argent > msg.nation_price && msg.bool === true) && save_display_nation != true)
     {
         document.getElementById("nation_power").style.display = "";
         save_display_nation = true;
