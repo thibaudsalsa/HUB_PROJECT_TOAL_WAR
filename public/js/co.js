@@ -6,6 +6,18 @@ Notification.requestPermission(function(status) {
         Notification.permission = status;
 });
 
+var save_card = [];
+var save_pv = 0;
+var save_soldat = 0;
+var save_char = 0;
+var save_avion = 0;
+var save_price_unit = 0;
+var save_price_card = 0;
+var save_price_nation = 0;
+var display_buy_unit = true;
+var save_display_card = true;
+var save_display_nation = true;
+
 wss.onmessage = function (ev)
 {
     if (ev.data == "start")
@@ -97,10 +109,24 @@ function display_carte(tab_carte, info)
     }
     if (document.getElementById("information").innerHTML != tmp_info_msg)
         document.getElementById("information").innerHTML = tmp_info_msg;
-    document.getElementById("carte_display").innerHTML = "";
-    for (let i = 0; i < tab_carte.length; i++)
+    var equal = true;
+    if (save_card.length === tab_carte.length)
     {
-        document.getElementById("carte_display").innerHTML += i + ": " + tab_carte[i].id + "<p style='border:1px dotted black' title="+tab_carte[i].desc+">?</p>"+ "<br>";
+        for (let i = 0; i < tab_carte.length; i++)
+        {
+            if (tab_carte[i] != save_card[i])
+                equal = false;
+        }
+        if (equal === true)
+        {
+            document.getElementById("carte_display").innerHTML = "";
+            for (let i = 0; i < tab_carte.length; i++)
+            {
+                document.getElementById("carte_display").innerHTML += i + ": " + tab_carte[i].id + "<button title="+tab_carte[i].desc+">?</button>"+ "<br>";
+                
+            }
+            save_card = tab_carte;
+        }
     }
 }
 
@@ -144,12 +170,85 @@ function check_win(msg)
         }
     }
 }
-function refresh_game(msg)
+
+function refresh_base(msg)
 {
-    unit_to_draw = [];
-    //get unit on the left
-    msg = JSON.parse(msg);
-    check_win(msg);
+    if (save_price_nation != msg.nation_price)
+    {
+        document.getElementById("price_nation").innerHTML = msg.nation_price;
+        save_price_nation = msg.nation_price;
+    }
+    document.getElementById("argent").innerHTML = "Argent: " + parseInt(msg.argent, 10);
+    if (save_pv != parseInt(msg.city, 10))
+    {
+        document.getElementById("cité").innerHTML = "Cité: " + parseInt(msg.city, 10) + "pv";
+        save_pv = parseInt(msg.city, 10);
+    }
+    if (msg.soldat != save_soldat)
+    {
+        document.getElementById("soldat").innerHTML = msg.soldat;
+        save_soldat = msg.soldat;
+    }
+    if (msg.char != save_char)
+    {
+        document.getElementById("char").innerHTML = msg.char;
+        save_char = msg.char;
+    }
+    if (msg.avion != save_avion)
+    {
+        document.getElementById("avion").innerHTML = msg.avion;
+        save_avion = msg.avion;
+    }
+    if (msg.price_card != save_price_card)
+    {
+        document.getElementById("price_card").innerHTML = msg.price_card;
+        save_price_card = msg.price_card;
+    }
+    if (msg.price_unit != save_price_unit)
+    {
+        document.getElementsByClassName("price_unit")[0].innerHTML = msg.price_unit;
+        document.getElementsByClassName("price_unit")[1].innerHTML = msg.price_unit;
+        document.getElementsByClassName("price_unit")[2].innerHTML = msg.price_unit;
+        save_price_unit = msg.price_unit;
+    }
+    if (msg.argent < msg.price_unit && display_buy_unit != false)
+    {
+        document.getElementsByClassName("buy_unit")[0].style.display = "none";
+        document.getElementsByClassName("buy_unit")[1].style.display = "none";
+        document.getElementsByClassName("buy_unit")[2].style.display = "none";
+        display_buy_unit = false;
+    }
+    else if (display_buy_unit != true)
+    {
+        document.getElementsByClassName("buy_unit")[0].style.display = "";
+        document.getElementsByClassName("buy_unit")[1].style.display = "";
+        document.getElementsByClassName("buy_unit")[2].style.display = "";
+        display_buy_unit = true;
+    }
+    if ((msg.argent < msg.nation_price || msg.bool === false) && save_display_nation != false)
+    {
+        document.getElementById("nation_power").style.display = "none";
+        save_display_nation = false;
+    }
+    else if (save_display_nation != true)
+    {
+        document.getElementById("nation_power").style.display = "";
+        save_display_nation = true;
+    }
+    if (msg.argent < msg.price_card && save_display_card != false)
+    {
+        document.getElementById("buy_card").style.display = "none";
+        save_display_card = false;
+    }
+    else if (save_display_card != true)
+    {
+        document.getElementById("buy_card").style.display = "";
+        save_display_card = true;
+    }
+}
+
+function refresh_map(msg)
+{
     //get unit on the left
     display_unit(msg.team1.unit.unit_left);
     display_unit(msg.team2.unit.unit_left);
@@ -163,6 +262,15 @@ function refresh_game(msg)
     blue_city = msg.team1.city;
     orange_city = msg.team2.city;
     red_city = msg.team3.city;
+}
+
+function refresh_game(msg)
+{
+    unit_to_draw = [];
+    //get unit on the left
+    msg = JSON.parse(msg);
+    check_win(msg);
+    refresh_map(msg);
     // actualise les informations sur la page
     document.getElementById("couleur_ville").innerHTML = msg.couleur_ville;
     button_for_team(msg.couleur_ville, msg);
@@ -172,36 +280,5 @@ function refresh_game(msg)
         document.getElementById("gameplay").style.display = "none";
     }
     else
-    {
-        document.getElementById("price_nation").innerHTML = msg.nation_price;
-        document.getElementById("argent").innerHTML = "Argent: " + parseInt(msg.argent, 10);
-        document.getElementById("cité").innerHTML = "Cité: " + parseInt(msg.city, 10) + "pv";
-        document.getElementById("soldat").innerHTML = msg.soldat;
-        document.getElementById("char").innerHTML = msg.char;
-        document.getElementById("avion").innerHTML = msg.avion;
-        document.getElementById("price_card").innerHTML = msg.price_card;
-        document.getElementsByClassName("price_unit")[0].innerHTML = msg.price_unit;
-        document.getElementsByClassName("price_unit")[1].innerHTML = msg.price_unit;
-        document.getElementsByClassName("price_unit")[2].innerHTML = msg.price_unit;
-        if (msg.argent < msg.nation_price || msg.bool === false)
-            document.getElementById("nation_power").style.display = "none";
-        else
-            document.getElementById("nation_power").style.display = "";
-        if (msg.argent < msg.price_card)
-            document.getElementById("buy_card").style.display = "none";
-        else
-            document.getElementById("buy_card").style.display = "";
-        if (msg.argent < msg.price_unit)
-        {
-            document.getElementsByClassName("buy_unit")[0].style.display = "none";
-            document.getElementsByClassName("buy_unit")[1].style.display = "none";
-            document.getElementsByClassName("buy_unit")[2].style.display = "none";
-        }
-        else
-        {
-            document.getElementsByClassName("buy_unit")[0].style.display = "";
-            document.getElementsByClassName("buy_unit")[1].style.display = "";
-            document.getElementsByClassName("buy_unit")[2].style.display = "";
-        }
-    }
+        refresh_base(msg);
 }
