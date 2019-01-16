@@ -79,7 +79,7 @@ function refresh_game()
   {
     console.log("toal war is re-starting\n");
     wss.close();
-    wss = new WebSocketServer({port: 40510});
+    wss = WebSocketServer({port: 40510});
     game = init_game();
     start = false;
     console.log("toal_war is active\n");
