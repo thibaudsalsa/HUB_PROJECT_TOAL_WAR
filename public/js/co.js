@@ -120,7 +120,8 @@ function display_carte(tab_carte, info)
         document.getElementById("carte_display").innerHTML = "";
         for (let i = 0; i < tab_carte.length; i++)
         {
-            document.getElementById("carte_display").innerHTML += i + ": " + tab_carte[i].id + "<button title="+tab_carte[i].desc+">?</button>"+ "<br>";
+            console.log(tab_carte[i].desc);
+            document.getElementById("carte_display").innerHTML += i + ": " + tab_carte[i].id + "<button title='"+tab_carte[i].desc+"'>?</button>"+ "<br>";
         }
         save_card = tab_carte;
     }
@@ -236,7 +237,7 @@ function refresh_base(msg)
         document.getElementById("buy_card").style.display = "none";
         save_display_card = false;
     }
-    else if (save_display_card != true)
+    else if (msg.argent >= msg.price_card && save_display_card != true)
     {
         document.getElementById("buy_card").style.display = "";
         save_display_card = true;
