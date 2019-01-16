@@ -29,7 +29,7 @@ wss.onmessage = function (ev)
         document.getElementById("sound").src = "audio.ogg";
         let notification = new Notification("La partie à commencée");
     }
-    else if (ev.data == "reset")
+    else if (ev.data == "reset" || ev.data == "full")
         replay();
     else
         refresh_game(ev.data);

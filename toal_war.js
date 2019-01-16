@@ -15,6 +15,7 @@ game = init_game();
 start_server(wss);
 console.log("toal_war is active\n");
 setInterval(() => refresh_game(), 13);
+var message_timer = [];
 
 
 
@@ -40,6 +41,11 @@ function check_connection(name, ws)
   var me = connect(name);
   if (me != 0)
     player_in.push(ws);
+  else
+  {
+    ws.send("full");
+    return;
+  }
   if (me === 3 && start === false)
   {
     try
@@ -70,7 +76,7 @@ function start_server(wss)
       else if (start === true)
         interpret_msg(ws.me, message);
     });
-      setInterval(() => respond(ws.me, ws, wss), 40);
+      message_timer = setInterval(() => respond(ws.me, ws, wss), 40);
   });
 }
 
@@ -80,8 +86,10 @@ function refresh_game()
     return;
   if (players[0] === false && players[1] === false && players[2] === false)
   {
-    player_in = [];
     console.log("toal war is re-starting\n");
+    player_in = [];
+    for (let i = 0; i < message_timer.length; i++)
+      clearInterval(message_timer[i]);
     wss.close();
     wss = new WebSocketServer({port: 40510});
     wss.broadcast = broadcast;
