@@ -20,7 +20,7 @@ var id_cartes = ["plagiat",
 			"maitre_des_cartes",
 			"inflation"];
 			
-var txt_cartes = ["Copie une carte d'un joueur adverse",
+var description_cartes = ["Copie une carte d'un joueur adverse",
 				"Soigne votre Ville de 15 pv",
 				"Gagne X d'argent",
 				"Une ville ennemie perd X pv",
@@ -76,13 +76,14 @@ var fonction_cartes = [plagiat,
 						attentat,
 						maitre_des_cartes,
 						inflation];
+
 var proba_cartes = [4, 2, 6, 2, 4, 5, 1, 6, 4, 2, 2, 4, 4, 4, 4, 2, 1, 2];
 
 function create_carte_template()
 {
 	var tab_card = [];
 	var id = id_cartes;
-	var txt = txt_cartes;
+	var description = description_cartes;
 	var text = text_cartes;
 	var tab_fct_bonus = fonction_cartes;
 	var prob = proba_cartes;
@@ -90,7 +91,7 @@ function create_carte_template()
 	{
 		var card = new Object();
 		card.id = id[i];
-		card.img = txt[i];
+		card.description = description[i];
 		card.text = text[i];
 		card.prob = prob[i];
 		card.use = tab_fct_bonus[i];
