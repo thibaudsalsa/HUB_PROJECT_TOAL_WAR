@@ -64,7 +64,6 @@ function start_server()
   wss.broadcast = broadcast;
   game = init_game();
   start = false;
-  start_server(wss);
   console.log("toal_war is active\n");
   wss.on('connection', function (ws)
   {
