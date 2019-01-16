@@ -1,6 +1,7 @@
 /*global init_game game:true*/
 
 var start = false;
+var player_in = [];
 var players = [false, false, false];
 
 function connect(name)
@@ -104,7 +105,10 @@ function check_win(game, ws, msg, start)
     else if (game.team3.city > 0 && game.team1.city <= 0 && game.team2.city <= 0)
         msg.winner = "L'equipe rouge gagne la partie";
     if (msg.winner != "")
+    {
         msg.win = true;
+        player_in = [];
+    }
 }
 
 

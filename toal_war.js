@@ -11,27 +11,12 @@ vm.runInThisContext(fs.readFileSync(__dirname + "/game_server.js"));
 /*global connect do_msg game:true respond init_game start:true player_in:true player_wait:true players*/
 start = false;
 game = init_game();
-
+start_server(wss);
 console.log("toal_war is active\n");
 
 setInterval(() => refresh_game(), 13);
 
-wss.on('connection', function (ws)
-{
-  ws.me = 0;
-  ws.qquit = 1;
-  ws.on('message', function (message)
-  {
-    message = JSON.parse(message);
-    console.log("team" + ws.me + " send: ");
-    console.log(message);
-    if (message.order === "connect")
-      ws.me = check_connection(message.msg, ws);
-    else if (start === true)
-      interpret_msg(ws.me, message);
-  });
-    setInterval(() => respond(ws.me, ws, wss), 40);
-});
+
 
 function interpret_msg(me, message)
 {
@@ -71,6 +56,26 @@ function check_connection(name, ws)
   return (me);
 }
 
+function start_server(wss)
+{
+  wss.on('connection', function (ws)
+  {
+    ws.me = 0;
+    ws.qquit = 1;
+    ws.on('message', function (message)
+    {
+      message = JSON.parse(message);
+      console.log("team" + ws.me + " send: ");
+      console.log(message);
+      if (message.order === "connect")
+        ws.me = check_connection(message.msg, ws);
+      else if (start === true)
+        interpret_msg(ws.me, message);
+    });
+      setInterval(() => respond(ws.me, ws, wss), 40);
+  });
+}
+
 function refresh_game()
 {
   if (start === false)
@@ -79,9 +84,10 @@ function refresh_game()
   {
     console.log("toal war is re-starting\n");
     wss.close();
-    wss = WebSocketServer({port: 40510});
+    wss = new WebSocketServer({port: 40510});
     game = init_game();
     start = false;
+    start_server(wss);
     console.log("toal_war is active\n");
     return;
   }
