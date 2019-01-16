@@ -2,15 +2,15 @@ var fs = require("fs");
 var vm = require("vm");
 var WebSocketServer = require('ws').Server;
 
-vm.runInThisContext(fs.readFileSync(__dirname + "/fight.js"));
-vm.runInThisContext(fs.readFileSync(__dirname + "/initGame.js"));
-vm.runInThisContext(fs.readFileSync(__dirname + "/card.js"));
-
 var start = false;
 var player_in = [];
 var players = [false, false, false];
 var wss;
 var game;
+vm.runInThisContext(fs.readFileSync(__dirname + "/fight.js"));
+vm.runInThisContext(fs.readFileSync(__dirname + "/initGame.js"));
+vm.runInThisContext(fs.readFileSync(__dirname + "/card.js"));
+
 start_server();
 setInterval(() => refresh_game(), 13);
 
