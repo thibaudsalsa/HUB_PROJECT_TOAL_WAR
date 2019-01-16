@@ -84,7 +84,7 @@ function display_unit(team)
 function replay()
 {
     var notification = new Notification("La partie est finie");
-    document.location.href="145.239.222.226";
+    document.location.href="";
 }
 
 function display_carte(tab_carte, info)
