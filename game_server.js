@@ -111,17 +111,6 @@ function check_win(game, ws, msg, start)
     }
 }
 
-
-/*function add_connection_wait(name, ws)
-{
-    ws.name = name;
-    var me = connect(name);
-    player_in.push(ws);
-    if (start === true && me != 0 && ws.readyState != 2)
-        ws.send("start");
-    ws.me = me;
-}*/
-
 function respond(team, ws, wss)
 {
     if (start === false || team === 0)
