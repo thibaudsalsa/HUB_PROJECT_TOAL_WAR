@@ -100,7 +100,7 @@ function display_carte(tab_carte, info)
     document.getElementById("carte_display").innerHTML = "";
     for (let i = 0; i < tab_carte.length; i++)
     {
-        document.getElementById("carte_display").innerHTML += i + ": " + tab_carte[i].id + "<button title="+tab_carte[i].txt+">?</button>"+ "<br>";
+        document.getElementById("carte_display").innerHTML += i + ": " + tab_carte[i].id + "<button title='tab_carte[i].txt'>?</button>"+ "<br>";
     }
 }
 
