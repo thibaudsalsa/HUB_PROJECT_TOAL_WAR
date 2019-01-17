@@ -10,7 +10,7 @@ vm.runInThisContext(fs.readFileSync(__dirname + "/card.js"));
 vm.runInThisContext(fs.readFileSync(__dirname + "/communication.js"));
 
 /*global connect do_msg game:true respond init_game start:true player_in:true player_wait:true players*/
-player_wait = [];
+var player_wait_error = false;
 var timer = [];
 start = false;
 game = init_game();
@@ -48,15 +48,13 @@ function check_connection(name, ws)
   {
     var player_in_obj = new Object();
     player_in_obj.ws = ws;
-    player_in_obj.timer_wait = setInterval((ws, me) => function()
+    timer.push(setInterval((ws) => function()
     {
       try {ws.send("wait");}
       catch(err) {
-        players[me-1] = false;
-        player_in[me -1].ws = null;
-        clearInterval(player_in[me -1].timer_wait);
+        player_wait_error = true;
       }
-    }, 14);
+    }, 14));
     player_in.push(player_in_obj);
   }
   else
@@ -102,12 +100,16 @@ function check_server()
       catch(err){}
     }
   }
-  if (players[0] === false && players[1] === false && players[2] === false && start === true)
+  if ((players[0] === false && players[1] === false && players[2] === false && start === true) || (player_wait_error === true))
   {
     console.log("toal war is re-starting\n");
-    player_in = [];
+    for (let i = 0; i < players.length; i++)
+      players[i] = false;
+    player_wait_error = false;
     for (let i = 0; i < timer.length; i++)
       clearInterval(timer[i]);
+    wss.broadcast("reset");
+    player_in = [];
     wss.close();
     wss = new WebSocketServer({port: 40510});
     wss.broadcast = broadcast;
