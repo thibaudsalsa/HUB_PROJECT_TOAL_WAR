@@ -29,7 +29,7 @@ var description_cartes = ["Copie une carte d'un joueur adverse",
 				"Détruit toutes les unités sur un trajet entre deux villes aléatoire",
 				"Gagne entre 0 et 15 soldats, chars et avions",
 				"Force un ennemie au hasard a utiliser une carte",
-				"Remplace votre carte",
+				"Remplace votre carte et gagne 40 d'argent",
 				"Gagne 20 argents",
 				"Donne au public le nombre d'unités dans la caserne d'un joueur ennemie au hasard",
 				"Multipli par 2 les dégat du prochain soldat, char et avion",
@@ -77,7 +77,7 @@ var fonction_cartes = [plagiat,
 						maitre_des_cartes,
 						inflation];
 
-var proba_cartes = [4, 2, 6, 2, 4, 5, 1, 6, 4, 2, 2, 4, 4, 4, 4, 2, 1, 2];
+var proba_cartes = [4, 2, 6, 2, 4, 5, 1, 6, 3, 2, 2, 4, 5, 5, 5, 2, 1, 2];
 
 function create_carte_template()
 {
