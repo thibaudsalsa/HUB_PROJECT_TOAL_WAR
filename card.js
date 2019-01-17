@@ -22,12 +22,12 @@ var id_cartes = ["plagiat",
 			
 var description_cartes = ["Copie une carte d'un joueur adverse",
 				"Soigne votre Ville de 15 pv",
-				"Gagne X d'argent",
-				"Une ville ennemie perd X pv",
-				"Une ville perd X soldats, Xchars et X avions",
+				"Gagne entre 30 et 60 d'argent",
+				"Une ville ennemie perd 15 pv",
+				"Une ville perd entre 0 et 25 soldats, chars et avions",
 				"Fait croire aux adversaire que vous avez utiliser une carte nation USA",
 				"Détruit toutes les unités sur un trajet entre deux villes aléatoire",
-				"Gagne X soldats, X chars, X avions",
+				"Gagne entre 0 et 15 soldats, chars et avions",
 				"Force un ennemie au hasard a utiliser une carte",
 				"Remplace votre carte",
 				"Gagne 20 argents",
@@ -35,7 +35,7 @@ var description_cartes = ["Copie une carte d'un joueur adverse",
 				"Multipli par 2 les dégat du prochain soldat, char et avion",
 				"Multipli par 2 les pv du prochain soldat, char et avion",
 				"Multipli par 2 la vitesse du prochain soldat, char et avion",
-				"Inflige X dégats sur une ville ennemie, mais vous perdez X dégats sur votre ville",
+				"Inflige 30 dégats sur une ville ennemie, mais vous perdez 30 dégats sur votre ville",
 				"Diminue le prix d'achat de vos carte de 5",
 				"Augmente le prix des unités d'un ennemie de 1"];
 				
@@ -149,10 +149,10 @@ function attentat(team)
 	var tab = return_enemie_team(team);
 	var target = Math.floor(Math.random() * (2));
 	if (target === 1)
-		tab[0].city -= 10;
+		tab[0].city -= 30;
 	else
-		tab[1].city -= 10;
-	team.city -= 10;
+		tab[1].city -= 30;
+	team.city -= 30;
 }
 
 function plagiat(team)
@@ -222,7 +222,7 @@ function soin(team)
 
 function pret_a_la_banque(team)
 {
-	team.money += (Math.floor(Math.random() * (30 + 0))+30);
+	team.money += (Math.floor(Math.random() * (30))+30);
 }
 
 function inflation(team)
@@ -240,10 +240,10 @@ function appuie_aerien(team)
 	var tab = return_enemie_team(team);
 	var target = Math.floor(Math.random() * (2));
 	if (target == 1)
-		tab[0].city -= 5;
+		tab[0].city -= 15;
 	else 
 	{
-		tab[tab.length - 1].city -= 5;
+		tab[tab.length - 1].city -= 15;
 	}
 }
 
@@ -298,9 +298,9 @@ function seisme(team)
 
 function allie_inattendu(team)
 {
-	team.add("char",Math.floor(Math.random() * (6)) + 1);
-	team.add("avion",Math.floor(Math.random() * (6)) + 1);
-	team.add("soldat",Math.floor(Math.random() * (6)) + 1);
+	team.add("char",Math.floor(Math.random() * (15)) + 1);
+	team.add("avion",Math.floor(Math.random() * (15)) + 1);
+	team.add("soldat",Math.floor(Math.random() * (15)) + 1);
 }
 
 function forcer_le_jeu(team)

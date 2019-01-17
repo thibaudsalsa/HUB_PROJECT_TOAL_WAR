@@ -122,8 +122,7 @@ function display_carte(tab_carte, info)
         document.getElementById("carte_display").innerHTML = "";
         for (let i = 0; i < tab_carte.length; i++)
         {
-            console.log(tab_carte[i].desc);
-            document.getElementById("carte_display").innerHTML += "<p id='tmp_carte'>" + i + ": " + tab_carte[i].id + "</p>"+ "<br>";
+            document.getElementById("carte_display").innerHTML += "<p id='tmp_carte'>" + i + ": " + tab_carte[i].id + "</p>";
             document.getElementById("tmp_carte").title = tab_carte[i].desc;
             document.getElementById("tmp_carte").id = "";
         }
