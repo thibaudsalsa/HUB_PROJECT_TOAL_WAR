@@ -45,7 +45,7 @@ function check_connection(name, ws)
 {
   ws.name = name;
   var me = connect(name);
-  if (me != 0)
+  if (me != 0 &&  start === false)
   {
     var player_in_obj = new Object();
     player_in_obj.ws = ws;
