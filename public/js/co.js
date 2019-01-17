@@ -110,12 +110,14 @@ function display_carte(tab_carte, info)
     if (document.getElementById("information").innerHTML != tmp_info_msg)
         document.getElementById("information").innerHTML = tmp_info_msg;
     var equal = true;
-    for (let i = 0; i < tab_carte.length; i++)
+    if (save_card.length != tab_carte.length)
+        equal = false;
+    for (let i = 0; i < tab_carte.length && equal != false; i++)
     {
         if (tab_carte[i].id != save_card[i].id)
             equal = false;
     }
-    if (equal === false || save_card.length != tab_carte.length)
+    if (equal === false)
     {
         document.getElementById("carte_display").innerHTML = "";
         for (let i = 0; i < tab_carte.length; i++)
