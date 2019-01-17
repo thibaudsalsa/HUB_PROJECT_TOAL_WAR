@@ -31,7 +31,7 @@ wss.onmessage = function (ev)
     }
     else if (ev.data == "reset" || ev.data == "full")
         replay();
-    else
+    else if (ev.data != "wait")
         refresh_game(ev.data);
 };
 

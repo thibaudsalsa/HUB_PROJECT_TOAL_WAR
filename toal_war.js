@@ -10,6 +10,7 @@ vm.runInThisContext(fs.readFileSync(__dirname + "/card.js"));
 vm.runInThisContext(fs.readFileSync(__dirname + "/communication.js"));
 
 /*global connect do_msg game:true respond init_game start:true player_in:true player_wait:true players*/
+player_wait = [];
 var timer = [];
 start = false;
 game = init_game();
@@ -33,32 +34,33 @@ function interpret_msg(me, message)
 function broadcast(msg)
 {
   for (let i = 0; i < player_in.length; i++)
-    player_in[i].send(msg);
-};
+  {
+    if (player_in[i].ws != null)
+      player_in[i].ws.send(msg);
+  }
+}
 
 function check_connection(name, ws)
 {
   ws.name = name;
   var me = connect(name);
   if (me != 0)
-    player_in.push(ws);
-  else
   {
-    ws.send("full");
-    return (0);
-  }
-  if (me === 3 && start === false)
-  {
-    try
+    var player_in_obj = new Object();
+    player_in_obj.ws = ws;
+    player_in_obj.timer_wait = setInterval((ws, me) => function()
     {
-      console.log("the game start")
-      wss.broadcast("start");
-      start = true;
-    }
-    catch(err){}
+      try {ws.send("wait");}
+      catch(err) {
+        players[me-1] = false;
+        player_in[me -1].ws = null;
+        clearInterval(player_in[me -1].timer_wait);
+      }
+    }, 14);
+    player_in.push(player_in_obj);
   }
-  else if (start === true && me != 0)
-    ws.send("start");
+  else
+    ws.send("full");
   return (me);
 }
 
@@ -84,6 +86,22 @@ function server(wss)
 
 function check_server()
 {
+  if (players[0] === true && players[1] === true && players[2] === true && start === false)
+  {
+    try
+    {
+      console.log("the game start")
+      wss.broadcast("start");
+      start = true;
+    }
+    catch(err)
+    {
+      for (let  i = 0; i < players.length; i++)
+        players[i] = false;
+      try {wss.broadcast("reset");}
+      catch(err){}
+    }
+  }
   if (players[0] === false && players[1] === false && players[2] === false && start === true)
   {
     console.log("toal war is re-starting\n");

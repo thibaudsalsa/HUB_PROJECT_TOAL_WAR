@@ -8,19 +8,19 @@ var players = [false, false, false];
 function connect(name)
 {
     var team = 0;
-    if (game.team1.name === "")
+    if (players[0] === false)
     {
         game.team1.name = name;
         team = 1;
         players[0] = true;
     }
-    else if (game.team2.name === "")
+    else if (players[1] === false)
     {
         game.team2.name = name;
         team = 2;
         players[1] = true;
     }
-    else if (game.team3.name === "")
+    else if (players[2] === false)
     {
         game.team3.name = name;
         team = 3;
