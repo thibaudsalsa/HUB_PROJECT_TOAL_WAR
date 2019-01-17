@@ -41,6 +41,15 @@ function broadcast(msg)
   }
 }
 
+function waiting_room(ws)
+{
+  try {ws.send("wait");}
+  catch(err)
+  {
+    console.log("player waiting error -> server is going to restart");
+    player_wait_error = true;
+  }
+}
 
 function check_connection(name, ws)
 {
@@ -50,15 +59,8 @@ function check_connection(name, ws)
   {
     var player_in_obj = new Object();
     player_in_obj.ws = ws;
-    timer.push(setInterval(() => function(ws)
-    {
-      try {ws.send("wait");}
-      catch(err) {
-        console.log("player waiting error -> server is going to restart");
-        player_wait_error = true;
-      }
-    }, 14));
-    player_in.push(player_in_obj);
+    player_in.push(player_in_obj); 
+    timer.push(setInterval(() => waiting_room(ws), 14));
   }
   else
     ws.send("full");
