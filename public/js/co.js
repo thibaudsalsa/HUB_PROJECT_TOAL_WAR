@@ -235,12 +235,12 @@ function refresh_base(msg)
         document.getElementById("nation_power").style.display = "";
         save_display_nation = true;
     }
-    if (msg.argent < msg.price_card && save_display_card != false)
+    if ((msg.argent < msg.price_card || save_card.length > 3) && save_display_card != false)
     {
         document.getElementById("buy_card").style.display = "none";
         save_display_card = false;
     }
-    else if (msg.argent >= msg.price_card && save_display_card != true)
+    else if (msg.argent >= msg.price_card && save_card.length <= 3 && save_display_card != true)
     {
         document.getElementById("buy_card").style.display = "";
         save_display_card = true;

@@ -132,7 +132,7 @@ function use_card(num_card)
 function buy_card()
 {
 	var price = this.price_card;
-	if (this.carte.length > 5 || this.money < price)
+	if (this.carte.length > 3 || this.money < price)
 		return;
 	this.money -= price;
 	this.carte.push(game.deck[(Math.floor(Math.random() * (game.deck.length)))]);
