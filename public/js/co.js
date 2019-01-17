@@ -112,7 +112,7 @@ function display_carte(tab_carte, info)
     var equal = true;
     for (let i = 0; i < tab_carte.length; i++)
     {
-        if (tab_carte[i] != save_card[i])
+        if (tab_carte[i].id != save_card[i].id)
             equal = false;
     }
     if (equal === false || save_card.length != tab_carte.length)
