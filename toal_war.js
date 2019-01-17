@@ -43,6 +43,8 @@ function broadcast(msg)
 
 function waiting_room(ws)
 {
+  if (start === true)
+    return;
   try {ws.send("wait");}
   catch(err)
   {

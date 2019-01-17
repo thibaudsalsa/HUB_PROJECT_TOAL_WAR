@@ -474,7 +474,7 @@ function Vatican(team)
 function Portugal(team)
 {
     team.money -= team.nation_price;
-    team.city += (400 - team.city) / 2;
+    team.city += 100;
     return ("OK");
 }
 

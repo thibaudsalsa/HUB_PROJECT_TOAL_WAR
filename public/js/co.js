@@ -121,7 +121,9 @@ function display_carte(tab_carte, info)
         for (let i = 0; i < tab_carte.length; i++)
         {
             console.log(tab_carte[i].desc);
-            document.getElementById("carte_display").innerHTML += i + ": " + tab_carte[i].id + "<button title='"+tab_carte[i].desc+"'>?</button>"+ "<br>";
+            document.getElementById("carte_display").innerHTML += i + ": " + tab_carte[i].id + "<button id='tmp_carte'>?</button>"+ "<br>";
+            document.getElementById("tmp_carte").title = tab_carte[i].desc;
+            document.getElementById("tmp_carte").id = "";
         }
         save_card = tab_carte;
     }
