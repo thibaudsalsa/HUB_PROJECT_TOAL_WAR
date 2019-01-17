@@ -41,6 +41,7 @@ function broadcast(msg)
   }
 }
 
+
 function check_connection(name, ws)
 {
   ws.name = name;
@@ -49,10 +50,11 @@ function check_connection(name, ws)
   {
     var player_in_obj = new Object();
     player_in_obj.ws = ws;
-    timer.push(setInterval((ws) => function()
+    timer.push(setInterval(() => function(ws)
     {
       try {ws.send("wait");}
       catch(err) {
+        console.log("player waiting error -> server is going to restart");
         player_wait_error = true;
       }
     }, 14));
