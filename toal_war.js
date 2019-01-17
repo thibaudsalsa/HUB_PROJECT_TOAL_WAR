@@ -36,7 +36,8 @@ function broadcast(msg)
   for (let i = 0; i < player_in.length; i++)
   {
     if (player_in[i].ws != null)
-      player_in[i].ws.send(msg);
+    try{player_in[i].ws.send(msg);}
+    catch(err){}
   }
 }
 
