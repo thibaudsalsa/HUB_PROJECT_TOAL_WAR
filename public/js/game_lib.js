@@ -100,7 +100,7 @@ resize_lobby();
 lobby("canvas01", "red");
 lobby("canvas02", "orange");
 
-//window.onresize = resize_lobby();
+window.onresize = resize_lobby();
 
 function resize_lobby()
 {
@@ -109,8 +109,8 @@ function resize_lobby()
     
     document.getElementById("canvas01").height = height / 2;
     document.getElementById("canvas01").width = width / 3;
-    document.getElementById("canvas02").height = height / 3;
-    document.getElementById("canvas02").width = width / 2;
+    document.getElementById("canvas02").height = height / 2;
+    document.getElementById("canvas02").width = width / 3;
 }
 function lobby(canvas, color)
 {
