@@ -111,6 +111,8 @@ function resize_lobby()
     document.getElementById("canvas01").width = width / 3;
     document.getElementById("canvas02").height = height / 2;
     document.getElementById("canvas02").width = width / 3;
+    lobby("canvas01", "red");
+    lobby("canvas02", "orange");
 }
 function lobby(canvas, color)
 {
