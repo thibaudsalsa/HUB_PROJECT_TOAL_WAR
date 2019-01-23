@@ -12,7 +12,7 @@ exports.index = function(req, res) {
   });
 };
 
-//Stockage du fichier dans le serveur
+/*Stockage du fichier dans le serveur
 exports.homePost = function(req, res) {
   var form = new formidable.IncomingForm();
   form.uploadDir = "./upload/"; //+ req.user.attributes.email;
@@ -37,9 +37,9 @@ exports.homePost = function(req, res) {
       res.redirect('/');
     }
   });
-};
+};*/
 
-//Modification du fichier dans la BDD
+/*Modification du fichier dans la BDD
 exports.homePut = function(req, res) {
   var d = {
     name: req.body.titre,
@@ -51,17 +51,18 @@ exports.homePut = function(req, res) {
     .then (function() {
       res.send("ok");
     });
-};
+};*/
 
-//Ouverture du fichier avec Upbrowser
+/*Ouverture du fichier avec Upbrowser
 exports.upbrowserGet = function(req, res) {
   for (var i = 0; i < res.locals.data_file.length && req.query.id != res.locals.data_file[i].id; i++);
   res.write(fs.readFileSync(res.locals.data_file[i].link, 'utf-8'));
   
   res.write("<script src='/js/Upbrowser/upbrowser.js'></script>");
   res.end();
-};
+};*/
 
+/*
 exports.homeDelete = function(req, res) {
   new Data_file()
     .query('where', 'id', '=', req.body.id)
@@ -71,4 +72,4 @@ exports.homeDelete = function(req, res) {
       data_file.destroy();
       res.send("ok");
     });
-};
+};*/

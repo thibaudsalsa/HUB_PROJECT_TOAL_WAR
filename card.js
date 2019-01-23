@@ -1,7 +1,7 @@
 /*global game:true create_tab_nation add_fct*/
 
-var PRICE_TEAM_POWER = 5;
-var id_cartes = ["plagiat",
+const PRICE_TEAM_POWER = 5;
+const id_cartes = ["plagiat",
 			"soin",
 			"Prêt a la banque", 
 			"appuie aérien",
@@ -20,7 +20,7 @@ var id_cartes = ["plagiat",
 			"maitre_des_cartes",
 			"inflation"];
 			
-var description_cartes = ["Copie une carte d'un joueur adverse",
+const description_cartes = ["Copie une carte d'un joueur adverse",
 				"Soigne votre Ville de 15 pv",
 				"Gagne entre 30 et 60 d'argent",
 				"Une ville ennemie perd 15 pv",
@@ -39,7 +39,7 @@ var description_cartes = ["Copie une carte d'un joueur adverse",
 				"Diminue le prix d'achat de vos carte de 5",
 				"Augmente le prix des unités d'un ennemie de 1"];
 				
-var text_cartes = ["a utilisé un atout.", 
+const text_cartes = ["a utilisé un atout.", 
 				"a utilisé un atout.", 
 				"a utilisé un atout.",
 				"a utilisé un Appuie aérien.",
@@ -58,7 +58,7 @@ var text_cartes = ["a utilisé un atout.",
 				"a utilisé un atout.",
 				"a utilisé un atout."];
 				
-var fonction_cartes = [plagiat,
+const fonction_cartes = [plagiat,
 						soin,
 						pret_a_la_banque,
 						appuie_aerien,
@@ -77,7 +77,7 @@ var fonction_cartes = [plagiat,
 						maitre_des_cartes,
 						inflation];
 
-var proba_cartes = [4, 2, 6, 2, 4, 5, 1, 6, 3, 2, 2, 4, 5, 5, 5, 2, 1, 2];
+const proba_cartes = [4, 2, 6, 2, 4, 5, 1, 6, 3, 2, 2, 4, 5, 5, 5, 2, 1, 2];
 
 function create_carte_template()
 {

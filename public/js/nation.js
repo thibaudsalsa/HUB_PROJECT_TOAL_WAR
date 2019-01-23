@@ -1,10 +1,10 @@
-var tab = ["Russie", "France", "Vatican", "Portugal", "Monaco", "USA", "Coree du nord", "Japon", "Bresil", "Italie", "Grece", "Quatar", "Suisse"];
+const tab = ["Russie", "France", "Vatican", "Portugal", "Monaco", "USA", "Coree du nord", "Japon", "Bresil", "Italie", "Grece", "Quatar", "Suisse"];
 for (let i = 0; i < tab.length; i++)
     document.getElementById("choose_nation").innerHTML += "<option>" + tab[i] + "</option>";
     
 function nation_explain(select)
 {
-    var nation_explain_txt = ["La Russie supprime tous les soldats, chars, avions et cartes dans le jeux. L'argent de tous les joueurs est aussi a 0. La Russie est affectee par sa competence.",
+    const nation_explain_txt = ["La Russie supprime tous les soldats, chars, avions et cartes dans le jeux. L'argent de tous les joueurs est aussi a 0. La Russie est affectee par sa competence.",
     "La France fait greve ... Voila vos unites ne bougent plus et constitue un solide rempart. <br> Vos soldat, char et avions ont: vitesse = 0 et pv * 2",
     "Le Vatican motive ses troupes, les unites deviennent plus rapides et plus fortes. <br> Vos soldat, avion et char ont: vitesse * 1.5, pv * 1.5 et degat * 1.5",
     "Le Portugal ce permet de reparer sa ville. <br> La ville ce soigne de 100pv",
@@ -27,7 +27,7 @@ function nation_explain(select)
 function rename_button_nation(nation)
 {
     var nation_name = tab;
-    var txt_nation = ["Demander à Poutine de tout détruire", "Gréve !", "Battez vous pour moi, mais battez vous mieux !", "Mon mur a besoin d'être reparé", "Bling Bling !", "Mon empire pour du pétrol", "Armée fantome", "Radiation", "Déforestation", "Mafia", "Aides de l'UE", "Puits de pétrole", "Pret à la banque de losane"];
+    const txt_nation = ["Demander à Poutine de tout détruire", "Gréve !", "Battez vous pour moi, mais battez vous mieux !", "Mon mur a besoin d'être reparé", "Bling Bling !", "Mon empire pour du pétrol", "Armée fantome", "Radiation", "Déforestation", "Mafia", "Aides de l'UE", "Puits de pétrole", "Pret à la banque de losane"];
     for (let i = 0; i < nation_name.length; i++)
     {
         if (nation === nation_name[i])
