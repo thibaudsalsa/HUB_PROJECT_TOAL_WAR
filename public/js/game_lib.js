@@ -106,7 +106,8 @@ function resize_lobby()
 {
     var height = window.innerHeight;
     var width = window.innerWidth;
-    
+    console.log(height);
+    console.log(width);
     if (height < 600 || width < 800)
     {
         document.getElementById("canvas01").display = "none";
