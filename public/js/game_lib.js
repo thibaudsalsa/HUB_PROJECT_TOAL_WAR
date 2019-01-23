@@ -97,9 +97,6 @@ function create_castel(form, color)
 }
 
 resize_lobby();
-lobby("canvas01", "red");
-lobby("canvas02", "orange");
-
 window.onresize = resize_lobby();
 
 function resize_lobby()
@@ -113,6 +110,7 @@ function resize_lobby()
     document.getElementById("canvas02").width = width / 3;
     lobby("canvas01", "red");
     lobby("canvas02", "orange");
+    console.log("resize de la fenetre");
 }
 function lobby(canvas, color)
 {
