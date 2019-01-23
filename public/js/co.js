@@ -120,7 +120,7 @@ function display_carte(tab_carte, info)
         document.getElementById("carte_display").innerHTML = "";
         for (let i = 0; i < tab_carte.length; i++)
         {
-            var str = "onclick='order(use, carte, "+ i +")'";
+            var str = "onclick=order('use', 'carte', "+ i +")";
             document.getElementById("carte_display").innerHTML += "<p id='tmp_carte'>" + i + ": " + tab_carte[i].id + "</p><button " + str + ">Utiliser la carte</button";
             document.getElementById("tmp_carte").title = tab_carte[i].desc;
             document.getElementById("tmp_carte").id = "";
