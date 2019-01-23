@@ -45,12 +45,13 @@ app.use(session({ secret: process.env.SESSION_SECRET, resave: true, saveUninitia
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
+/*
 app.use(function(req, res, next) {
   sendMeData_file(req.user, function(data_file) {
     res.locals.user = req.user ? req.user.toJSON() : null;
     next();
   });
-});
+});*/
 /*
 function sendMeData_file(user, callback) {
   if (!user) {
@@ -73,7 +74,7 @@ app.put('/account', userController.ensureAuthenticated, userController.accountPu
 //app.post('/home', userController.ensureAuthenticated, HomeController.homePost);
 //app.put('/home', userController.ensureAuthenticated, HomeController.homePut);
 //app.delete('/home', userController.ensureAuthenticated, HomeController.homeDelete);
-//app.delete('/account', userController.ensureAuthenticated, userController.accountDelete);
+app.delete('/account', userController.ensureAuthenticated, userController.accountDelete);
 app.get('/signup', userController.signupGet);
 app.post('/signup', userController.signupPost);
 app.get('/login', userController.loginGet);
