@@ -24,8 +24,6 @@ wss.onmessage = function (ev)
     {
         document.getElementById("display_game").style.display = "";
         document.getElementById("wait").style.display = "none";
-        document.getElementById("canvas01").style.display = "none";
-        document.getElementById("canvas02").style.display = "none";
         document.getElementById("sound").src = "audio.ogg";
         let notification = new Notification("La partie à commencée");
     }
@@ -122,7 +120,8 @@ function display_carte(tab_carte, info)
         document.getElementById("carte_display").innerHTML = "";
         for (let i = 0; i < tab_carte.length; i++)
         {
-            document.getElementById("carte_display").innerHTML += "<p id='tmp_carte'>" + i + ": " + tab_carte[i].id + "</p><button onclick='order('use', 'carte', "+ i +")'>Utiliser la carte</button";
+            var str = "onclick='order(use, carte, "+ i +")"
+            document.getElementById("carte_display").innerHTML += "<p id='tmp_carte'>" + i + ": " + tab_carte[i].id + "</p><button " +  + ">Utiliser la carte</button";
             document.getElementById("tmp_carte").title = tab_carte[i].desc;
             document.getElementById("tmp_carte").id = "";
         }

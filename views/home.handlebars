@@ -91,14 +91,6 @@
         <div>
             <p>Cartes (max:3)</p>
             <div id="carte_display"></div>
-            <select id="len_carte">
-                <option>0</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-            </select>
-            <button onclick="order('use', 'carte', parseInt(document.getElementById('len_carte').value, 10))">Utiliser la carte</button>
             <p><button onclick="order('buy', 'carte', 1)" style="display: " id="buy_card">Acheter une carte</button>prix d'une carte: <span id="price_card">20</span></p>
             <p><button onclick="order('use', 'nation', 1)" id="nation_power" style="display: ">Utiliser le pouvoir de votre nation</button>Prix de la compétence de nation: <span id="price_nation">10</span></p>
         </div>
