@@ -1,4 +1,6 @@
-var http = require('http');
+var fs = require('fs');
+var https = require('https');
+
 var express = require('express');
 var path = require('path');
 var logger = require('morgan');
@@ -97,14 +99,14 @@ app.use(function(req, res, next){
     res.setHeader('Content-Type', 'text/plain');
     res.send(404, 'Page introuvable !');
 });
+https.createServer({
+  key: fs.readFileSync('server.key'),
+  cert: fs.readFileSync('server.cert')
+}, app).listen(3000, function(){console.log("ca fonctionne")});
 
-var httpServer = http.createServer(app);
-//var httpsServer = https.createServer(credentials, app);
-httpServer.listen(8080);
-//httpsServer.listen(8443);
-
-/*app.listen(app.get('port'), function() {
+/*
+app.listen(app.get('port'), function() {
   console.log('Express server listening on port ' + app.get('port'));
-});*/
+});
 
-//module.exports = app;
+module.exports = app;*/
