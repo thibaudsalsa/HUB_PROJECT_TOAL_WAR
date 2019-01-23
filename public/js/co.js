@@ -247,8 +247,27 @@ function refresh_base(msg)
     }
 }
 
+function resize_map(msg)
+{
+    var height = window.innerHeight;
+    var width = window.innerWidth;
+    
+    if (height_act != height || width_act != width)
+    {
+        height_act = height;
+        width_act = width;
+        document.getElementById("canvas01").height = height / 2;
+        document.getElementById("canvas01").width = width / 4;
+    }
+}
+
+var height_act = 0;
+var width_act = 0;
+
 function refresh_map(msg)
 {
+    resize_map();
+    unit_to_draw = [];
     //get unit on the left
     display_unit(msg.team1.unit.unit_left);
     display_unit(msg.team2.unit.unit_left);
@@ -266,8 +285,6 @@ function refresh_map(msg)
 
 function refresh_game(msg)
 {
-    unit_to_draw = [];
-    //get unit on the left
     msg = JSON.parse(msg);
     check_win(msg);
     refresh_map(msg);
