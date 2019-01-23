@@ -35,7 +35,6 @@ var hbs = exphbs.create({
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 app.set('port', process.env.PORT || 80);
-console.log("poulet");
 app.use(compression());
 app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -64,6 +63,7 @@ function sendMeData_file(user, callback) {
       });
   }
 }*/
+console.log("poulet");
 app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', HomeController.index);
 app.get('/contact', contactController.contactGet);
