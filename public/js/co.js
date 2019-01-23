@@ -266,7 +266,7 @@ var width_act = 0;
 
 function refresh_map(msg)
 {
-    resize_map();
+    //resize_map();
     unit_to_draw = [];
     //get unit on the left
     display_unit(msg.team1.unit.unit_left);
