@@ -1,3 +1,6 @@
+var coef_w = 1000;
+var coef_h = 750;
+
 //              fonction de creation d'objet
 //move size
 /* global blue_city orange_city red_city my_teams*/
@@ -104,14 +107,20 @@ function resize_lobby()
     var height = window.innerHeight;
     var width = window.innerWidth;
     
+    if (height < 600 || width < 800)
+    {
+        document.getElementById("canvas01").display = "none";
+        document.getElementById("canvas02").display = "none";
+        return;
+    }
     document.getElementById("canvas01").height = height / 2;
     document.getElementById("canvas01").width = width / 4;
     document.getElementById("canvas02").height = height / 2;
     document.getElementById("canvas02").width = width / 4;
     lobby("canvas01", "red");
     lobby("canvas02", "orange");
-    console.log("resize de la fenetre");
 }
+
 function lobby(canvas, color)
 {
     var iso = new Isomer(document.getElementById(canvas));

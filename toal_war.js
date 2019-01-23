@@ -107,7 +107,11 @@ function check_server()
       catch(err){}
     }
   }
-  if ((players[0] === false && players[1] === false && players[2] === false && start === true) || (player_wait_error === true))
+  if ((players[0] === false && players[1] === false && players[2] === false && start === true)
+  || (players[0] === true && players[1] === false && players[2] === false && start === true)
+  || (players[0] === false && players[1] === true && players[2] === false && start === true)
+  || (players[0] === false && players[1] === false && players[2] === true && start === true)
+  || (player_wait_error === true))
   {
     console.log("toal war is re-starting\n");
     for (let i = 0; i < players.length; i++)
