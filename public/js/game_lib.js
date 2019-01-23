@@ -100,7 +100,7 @@ resize_lobby();
 lobby("canvas01", "red");
 lobby("canvas02", "orange");
 
-window.onresize = resize_lobby();
+//window.onresize = resize_lobby();
 
 function resize_lobby()
 {
