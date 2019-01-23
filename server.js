@@ -70,7 +70,7 @@ app.post('/contact', contactController.contactPost);
 app.get('/account', userController.ensureAuthenticated, userController.accountGet);
 app.put('/account', userController.ensureAuthenticated, userController.accountPut);
 console.log("poulet");
-//app.post('/home', userController.ensureAuthenticated, HomeController.homePost);
+app.post('/home', userController.ensureAuthenticated, HomeController.homePost);
 console.log("poulet");
 //app.put('/home', userController.ensureAuthenticated, HomeController.homePut);
 console.log("poulet");
