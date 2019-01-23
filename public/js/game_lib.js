@@ -97,7 +97,7 @@ function create_castel(form, color)
 }
 
 resize_lobby();
-window.onresize = resize_lobby();
+window.onresize = resize_lobby;
 
 function resize_lobby()
 {
