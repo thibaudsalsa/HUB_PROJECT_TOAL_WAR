@@ -88,7 +88,6 @@ app.get('/auth/google', passport.authenticate('google', { scope: 'profile email'
 app.get('/auth/google/callback', passport.authenticate('google', { successRedirect: '/', failureRedirect: '/login' }));
 app.get('/auth/twitter', passport.authenticate('twitter'));
 app.get('/auth/twitter/callback', passport.authenticate('twitter', { successRedirect: '/', failureRedirect: '/login' }));
-console.log("poulet");
 if (app.get('env') === 'production') {
   app.use(function(err, req, res, next) {
     console.error(err.stack);
@@ -99,7 +98,9 @@ app.use(function(req, res, next){
     res.setHeader('Content-Type', 'text/plain');
     res.send(404, 'Page introuvable !');
 });
+console.log("poulet");
 app.listen(app.get('port'), function() {
   console.log('Express server listening on port ' + app.get('port'));
 });
+console.log("poulet");
 module.exports = app;
