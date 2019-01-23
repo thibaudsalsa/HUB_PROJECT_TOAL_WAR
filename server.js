@@ -51,7 +51,7 @@ app.use(function(req, res, next) {
     next();
   });
 }); 
-function sendMeData_file(user, callback) {
+/*function sendMeData_file(user, callback) {
   if (!user) {
       callback();
   } else {
@@ -62,7 +62,7 @@ function sendMeData_file(user, callback) {
         callback(data_file);
       });
   }
-}
+}*/
 app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', HomeController.index);
 app.get('/contact', contactController.contactGet);
