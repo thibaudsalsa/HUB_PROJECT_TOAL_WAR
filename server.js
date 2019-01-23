@@ -45,12 +45,13 @@ app.use(session({ secret: process.env.SESSION_SECRET, resave: true, saveUninitia
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
-/*app.use(function(req, res, next) {
+app.use(function(req, res, next) {
   sendMeData_file(req.user, function(data_file) {
     res.locals.user = req.user ? req.user.toJSON() : null;
     next();
   });
-}); 
+});
+/*
 function sendMeData_file(user, callback) {
   if (!user) {
       callback();
@@ -98,9 +99,7 @@ app.use(function(req, res, next){
     res.setHeader('Content-Type', 'text/plain');
     res.send(404, 'Page introuvable !');
 });
-console.log("poulet");
 app.listen(app.get('port'), function() {
   console.log('Express server listening on port ' + app.get('port'));
 });
-console.log("poulet");
 module.exports = app;
