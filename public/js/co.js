@@ -247,23 +247,6 @@ function refresh_base(msg)
     }
 }
 
-function resize_map(msg)
-{
-    var height = window.innerHeight;
-    var width = window.innerWidth;
-    
-    if (height_act != height || width_act != width)
-    {
-        height_act = height;
-        width_act = width;
-        document.getElementById("art").height = height / 2;
-        document.getElementById("art").width = width / 4;
-    }
-}
-
-var height_act = 0;
-var width_act = 0;
-
 function refresh_map(msg)
 {
     //resize_map();

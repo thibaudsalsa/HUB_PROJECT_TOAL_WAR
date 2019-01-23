@@ -1,6 +1,3 @@
-var coef_w = 1000;
-var coef_h = 750;
-
 //              fonction de creation d'objet
 //move size
 /* global blue_city orange_city red_city my_teams*/
@@ -99,7 +96,7 @@ function create_castel(form, color)
     }
 }
 
-resize_lobby();
+/*resize_lobby();
 window.onresize = resize_lobby;
 
 function resize_lobby()
@@ -112,7 +109,8 @@ function resize_lobby()
     {
         document.getElementById("canvas01").display = "none";
         document.getElementById("canvas02").display = "none";
-        return;
+        height = 0;
+        width = 0;
     }
     document.getElementById("canvas01").height = height / 2;
     document.getElementById("canvas01").width = width / 4;
@@ -137,3 +135,4 @@ function lobby(canvas, color)
     iso.add(Shape.Prism(new Point(0, 2, -1.5), 0.75, 0.75, 4), red);
     iso.add(Shape.Prism(new Point(2, 0, -1.5), 0.75, 0.75, 3), red);
 }
+*/
