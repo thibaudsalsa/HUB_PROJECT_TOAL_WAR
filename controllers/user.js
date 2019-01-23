@@ -3,11 +3,11 @@ var crypto = require('crypto');
 var nodemailer = require('nodemailer');
 var passport = require('passport');
 var User = require('../models/User');
-var Data_file = require('../models/Data_file');
-var formidable = require('formidable');
-var util = require('util');
-var fs = require('fs-extra');
-var path = require('path');
+//var Data_file = require('../models/Data_file');
+//var formidable = require('formidable');
+//var util = require('util');
+//var fs = require('fs-extra');
+//var path = require('path');
 
 /**
  * Login required middleware
