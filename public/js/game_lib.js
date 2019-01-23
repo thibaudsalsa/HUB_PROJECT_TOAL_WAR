@@ -107,10 +107,10 @@ function resize_lobby()
     var height = window.innerHeight;
     var width = window.innerWidth;
     
-    document.getElementById("canvas01").height = height;
-    document.getElementById("canvas01").width = width;
-    document.getElementById("canvas02").height = height;
-    document.getElementById("canvas02").width = width;
+    document.getElementById("canvas01").height = height / 3;
+    document.getElementById("canvas01").width = width / 3;
+    document.getElementById("canvas02").height = height / 3;
+    document.getElementById("canvas02").width = width / 3;
 }
 function lobby(canvas, color)
 {
