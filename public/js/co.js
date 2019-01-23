@@ -256,8 +256,8 @@ function resize_map(msg)
     {
         height_act = height;
         width_act = width;
-        document.getElementById("canvas01").height = height / 2;
-        document.getElementById("canvas01").width = width / 4;
+        document.getElementById("art").height = height / 2;
+        document.getElementById("art").width = width / 4;
     }
 }
 
