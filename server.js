@@ -69,15 +69,10 @@ app.get('/contact', contactController.contactGet);
 app.post('/contact', contactController.contactPost);
 app.get('/account', userController.ensureAuthenticated, userController.accountGet);
 app.put('/account', userController.ensureAuthenticated, userController.accountPut);
-console.log("poulet");
-app.post('/home', userController.ensureAuthenticated, HomeController.homePost);
-console.log("poulet");
+//app.post('/home', userController.ensureAuthenticated, HomeController.homePost);
 //app.put('/home', userController.ensureAuthenticated, HomeController.homePut);
-console.log("poulet");
 //app.delete('/home', userController.ensureAuthenticated, HomeController.homeDelete);
-console.log("poulet");
-app.delete('/account', userController.ensureAuthenticated, userController.accountDelete);
-console.log("poulet");
+//app.delete('/account', userController.ensureAuthenticated, userController.accountDelete);
 app.get('/signup', userController.signupGet);
 app.post('/signup', userController.signupPost);
 app.get('/login', userController.loginGet);
@@ -93,6 +88,7 @@ app.get('/auth/google', passport.authenticate('google', { scope: 'profile email'
 app.get('/auth/google/callback', passport.authenticate('google', { successRedirect: '/', failureRedirect: '/login' }));
 app.get('/auth/twitter', passport.authenticate('twitter'));
 app.get('/auth/twitter/callback', passport.authenticate('twitter', { successRedirect: '/', failureRedirect: '/login' }));
+console.log("poulet");
 if (app.get('env') === 'production') {
   app.use(function(err, req, res, next) {
     console.error(err.stack);
