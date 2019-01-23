@@ -1,11 +1,11 @@
-var nodemailer = require('nodemailer');
+/*var nodemailer = require('nodemailer');
 var transporter = nodemailer.createTransport({
   service: 'Mailgun',
   auth: {
     user: process.env.MAILGUN_USERNAME,
     pass: process.env.MAILGUN_PASSWORD
   }
-});
+});*/
 
 /**
  * GET /contact
@@ -19,7 +19,7 @@ exports.contactGet = function(req, res) {
 /**
  * POST /contact
  */
-exports.contactPost = function(req, res) {
+/*exports.contactPost = function(req, res) {
   req.assert('name', 'Name cannot be blank').notEmpty();
   req.assert('email', 'Email is not valid').isEmail();
   req.assert('email', 'Email cannot be blank').notEmpty();
@@ -45,3 +45,4 @@ exports.contactPost = function(req, res) {
     res.redirect('/contact');
   });
 };
+*/

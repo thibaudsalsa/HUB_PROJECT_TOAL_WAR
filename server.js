@@ -67,13 +67,10 @@ function sendMeData_file(user, callback) {
 }
 app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', HomeController.index);
-app.get('/contact', contactController.contactGet);
-app.post('/contact', contactController.contactPost);
+//app.get('/contact', contactController.contactGet);
+//app.post('/contact', contactController.contactPost);
 app.get('/account', userController.ensureAuthenticated, userController.accountGet);
 app.put('/account', userController.ensureAuthenticated, userController.accountPut);
-//app.post('/home', userController.ensureAuthenticated, HomeController.homePost);
-//app.put('/home', userController.ensureAuthenticated, HomeController.homePut);
-//app.delete('/home', userController.ensureAuthenticated, HomeController.homeDelete);
 app.delete('/account', userController.ensureAuthenticated, userController.accountDelete);
 app.get('/signup', userController.signupGet);
 app.post('/signup', userController.signupPost);

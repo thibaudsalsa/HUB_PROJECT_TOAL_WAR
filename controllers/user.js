@@ -9,55 +9,6 @@ var util = require('util');
 var fs = require('fs-extra');
 var path = require('path');
 
-
-//IMPLEMENTATION DE UPBROWSER
-/*
-exports.poulet = function (req, res, next)
-{
-  var file = req.data_file.link;
-  var i = 0;
-  var bool = 0;
-  var txt = "";
-  var contenu = fs.readFileSync(file, "UTF-8");
-  while(contenu[i] != '<' && contenu[i+1] != '/' && contenu[i+2] != 'b' && contenu[i+3] != 'o' && contenu[i+4] != 'd' && contenu[i+5] != 'y' && contenu[i+6] != '>')
-  {
-    if (i >= contenu.length)
-    {
-      bool = 1;
-      break;
-    }
-    txt += contenu[i];
-    i++;
-  }
-  if (bool === 0)
-  {
-    txt += "<script type=\"text/javascript\" src=\"upbrowser.js\"></script>";
-    while (i < contenu.length)
-    {
-      txt += contenu[i];
-      i++;
-    }
-  }
-  fs.writeFileSync(file, txt, "UTF-8");
-  res.redirect('/');
-};
-*/
-
-// API
-/*
-var S3FS = require('s3fs');
-var s3fsImpl = new S3FS('upstore', {
-  accessKeyId: 'AKIAJONNWK3PUFIF2JFQ',
-  secretAccessKey: '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'
-});
-
-s3fsImpl.create();
-
-var multiparty = require('connect-multiparty'),
-    multipartyMiddleware = multiparty();
-*/
-
-
 /**
  * Login required middleware
  */
@@ -171,45 +122,6 @@ exports.accountGet = function(req, res) {
     title: 'My Account'
   });
 };
-
-/*
-//Stockage du fichier dans le serveur
- exports.homePost = function(req, res) {
-  var form = new formidable.IncomingForm();
-  form.uploadDir = "./upload/"; //+ req.user.attributes.email;
-  form.keepExtensions = true;
-  form.parse(req, function(err, fields, files) {
-    if (form.openedFiles[0].size == 0) {
-      fs.unlink(form.openedFiles[0].path);
-      res.redirect('/');
-    } else {
-      if (err) {
-        console.log(err);
-        req.flash("error", {msg: "An error occured. Please try again." });
-      }
-      new Data_file({
-        link: files.upload.path,
-        title: files.upload.name,
-        id_user: req.user.id,
-        description: fields.commentaire,
-        name: fields.titre
-      }).save();
-      res.redirect('/');
-    }
-  });
-};
-*/
-/************* API ***************
-    var file = req.files.file;
-    var stream = fs.creatReadStream(file.path);
-    return s3fsImpl.writeFile(file.originalFilename, stream).then(function() {
-      fs.unlink(file.path, function(err) {
-        if (err)
-          console.error(err);
-      }) 
-      res.redirect('/');
-      });
- };*/
 
 /**
  * DELETE /home
