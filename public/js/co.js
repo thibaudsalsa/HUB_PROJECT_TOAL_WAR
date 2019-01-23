@@ -123,7 +123,7 @@ function display_carte(tab_carte, info)
             document.getElementById("carte_display").innerHTML += "<p id='tmp_carte'>" + i + ": " + tab_carte[i].id + "</p><button id='tmp_button_carte'>Utiliser la carte</button";
             document.getElementById("tmp_carte").title = tab_carte[i].desc;
             document.getElementById("tmp_carte").id = "";
-            document.getElementById("tmp_button_carte").onclick = order("use", "carte", i);
+            document.getElementById("tmp_button_carte").addEventListener('click', order("use", "carte", i));
             document.getElementById("tmp_button_carte").id = "";
         }
         save_card = tab_carte;
