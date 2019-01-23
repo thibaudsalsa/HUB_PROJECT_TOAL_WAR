@@ -96,8 +96,22 @@ function create_castel(form, color)
     }
 }
 
+resize_lobby();
 lobby("canvas01", "red");
 lobby("canvas02", "orange");
+
+window.onresize = resize_lobby();
+
+function resize_lobby()
+{
+    var height = window.innerHeight;
+    var width = window.innerWidth;
+    
+    document.getElementById("canvas01").height = height;
+    document.getElementById("canvas01").width = width;
+    document.getElementById("canvas02").height = height;
+    document.getElementById("canvas02").width = width;
+}
 function lobby(canvas, color)
 {
     var iso = new Isomer(document.getElementById(canvas));
