@@ -105,9 +105,9 @@ function resize_lobby()
     var width = window.innerWidth;
     
     document.getElementById("canvas01").height = height / 2;
-    document.getElementById("canvas01").width = width / 3;
+    document.getElementById("canvas01").width = width / 4;
     document.getElementById("canvas02").height = height / 2;
-    document.getElementById("canvas02").width = width / 3;
+    document.getElementById("canvas02").width = width / 4;
     lobby("canvas01", "red");
     lobby("canvas02", "orange");
     console.log("resize de la fenetre");
