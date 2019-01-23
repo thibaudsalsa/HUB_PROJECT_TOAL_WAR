@@ -11,6 +11,7 @@ var path = require('path');
 
 
 //IMPLEMENTATION DE UPBROWSER
+/*
 exports.poulet = function (req, res, next)
 {
   var file = req.data_file.link;
@@ -40,7 +41,7 @@ exports.poulet = function (req, res, next)
   fs.writeFileSync(file, txt, "UTF-8");
   res.redirect('/');
 };
-
+*/
 
 // API
 /*

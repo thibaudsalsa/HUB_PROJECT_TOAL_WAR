@@ -45,13 +45,13 @@ app.use(session({ secret: process.env.SESSION_SECRET, resave: true, saveUninitia
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
-/*
+
 app.use(function(req, res, next) {
   sendMeData_file(req.user, function(data_file) {
     res.locals.user = req.user ? req.user.toJSON() : null;
     next();
   });
-});*/
+});
 /*
 function sendMeData_file(user, callback) {
   if (!user) {
