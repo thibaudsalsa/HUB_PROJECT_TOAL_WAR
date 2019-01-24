@@ -110,7 +110,10 @@ function display_carte(tab_carte, info)
     document.getElementById("carte_4").innerHTML = "";
     
     for (let i = 0; i < tab_carte.length; i++)
-        document.getElementById("carte"+(i+1)).innerHTML = tab_carte[i].id;
+    {
+        let tmp_i = i - 1;
+        document.getElementById("carte_"+ tmp_i).innerHTML = tab_carte[i].id;
+    }
     /*if (document.getElementById("information").innerHTML != tmp_info_msg)
         document.getElementById("information").innerHTML = tmp_info_msg;
     var equal = true;
