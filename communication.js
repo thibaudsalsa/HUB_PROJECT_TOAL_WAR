@@ -97,24 +97,6 @@ function fill_msg(msg, team, game)
     msg.bool = team.bool;
 }
 
-function check_win(game, ws, msg, start)
-{
-    msg.winner = "";
-    msg.win = false;
-    if (game.team1.city > 0 && game.team3.city <= 0 && game.team2.city <= 0)
-        msg.winner = "L'equipe bleu gagne la partie";
-    else if (game.team2.city > 0 && game.team3.city <= 0 && game.team1.city <= 0)
-        msg.winner = "L'equipe orange gagne la partie";
-    else if (game.team3.city > 0 && game.team1.city <= 0 && game.team2.city <= 0)
-        msg.winner = "L'equipe rouge gagne la partie";
-    if (msg.winner != "")
-    {
-        msg.win = true;
-        player_in = [];
-    }
-}
-
-
 function respond(team, ws, wss)
 {
     if (start === false || team === 0)
@@ -131,7 +113,6 @@ function respond(team, ws, wss)
     msg.money = 0;
     msg.info = game.info;
     fill_msg(msg, team, game);
-    check_win(game, ws, msg, start);
     msg_json = JSON.stringify(msg);
     if (players[ws.me - 1] === true)
     {

@@ -89,6 +89,17 @@ function server(wss)
   });
 }
 
+function check_win()
+{
+  if (player_wait_error === true)
+    return ("reset");
+  if(players[0] == true)
+    return ("L'equipe bleu gagne la partie");
+  else if (players[1] == true)
+    return ("L'equipe orange gagne la partie");
+  else
+    return ("L'equipe rouge gagne la partie");
+}
 function check_server()
 {
   if (players[0] === true && players[1] === true && players[2] === true && start === false)
@@ -113,13 +124,14 @@ function check_server()
   || (players[0] === false && players[1] === false && players[2] === true && start === true)
   || (player_wait_error === true))
   {
+    var msg_end = check_win();
     console.log("toal war is re-starting\n");
     for (let i = 0; i < players.length; i++)
       players[i] = false;
     player_wait_error = false;
     for (let i = 0; i < timer.length; i++)
       clearInterval(timer[i]);
-    wss.broadcast("reset");
+    wss.broadcast(msg_end);
     player_in = [];
     wss.close();
     wss = new WebSocketServer({port: 40510});
