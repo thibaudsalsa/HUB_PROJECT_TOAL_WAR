@@ -211,10 +211,10 @@ function button_for_team(color, msg)
         document.getElementsByClassName("en_right")[1].innerHTML = "Attaquer les rouges";
         
         
-        document.getElementsByClassName("en_left")[0].color = "#fd6a02";
-        document.getElementsByClassName("en_left")[1].color = "#fd6a02";
-        document.getElementsByClassName("en_right")[0].color = "#c80000";
-        document.getElementsByClassName("en_right")[1].color = "#c80000";
+        document.getElementsByClassName("en_left")[0].style.color = "#fd6a02";
+        document.getElementsByClassName("en_left")[1].style.color = "#fd6a02";
+        document.getElementsByClassName("en_right")[0].style.color = "#c80000";
+        document.getElementsByClassName("en_right")[1].style.color = "#c80000";
     }
     else if (color == "ORANGE")
     {
@@ -223,10 +223,10 @@ function button_for_team(color, msg)
         document.getElementsByClassName("en_right")[0].innerHTML = "Attaquer les bleus";
         document.getElementsByClassName("en_right")[1].innerHTML = "Attaquer les bleus";
         
-        document.getElementsByClassName("en_left")[0].color = "#c80000";
-        document.getElementsByClassName("en_left")[1].color = "#c80000";
-        document.getElementsByClassName("en_right")[0].color = "#0000c8";
-        document.getElementsByClassName("en_right")[1].color = "#0000c8";
+        document.getElementsByClassName("en_left")[0].style.color = "#c80000";
+        document.getElementsByClassName("en_left")[1].style.color = "#c80000";
+        document.getElementsByClassName("en_right")[0].style.color = "#0000c8";
+        document.getElementsByClassName("en_right")[1].style.color = "#0000c8";
     }
     else if (color == "ROUGE")
     {
@@ -235,10 +235,10 @@ function button_for_team(color, msg)
         document.getElementsByClassName("en_left")[0].innerHTML = "Attaquer les bleus";
         document.getElementsByClassName("en_left")[1].innerHTML = "Attaquer les bleus";
         
-        document.getElementsByClassName("en_right")[0].color = "#fd6a02";
-        document.getElementsByClassName("en_right")[1].color = "#fd6a02";
-        document.getElementsByClassName("en_left")[0].color = "#0000c8";
-        document.getElementsByClassName("en_left")[1].color = "#0000c8";
+        document.getElementsByClassName("en_right")[0].style.color = "#fd6a02";
+        document.getElementsByClassName("en_right")[1].style.color = "#fd6a02";
+        document.getElementsByClassName("en_left")[0].style.color = "#0000c8";
+        document.getElementsByClassName("en_left")[1].style.color = "#0000c8";
     }
 }
 
