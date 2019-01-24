@@ -573,7 +573,7 @@ function Suisse(team)
 //Gagne plus d'argent par secondes
 function Quatar(team)
 {
-	team.money_bonus += 0.002;
+	team.money_bonus += 0.008;
 	team.money -= team.nation_price;
 	return("OK");
 }
