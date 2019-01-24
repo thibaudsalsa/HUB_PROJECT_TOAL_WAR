@@ -113,9 +113,8 @@ function display_carte(tab_carte, info)
         let tmp_i = i + 1;
         document.getElementById("carte_"+ tmp_i).innerHTML = tab_carte[i].id;
         document.getElementById("carte_"+ tmp_i).title = tab_carte[i].desc;
-        /*if (document.getElementById("bouton_carte_" + i).disabled != "")
-            document.getElementById("bouton_carte_" + i).disabled = "";*/
     }
+    
     if (document.getElementById("carte_1").innerHTML === "" && document.getElementById("bouton_carte_1").disabled != "disabled");
         document.getElementById("bouton_carte_1").disabled = "disabled";
     if (document.getElementById("carte_2").innerHTML === ""  && document.getElementById("bouton_carte_2").disabled != "disabled");
@@ -123,13 +122,14 @@ function display_carte(tab_carte, info)
     if (document.getElementById("carte_3").innerHTML === ""  && document.getElementById("bouton_carte_3").disabled != "disabled");
         document.getElementById("bouton_carte_3").disabled = "disabled";
         
-        
+        /*
     if (document.getElementById("carte_1").innerHTML != "" && document.getElementById("bouton_carte_1").disabled != "");
         document.getElementById("bouton_carte_1").disabled = "";
     if (document.getElementById("carte_2").innerHTML != ""  && document.getElementById("bouton_carte_2").disabled != "");
         document.getElementById("bouton_carte_2").disabled = "";
     if (document.getElementById("carte_3").innerHTML != ""  && document.getElementById("bouton_carte_3").disabled != "");
         document.getElementById("bouton_carte_3").disabled = "";
+        */
 }
 
 function button_for_team(color, msg)
