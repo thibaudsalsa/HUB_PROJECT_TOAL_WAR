@@ -334,15 +334,15 @@ function espion2(team)
 	var color = ["bleu", "orange" , "rouge"];
 	var target = Math.floor(Math.random() * (2));
 	if (target == 0)
-		game.info += "La team " + color[tab[0].id - 1] + " posséde : " + 
+		game.info += "La team " + color[tab[0].id - 1] + " possede : " + 
 						tab[0].unit.char.length + " char, " + 
 						tab[0].unit.avion.length + " avion, " +
-						tab[0].unit.soldat.length + " soldat." ;
+						tab[0].unit.soldat.length + " soldat.\n" ;
 	else
-		game.info += "La team " + color[tab[tab.length - 1].id - 1] + " posséde : " + 
+		game.info += "La team " + color[tab[tab.length - 1].id - 1] + " possede : " + 
 						tab[tab.length - 1].unit.char.length + " char, " + 
 						tab[tab.length - 1].unit.avion.length + " avion, " +
-						tab[tab.length - 1].unit.soldat.length + " soldat." ;
+						tab[tab.length - 1].unit.soldat.length + " soldat.\n" ;
 }
 
 function delete_unit(unit1, unit2)
@@ -382,7 +382,7 @@ function use_nation_power()
         }
     }
     if (value === "OK")
-    	game.info += "La/Le " + this.name + " a utilise sa capacité\n"  ;
+    	game.info += "La/Le " + this.name + " a utilise sa capacite\n"  ;
 }
 
 function Coree_du_nord(team)
