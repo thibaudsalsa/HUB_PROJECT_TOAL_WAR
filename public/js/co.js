@@ -276,7 +276,7 @@ function refresh_base(msg)
     document.getElementById("argent").innerHTML = "Argent: " + parseInt(msg.argent, 10);
     if (save_pv != parseInt(msg.city, 10))
     {
-        document.getElementById("cité").innerHTML = "Cité: " + parseInt(msg.city, 10) + "pv";
+        document.getElementById("cité").innerHTML = "Ville: " + parseInt(msg.city, 10) + "pv";
         save_pv = parseInt(msg.city, 10);
     }
     if (msg.soldat != save_soldat)
