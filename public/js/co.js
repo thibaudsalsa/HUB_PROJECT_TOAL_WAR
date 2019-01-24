@@ -105,6 +105,8 @@ function display_carte(tab_carte, info)
         else if (j >= tmp_info - 3)
             tmp_info_msg += info[i];
     }
+    if (document.getElementById("information").innerHTML != tmp_info_msg)
+        document.getElementById("information").innerHTML = tmp_info_msg;
     document.getElementById("carte_1").innerHTML = "";
     document.getElementById("carte_2").innerHTML = "";
     document.getElementById("carte_3").innerHTML = "";
