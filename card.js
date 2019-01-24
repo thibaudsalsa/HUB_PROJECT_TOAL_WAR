@@ -39,24 +39,24 @@ const description_cartes = ["Copie une carte d'un joueur adverse",
 				"Diminue le prix d'achat de vos cartes de 5",
 				"Augmente le prix des unités d'un ennemie de 1"];
 				
-const text_cartes = ["a utilisé un atout.", 
-				"a utilisé un atout.", 
-				"a utilisé un atout.",
-				"a utilisé un Appuie aérien.",
-				"a declanché un incendie.",
-				"La/Le USA a utilisé sa capacité",
-				"a fait tremblé le sol.",
-				"a utilisé un atout.",
-				"vous a forcé à utiliser une carte.",
-				"a utilisé un atout.",
-				"a utilisé un atout.",
-				"a une information à vous donner.",
-				"a utilisé un atout.",
-				"a utilisé un atout.",
-				"a utilisé un atout.",
-				"BOOM 3 morts",
-				"a utilisé un atout.",
-				"a utilisé un atout."];
+const text_cartes = ["a utilise un atout.", 
+				"a utilise un atout.", 
+				"a utilise un atout.",
+				"a utilise un Appuie aerien.",
+				"a declanche un incendie.",
+				"La/Le USA a utilise sa capacite",
+				"a fait tremble le sol.",
+				"a utilise un atout.",
+				"vous a force a utiliser une carte.",
+				"a utilise un atout.",
+				"a utilise un atout.",
+				"a une information a vous donner.",
+				"a utilise un atout.",
+				"a utilise un atout.",
+				"a utilise un atout.",
+				"a tous fait peter, BOOM 3 morts",
+				"a utilise un atout.",
+				"a utilise un atout."];
 				
 const fonction_cartes = [plagiat,
 						soin,
@@ -382,7 +382,7 @@ function use_nation_power()
         }
     }
     if (value === "OK")
-    	game.info += "La/Le " + this.name + " a utilisé sa capacité\n"  ;
+    	game.info += "La/Le " + this.name + " a utilise sa capacité\n"  ;
 }
 
 function Coree_du_nord(team)
