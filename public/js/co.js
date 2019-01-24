@@ -107,7 +107,7 @@ function display_carte(tab_carte, info)
     }
     document.getElementById("carte_1").innerHTML = "";
     document.getElementById("carte_2").innerHTML = "";
-    document.getElementById("carte_4").innerHTML = "";
+    document.getElementById("carte_3").innerHTML = "";
     
     for (let i = 0; i < tab_carte.length; i++)
     {
