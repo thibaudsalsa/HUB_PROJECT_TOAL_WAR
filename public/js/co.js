@@ -108,36 +108,19 @@ function display_carte(tab_carte, info)
     document.getElementById("carte_1").innerHTML = "";
     document.getElementById("carte_2").innerHTML = "";
     document.getElementById("carte_3").innerHTML = "";
-    
     for (let i = 0; i < tab_carte.length; i++)
     {
         let tmp_i = i + 1;
         document.getElementById("carte_"+ tmp_i).innerHTML = tab_carte[i].id;
+        document.getElementById("carte_"+ tmp_i).title = tab_carte[i].desc;
+        if (document.getElementById("bouton_carte_" + tmp_i).disabled === "disabled")
+            document.getElementById("bouton_carte_" + tmp_i).disabled = "";
     }
-    /*if (document.getElementById("information").innerHTML != tmp_info_msg)
-        document.getElementById("information").innerHTML = tmp_info_msg;
-    var equal = true;
-    if (save_card.length != tab_carte.length)
-        equal = false;
-    for (let i = 0; i < tab_carte.length && equal != false; i++)
+    for (let i = 1; i < 4; i++)
     {
-        if (tab_carte[i].id != save_card[i].id)
-            equal = false;
+        document.getElementById("carte_" + i).innerHTML = "";
+        document.getElementById("bouton_carte_" + i).disabled = "disabled";
     }
-    if (equal === false)
-    {
-        document.getElementById("carte_display").innerHTML = "";
-        for (let i = 0; i < tab_carte.length; i++)
-        {
-            document.getElementById("carte_display").innerHTML += "<p id='tmp_carte'>" + i + ": " + tab_carte[i].id + "</p><button id='tmp_button_carte'>Utiliser la carte</button";
-            document.getElementById("tmp_carte").title = tab_carte[i].desc;
-            document.getElementById("tmp_carte").id = "";
-            document.getElementById("tmp_button_carte").addEventListener("click", function(){
-                order("use", "carte", i)});
-            document.getElementById("tmp_button_carte").id = "";
-        }
-        save_card = tab_carte;
-    }*/
 }
 
 function button_for_team(color, msg)
