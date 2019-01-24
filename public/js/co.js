@@ -313,7 +313,7 @@ function refresh_base(msg)
         document.getElementsByClassName("buy_unit")[2].disabled = "disabled";
         display_buy_unit = false;
     }
-    else if (msg.argent >= msg.price_unit && msg.avion + msg.char + msg.soldat >= 100 && display_buy_unit != true)
+    else if (msg.argent >= msg.price_unit && msg.avion + msg.char + msg.soldat < 100 && display_buy_unit != true)
     {
         document.getElementsByClassName("buy_unit")[0].disabled = "";
         document.getElementsByClassName("buy_unit")[1].disabled = "";
