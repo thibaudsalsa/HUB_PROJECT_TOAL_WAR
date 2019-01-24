@@ -116,11 +116,12 @@ function display_carte(tab_carte, info)
         if (document.getElementById("bouton_carte_" + tmp_i).disabled == "disabled")
             document.getElementById("bouton_carte_" + tmp_i).disabled = "";
     }
-    for (let i = 1; i < 4; i++)
-    {
-        if (document.getElementById("carte_" + i).innerHTML === "");
-            document.getElementById("bouton_carte_" + i).disabled = "disabled";
-    }
+    if (document.getElementById("carte_1").innerHTML === "");
+        document.getElementById("bouton_carte_1").disabled = "disabled";
+    if (document.getElementById("carte_2").innerHTML === "");
+        document.getElementById("bouton_carte_2").disabled = "disabled";
+    if (document.getElementById("carte_2").innerHTML === "");
+            document.getElementById("bouton_carte_2").disabled = "disabled";
 }
 
 function button_for_team(color, msg)
