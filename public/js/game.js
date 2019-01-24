@@ -14,17 +14,6 @@ me.info = "";
 
 /*global set_pos set_size make_battleground create_castel draw_unit*/
 
-
-function write_data()
-{
-    document.getElementById("argent").innerHTML = "Argent: " + me.my_money;
-    document.getElementById("cité").innerHTML = "Cité: " + me.my_city;
-    document.getElementById("soldat").innerHTML = me.soldat;
-    document.getElementById("char").innerHTML = me.char;
-    document.getElementById("avion").innerHTML = me.avion;
-    document.getElementById("information").innerHTML = me.info;
-}
-
 function make_game()
 {
     /*global Isomer*/

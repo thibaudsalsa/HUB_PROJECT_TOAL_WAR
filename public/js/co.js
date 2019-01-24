@@ -339,7 +339,15 @@ function refresh_game(msg)
     msg = JSON.parse(msg);
     refresh_map(msg);
     // actualise les informations sur la page
+    var color = "";
     document.getElementById("couleur_ville").innerHTML = msg.couleur_ville;
+    if (msg.couleur_ville === "ROUGE")
+        color = "#c80000";
+    else if (msg.couleur_ville === "BLEU")
+        color = "#0000c8";
+    else if (msg.couleur_ville === "ORANGE")
+        color = "#fd6a02";
+    document.getElementById("gameplay").color = color;
     button_for_team(msg.couleur_ville, msg);
     if (msg.city < 0 && document.getElementById("gameplay").style.display != "none")
     {
