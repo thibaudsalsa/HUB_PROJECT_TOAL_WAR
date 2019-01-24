@@ -214,7 +214,7 @@ function refresh_base(msg)
     }
     if (msg.argent < msg.price_unit && display_buy_unit != false)
     {
-        document.getElementsByClassName("buy_unit")[0].style.display = "none";
+        document.getElementsByClassName("buy_unit")[0].disabled = "disable";//.style.display = "none";
         document.getElementsByClassName("buy_unit")[1].style.display = "none";
         document.getElementsByClassName("buy_unit")[2].style.display = "none";
         display_buy_unit = false;
