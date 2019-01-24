@@ -140,9 +140,9 @@ function refresh_game()
   game.attack_city();
   game.move();
   if (game.team1.city > 0)
-    game.team1.money += 0.045 + game.team1.money_bonus;
+    game.team1.money += 0.030 + game.team1.money_bonus;
   if (game.team2.city > 0)
-    game.team2.money += 0.045 + game.team2.money_bonus;
+    game.team2.money += 0.030 + game.team2.money_bonus;
   if (game.team3.city > 0)
-    game.team3.money += 0.045 + game.team3.money_bonus;
+    game.team3.money += 0.030 + game.team3.money_bonus;
 }
