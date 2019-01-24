@@ -32,7 +32,7 @@ wss.onmessage = function (ev)
     else if (ev.data == "L'equipe bleu gagne la partie"
     || ev.data == "L'equipe orange gagne la partie"
     || ev.data == "L'equipe rouge gagne la partie")
-        check_win();
+        check_win(ev.data);
     else if (ev.data != "wait")
         refresh_game(ev.data);
 };
@@ -231,10 +231,10 @@ function check_win(msg)
 {
     document.getElementById("display_game").style.display = "none";
     document.getElementById("victory").style.display = "";
-    document.getElementById("winner").innerHTML = msg.winner;
+    document.getElementById("winner").innerHTML = msg;
     if (notif == 0)
     {
-        let notification = new Notification("L'équipe "+ msg.winner + " à gagnée");
+        let notification = new Notification(msg);
         notif++;
     }
 }
