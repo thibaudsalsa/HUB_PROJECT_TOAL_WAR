@@ -111,7 +111,7 @@ function display_carte(tab_carte, info)
     
     for (let i = 0; i < tab_carte.length; i++)
     {
-        let tmp_i = i - 1;
+        let tmp_i = i + 1;
         document.getElementById("carte_"+ tmp_i).innerHTML = tab_carte[i].id;
     }
     /*if (document.getElementById("information").innerHTML != tmp_info_msg)
