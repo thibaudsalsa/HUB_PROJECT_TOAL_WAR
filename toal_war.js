@@ -148,6 +148,12 @@ function refresh_game()
 {
   if (start === false)
     return;
+  if (game.team1.city <= 0)
+    players[0] = false;
+  if (game.team2.city <= 0)
+    players[1] = false;
+  if (game.team3.city <= 0)
+    players[2] = false;
   game.attack();
   game.attack_city();
   game.move();
