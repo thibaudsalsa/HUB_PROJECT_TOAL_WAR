@@ -278,11 +278,11 @@ function refresh_base(msg)
         document.getElementsByClassName("price_unit")[2].innerHTML = msg.price_unit;
         save_price_unit = msg.price_unit;
     }
-    if (msg.argent < msg.price_unit && display_buy_unit != false)
+    if ((msg.argent < msg.price_unit || msg.avion + msg.char + msg.soldat >= 100) && display_buy_unit != false)
     {
-        document.getElementsByClassName("buy_unit")[0].disabled = "disable";
-        document.getElementsByClassName("buy_unit")[1].disabled = "disable";
-        document.getElementsByClassName("buy_unit")[2].disabled = "disable";
+        document.getElementsByClassName("buy_unit")[0].disabled = "disabled";
+        document.getElementsByClassName("buy_unit")[1].disabled = "disabled";
+        document.getElementsByClassName("buy_unit")[2].disabled = "disabled";
         display_buy_unit = false;
     }
     else if (msg.argent >= msg.price_unit && display_buy_unit != true)
@@ -294,7 +294,7 @@ function refresh_base(msg)
     }
     if ((msg.argent <= msg.nation_price || msg.bool === false) && save_display_nation != false)
     {
-        document.getElementById("nation_power").disabled = "disable";;
+        document.getElementById("nation_power").disabled = "disables";
         save_display_nation = false;
     }
     else if (msg.argent >= msg.nation_price && msg.bool === true && save_display_nation != true)
@@ -304,7 +304,7 @@ function refresh_base(msg)
     }
     if ((msg.argent < msg.price_card || save_card.length > 3) && save_display_card != false)
     {
-        document.getElementById("buy_card").disabled = "disable";;
+        document.getElementById("buy_card").disabled = "disabled";
         save_display_card = false;
     }
     else if (msg.argent >= msg.price_card && save_card.length <= 3 && save_display_card != true)
