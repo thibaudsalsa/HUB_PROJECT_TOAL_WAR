@@ -29,6 +29,10 @@ wss.onmessage = function (ev)
     }
     else if (ev.data == "reset" || ev.data == "full")
         replay();
+    else if (ev.data == "L'equipe bleu gagne la partie"
+    || ev.data == "L'equipe orange gagne la partie"
+    || ev.data == "L'equipe rouge gagne la partie")
+        check_win();
     else if (ev.data != "wait")
         refresh_game(ev.data);
 };
@@ -225,16 +229,13 @@ function button_for_team(color, msg)
 var notif = 0;
 function check_win(msg)
 {
-    if (msg.win === true)
+    document.getElementById("display_game").style.display = "none";
+    document.getElementById("victory").style.display = "";
+    document.getElementById("winner").innerHTML = msg.winner;
+    if (notif == 0)
     {
-        document.getElementById("display_game").style.display = "none";
-        document.getElementById("victory").style.display = "";
-        document.getElementById("winner").innerHTML = msg.winner;
-        if (notif == 0)
-        {
-            let notification = new Notification("L'équipe "+ msg.winner + " à gagnée");
-            notif++;
-        }
+        let notification = new Notification("L'équipe "+ msg.winner + " à gagnée");
+        notif++;
     }
 }
 
@@ -336,7 +337,6 @@ function refresh_map(msg)
 function refresh_game(msg)
 {
     msg = JSON.parse(msg);
-    check_win(msg);
     refresh_map(msg);
     // actualise les informations sur la page
     document.getElementById("couleur_ville").innerHTML = msg.couleur_ville;
