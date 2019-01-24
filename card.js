@@ -390,7 +390,7 @@ function Coree_du_nord(team)
     team.unit.avion[team.unit.avion.length - 1].pv = 250;
     team.unit.avion[team.unit.avion.length - 1].dmg = 0;
     team.money -= team.nation_price;
-    return ("KO");
+    return ("OK");
 }
 
 /* transforme des pv en argent */
