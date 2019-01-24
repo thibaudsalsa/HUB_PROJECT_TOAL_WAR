@@ -107,31 +107,94 @@ function display_carte(tab_carte, info)
     }
     if (document.getElementById("information").innerHTML != tmp_info_msg)
         document.getElementById("information").innerHTML = tmp_info_msg;
-    document.getElementById("carte_1").innerHTML = "";
-    document.getElementById("carte_2").innerHTML = "";
-    document.getElementById("carte_3").innerHTML = "";
-    for (let i = 0; i < tab_carte.length; i++)
-    {
-        let tmp_i = i + 1;
-        document.getElementById("carte_"+ tmp_i).innerHTML = tab_carte[i].id;
-        document.getElementById("carte_"+ tmp_i).title = tab_carte[i].desc;
-    }
+
+    var carte1 = document.getElementById("carte_1");
+    var carte2 = document.getElementById("carte_2");
+    var carte3 = document.getElementById("carte_3");
     
-    if (document.getElementById("carte_1").innerHTML === "" && document.getElementById("bouton_carte_1").disabled != "disabled");
-        document.getElementById("bouton_carte_1").disabled = "disabled";
-    if (document.getElementById("carte_2").innerHTML === ""  && document.getElementById("bouton_carte_2").disabled != "disabled");
-        document.getElementById("bouton_carte_2").disabled = "disabled";
-    if (document.getElementById("carte_3").innerHTML === ""  && document.getElementById("bouton_carte_3").disabled != "disabled");
-        document.getElementById("bouton_carte_3").disabled = "disabled";
-        
-        /*
-    if (document.getElementById("carte_1").innerHTML != "" && document.getElementById("bouton_carte_1").disabled != "");
-        document.getElementById("bouton_carte_1").disabled = "";
-    if (document.getElementById("carte_2").innerHTML != ""  && document.getElementById("bouton_carte_2").disabled != "");
-        document.getElementById("bouton_carte_2").disabled = "";
-    if (document.getElementById("carte_3").innerHTML != ""  && document.getElementById("bouton_carte_3").disabled != "");
-        document.getElementById("bouton_carte_3").disabled = "";
-        */
+    var Bcarte1 = document.getElementById("bouton_carte_1");
+    var Bcarte2 = document.getElementById("bouton_carte_2");
+    var Bcarte3 = document.getElementById("bouton_carte_3");
+    
+    
+    if (tab_carte.length === 0)
+    {
+        if (carte1.innerHTML != "")
+        {
+            carte1.innerHTML = "";
+            Bcarte1.disabled = "disabled";
+        }
+        if (carte2.innerHTML != "")
+        {
+            carte2.innerHTML = "";
+            Bcarte2.disabled = "disabled";
+        }
+        if (carte3.innerHTML != "")
+        {
+            carte3.innerHTML = "";
+            Bcarte3.disabled = "disabled";
+        }
+    }
+    else if (tab_carte.length === 1)
+    {
+        if (carte1.innerHTML != tab_carte[0].id)
+        {
+            carte1.innerHTML = tab_carte[0].id;
+            carte1.title = tab_carte[0].desc;
+            Bcarte1.disabled = "";
+        }
+        if (carte2.innerHTML != "")
+        {
+            carte2.innerHTML = "";
+            Bcarte2.disabled = "disabled";
+        }
+        if (carte3.innerHTML != "")
+        {
+            carte3.innerHTML = "";
+            Bcarte3.disabled = "disabled";
+        }
+    }
+    else if (tab_carte.length === 2)
+    {
+        if (carte1.innerHTML != tab_carte[0].id)
+        {
+            carte1.innerHTML = tab_carte[0].id;
+            carte1.title = tab_carte[0].desc;
+            Bcarte1.disabled = "";
+        }
+        if (carte2.innerHTML != tab_carte[1].id)
+        {
+            carte2.innerHTML = tab_carte[1].id;
+            carte2.title = tab_carte[1].desc;
+            Bcarte2.disabled = "";
+        }
+        if (carte3.innerHTML != "")
+        {
+            carte3.innerHTML = "";
+            Bcarte3.disabled = "disabled";
+        }
+    }
+    else if (tab_carte.length === 3)
+    {
+        if (carte1.innerHTML != tab_carte[0].id)
+        {
+            carte1.innerHTML = tab_carte[0].id;
+            carte1.title = tab_carte[0].desc;
+            Bcarte1.disabled = "";
+        }
+        if (carte2.innerHTML != tab_carte[1].id)
+        {
+            carte2.innerHTML = tab_carte[1].id;
+            carte2.title = tab_carte[1].desc;
+            Bcarte2.disabled = "";
+        }
+        if (carte3.innerHTML != tab_carte[2].id)
+        {
+            carte3.innerHTML = tab_carte[2].id;
+            carte3.title = tab_carte[2].desc;
+            Bcarte3.disabled = "";
+        }
+    }
 }
 
 function button_for_team(color, msg)
