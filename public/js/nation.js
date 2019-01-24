@@ -27,7 +27,7 @@ function nation_explain(select)
 function rename_button_nation(nation)
 {
     var nation_name = tab;
-    const txt_nation = ["Demander à Poutine de tout detruire", "Greve !", "Battez vous pour moi, mais battez vous mieux !", "Mon mur a besoin d'être repare", "Bling Bling !", "Mon empire pour du petrol", "Armee fantome", "Radiation", "Deforestation", "Mafia", "Aides de l'UE", "Puits de petrole", "Pret à la banque de losane"];
+    const txt_nation = ["Demander a Poutine de tout detruire", "Greve !", "Battez vous pour moi, mais battez vous mieux !", "Mon mur a besoin d'etre repare", "Bling Bling !", "Mon empire pour du petrol", "Armee fantome", "Radiation", "Deforestation", "Mafia", "Aides de l'UE", "Puits de petrole", "Pret a la banque de losane"];
     for (let i = 0; i < nation_name.length; i++)
     {
         if (nation === nation_name[i])
