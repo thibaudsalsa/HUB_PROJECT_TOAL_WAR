@@ -116,20 +116,20 @@ function display_carte(tab_carte, info)
         /*if (document.getElementById("bouton_carte_" + i).disabled != "")
             document.getElementById("bouton_carte_" + i).disabled = "";*/
     }
-    if (document.getElementById("carte_1").innerHTML === "" && document.getElementById("bouton_carte_0").disabled != "disabled");
-        document.getElementById("bouton_carte_0").disabled = "disabled";
-    if (document.getElementById("carte_2").innerHTML === ""  && document.getElementById("bouton_carte_1").disabled != "disabled");
+    if (document.getElementById("carte_1").innerHTML === "" && document.getElementById("bouton_carte_1").disabled != "disabled");
         document.getElementById("bouton_carte_1").disabled = "disabled";
     if (document.getElementById("carte_2").innerHTML === ""  && document.getElementById("bouton_carte_2").disabled != "disabled");
         document.getElementById("bouton_carte_2").disabled = "disabled";
+    if (document.getElementById("carte_3").innerHTML === ""  && document.getElementById("bouton_carte_3").disabled != "disabled");
+        document.getElementById("bouton_carte_3").disabled = "disabled";
         
         
-    if (document.getElementById("carte_1").innerHTML != "" && document.getElementById("bouton_carte_0").disabled != "");
-        document.getElementById("bouton_carte_0").disabled = "";
-    if (document.getElementById("carte_2").innerHTML != ""  && document.getElementById("bouton_carte_1").disabled != "");
+    if (document.getElementById("carte_1").innerHTML != "" && document.getElementById("bouton_carte_1").disabled != "");
         document.getElementById("bouton_carte_1").disabled = "";
     if (document.getElementById("carte_2").innerHTML != ""  && document.getElementById("bouton_carte_2").disabled != "");
         document.getElementById("bouton_carte_2").disabled = "";
+    if (document.getElementById("carte_3").innerHTML != ""  && document.getElementById("bouton_carte_3").disabled != "");
+        document.getElementById("bouton_carte_3").disabled = "";
 }
 
 function button_for_team(color, msg)
