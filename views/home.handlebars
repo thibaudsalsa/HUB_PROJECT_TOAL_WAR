@@ -40,7 +40,7 @@
         <p readonly id="information" style="color: white;"></p>
         <label >Votre ville: <p id="couleur_ville"></p></label>
         <p id="argent">Argent: 200</p>
-        <p id="cité">Cité: 200pv</p>
+        <p id="cité">Ville: 200pv</p>
         <p>Soldat: <span id="soldat">0</span> <button style="display: " class="buy_unit" onclick="order('buy', 'soldat', 1)">Acheter un soldat</button>prix d'un soldat: <span class="price_unit">5</span></p>
         <p>Char: <span id="char">0</span>  <button style="display: " class="buy_unit" onclick="order('buy', 'char', 1)">Acheter un char</button>prix d'un char: <span class="price_unit">5</span></p>
         <p>Avion: <span id="avion">0</span> <button  style="display: " class="buy_unit" onclick="order('buy', 'avion', 1)">Acheter un avion</button>prix d'un avion: <span class="price_unit">5</span></p>
@@ -65,8 +65,8 @@
             <option>char</option>
             <option>avion</option>
         </select>
-        <button onclick="attack('right')" class="en_right">Attaquer à droite</button></div>
-        <div><p class="en_left">Attaquer à gauche</p>
+        <button onclick="attack('right')" class="en_right">Attaquer a droite</button></div>
+        <div><p class="en_left">Attaquer a gauche</p>
         <select id="attaque_left_nb">
             <option>1</option>
             <option>2</option>
@@ -96,7 +96,7 @@
                 <p> <span id="carte_3"></span><button id="bouton_carte_3" onclick="order('use', 'carte', 2)" disabled="disabled">Utiliser la carte</button></p>
             </div>
             <p><button onclick="order('buy', 'carte', 1)" style="display: " id="buy_card">Acheter une carte</button>prix d'une carte: <span id="price_card">20</span></p>
-            <p><button onclick="order('use', 'nation', 1)" id="nation_power" style="display: ">Utiliser le pouvoir de votre nation</button>Prix de la compétence de nation: <span id="price_nation">10</span></p>
+            <p><button onclick="order('use', 'nation', 1)" id="nation_power" style="display: ">Utiliser le pouvoir de votre nation</button>Prix de la competence de nation: <span id="price_nation">10</span></p>
         </div>
     </div>
     <canvas width="1000" height="750" id="art" style="padding-left: 40%"></canvas>

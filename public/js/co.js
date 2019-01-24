@@ -204,15 +204,15 @@ function display_carte(tab_carte, info)
 var init_one = false;
 function button_for_team(color, msg)
 {
-    var color = "";
+    var color_tmp = "";
     document.getElementById("couleur_ville").innerHTML = msg.couleur_ville;
     if (msg.couleur_ville === "ROUGE")
-        color = "#c80000";
+        color_tmp = "#c80000";
     else if (msg.couleur_ville === "BLEU")
-        color = "#0000c8";
+        color_tmp = "#0000c8";
     else if (msg.couleur_ville === "ORANGE")
-        color = "#fd6a02";
-    document.getElementById("gameplay").style.color = color;
+        color_tmp = "#fd6a02";
+    document.getElementById("gameplay").style.color = color_tmp;
     if (color == "BLEU")
     {
         document.getElementsByClassName("en_left")[0].innerHTML = "Attaquer les oranges";
