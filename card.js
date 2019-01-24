@@ -3,21 +3,21 @@
 const PRICE_TEAM_POWER = 5;
 const id_cartes = ["plagiat",
 			"soin",
-			"Prêt a la banque", 
-			"appuie aérien",
+			"Pret a la banque", 
+			"appuie aerien",
 			"incendie",
 			"bluff", 
-			"séismes",
-			"allié inattendu",
+			"seismes",
+			"allie inattendu",
 			"forcer le jeu", 
-			"d'une pierre de carte",
+			"d'une pierre deux cartes",
 			"retentez votre chance",
-			"espion2",
-			"boost de dégat",
+			"espion 2",
+			"boost de degat",
 			"boost de vie",
 			"boost de vitesse",
 			"attentat",
-			"maitre_des_cartes",
+			"maitre des cartes",
 			"inflation"];
 			
 const description_cartes = ["Copie une carte d'un joueur adverse",
@@ -77,7 +77,7 @@ const fonction_cartes = [plagiat,
 						maitre_des_cartes,
 						inflation];
 
-const proba_cartes = [4, 2, 6, 2, 4, 5, 1, 6, 3, 2, 2, 4, 5, 5, 5, 2, 1, 2];
+const proba_cartes = [4, 2, 4, 4, 6, 5, 2, 8, 8, 3, 4, 9, 7, 7, 7, 4, 1, 2];
 
 function create_carte_template()
 {
