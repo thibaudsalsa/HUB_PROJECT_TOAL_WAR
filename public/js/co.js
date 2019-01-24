@@ -201,8 +201,18 @@ function display_carte(tab_carte, info)
     }
 }
 
+var init_one = false;
 function button_for_team(color, msg)
 {
+    var color = "";
+    document.getElementById("couleur_ville").innerHTML = msg.couleur_ville;
+    if (msg.couleur_ville === "ROUGE")
+        color = "#c80000";
+    else if (msg.couleur_ville === "BLEU")
+        color = "#0000c8";
+    else if (msg.couleur_ville === "ORANGE")
+        color = "#fd6a02";
+    document.getElementById("gameplay").style.color = color;
     if (color == "BLEU")
     {
         document.getElementsByClassName("en_left")[0].innerHTML = "Attaquer les oranges";
@@ -240,6 +250,7 @@ function button_for_team(color, msg)
         document.getElementsByClassName("en_left")[0].style.color = "#0000c8";
         document.getElementsByClassName("en_left")[1].style.color = "#0000c8";
     }
+    init_one = true;
 }
 
 var notif = 0;
@@ -355,16 +366,8 @@ function refresh_game(msg)
     msg = JSON.parse(msg);
     refresh_map(msg);
     // actualise les informations sur la page
-    var color = "";
-    document.getElementById("couleur_ville").innerHTML = msg.couleur_ville;
-    if (msg.couleur_ville === "ROUGE")
-        color = "#c80000";
-    else if (msg.couleur_ville === "BLEU")
-        color = "#0000c8";
-    else if (msg.couleur_ville === "ORANGE")
-        color = "#fd6a02";
-    document.getElementById("gameplay").style.color = color;
-    button_for_team(msg.couleur_ville, msg);
+    if (init_one === false)
+        button_for_team(msg.couleur_ville, msg);
     if (msg.city < 0 && document.getElementById("gameplay").style.display != "none")
     {
         let notification = new Notification("Votre ville est détruite");
