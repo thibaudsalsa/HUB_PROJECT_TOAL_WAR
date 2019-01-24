@@ -113,13 +113,13 @@ function display_carte(tab_carte, info)
         let tmp_i = i + 1;
         document.getElementById("carte_"+ tmp_i).innerHTML = tab_carte[i].id;
         document.getElementById("carte_"+ tmp_i).title = tab_carte[i].desc;
-        if (document.getElementById("bouton_carte_" + tmp_i).disabled === "disabled")
+        if (document.getElementById("bouton_carte_" + tmp_i).disabled == "disabled")
             document.getElementById("bouton_carte_" + tmp_i).disabled = "";
     }
     for (let i = 1; i < 4; i++)
     {
-        document.getElementById("carte_" + i).innerHTML = "";
-        document.getElementById("bouton_carte_" + i).disabled = "disabled";
+        if (document.getElementById("carte_" + i).innerHTML === "");
+            document.getElementById("bouton_carte_" + i).disabled = "disabled";
     }
 }
 
