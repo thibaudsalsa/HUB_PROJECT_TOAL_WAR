@@ -330,7 +330,7 @@ function refresh_base(msg)
         document.getElementById("nation_power").disabled = "";;
         save_display_nation = true;
     }
-    if ((msg.argent < msg.price_card) && save_display_card != false && document.getElementById("carte_1").innerHTML != "" && document.getElementById("carte_2").innerHTML != "" && document.getElementById("carte_3").innerHTML != "")
+    if (((msg.argent < msg.price_card) || (document.getElementById("carte_1").innerHTML != "" && document.getElementById("carte_2").innerHTML != "" && document.getElementById("carte_3").innerHTML != "")) && save_display_card != false)
     {
         document.getElementById("buy_card").disabled = "disabled";
         save_display_card = false;
