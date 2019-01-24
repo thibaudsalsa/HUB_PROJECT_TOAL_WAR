@@ -105,7 +105,13 @@ function display_carte(tab_carte, info)
         else if (j >= tmp_info - 3)
             tmp_info_msg += info[i];
     }
-    if (document.getElementById("information").innerHTML != tmp_info_msg)
+    document.getElementById("carte_1").innerHTML = "";
+    document.getElementById("carte_2").innerHTML = "";
+    document.getElementById("carte_4").innerHTML = "";
+    
+    for (let i = 0; i < tab_carte.length; i++)
+        document.getElementById("carte"+(i+1)).innerHTML = tab_carte[i].id;
+    /*if (document.getElementById("information").innerHTML != tmp_info_msg)
         document.getElementById("information").innerHTML = tmp_info_msg;
     var equal = true;
     if (save_card.length != tab_carte.length)
@@ -128,7 +134,7 @@ function display_carte(tab_carte, info)
             document.getElementById("tmp_button_carte").id = "";
         }
         save_card = tab_carte;
-    }
+    }*/
 }
 
 function button_for_team(color, msg)
@@ -214,36 +220,36 @@ function refresh_base(msg)
     }
     if (msg.argent < msg.price_unit && display_buy_unit != false)
     {
-        document.getElementsByClassName("buy_unit")[0].disabled = "disable";//.style.display = "none";
-        document.getElementsByClassName("buy_unit")[1].style.display = "none";
-        document.getElementsByClassName("buy_unit")[2].style.display = "none";
+        document.getElementsByClassName("buy_unit")[0].disabled = "disable";
+        document.getElementsByClassName("buy_unit")[1].disabled = "disable";
+        document.getElementsByClassName("buy_unit")[2].disabled = "disable";
         display_buy_unit = false;
     }
     else if (msg.argent >= msg.price_unit && display_buy_unit != true)
     {
-        document.getElementsByClassName("buy_unit")[0].style.display = "";
-        document.getElementsByClassName("buy_unit")[1].style.display = "";
-        document.getElementsByClassName("buy_unit")[2].style.display = "";
+        document.getElementsByClassName("buy_unit")[0].disabled = "";
+        document.getElementsByClassName("buy_unit")[1].disabled = "";
+        document.getElementsByClassName("buy_unit")[2].disabled = "";
         display_buy_unit = true;
     }
     if ((msg.argent <= msg.nation_price || msg.bool === false) && save_display_nation != false)
     {
-        document.getElementById("nation_power").style.display = "none";
+        document.getElementById("nation_power").disabled = "disable";;
         save_display_nation = false;
     }
     else if (msg.argent >= msg.nation_price && msg.bool === true && save_display_nation != true)
     {
-        document.getElementById("nation_power").style.display = "";
+        document.getElementById("nation_power").disabled = "";;
         save_display_nation = true;
     }
     if ((msg.argent < msg.price_card || save_card.length > 3) && save_display_card != false)
     {
-        document.getElementById("buy_card").style.display = "none";
+        document.getElementById("buy_card").disabled = "disable";;
         save_display_card = false;
     }
     else if (msg.argent >= msg.price_card && save_card.length <= 3 && save_display_card != true)
     {
-        document.getElementById("buy_card").style.display = "";
+        document.getElementById("buy_card").disabled = "";
         save_display_card = true;
     }
 }
