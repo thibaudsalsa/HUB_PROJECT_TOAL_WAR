@@ -347,7 +347,7 @@ function refresh_game(msg)
         color = "#0000c8";
     else if (msg.couleur_ville === "ORANGE")
         color = "#fd6a02";
-    document.getElementById("gameplay").color = color;
+    document.getElementById("gameplay").style.color = color;
     button_for_team(msg.couleur_ville, msg);
     if (msg.city < 0 && document.getElementById("gameplay").style.display != "none")
     {
