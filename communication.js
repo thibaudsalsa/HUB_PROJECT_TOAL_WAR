@@ -140,6 +140,12 @@ function respond(team, ws, wss)
         {
             console.log("player " + ws.me + " left the game.");
             players[ws.me - 1] = false;
+            if (ws.me - 1 === 0)
+                game.team1.city = -1;
+            else if (ws.me - 1 === 1)
+                game.team2.city = -1;
+            else if (ws.me - 1 === 2)
+                game.team3.city = -1;
         }
     }
 }

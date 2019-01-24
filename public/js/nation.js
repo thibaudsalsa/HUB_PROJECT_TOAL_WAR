@@ -12,9 +12,9 @@ function nation_explain(select)
     "Les USA Detruisent la planete pour l'argent mais en periode de guerre on s'en fiche non ? <br> Gagne 150 d'argent mais la ville perd 150 pv",
     "Les menaces de la Coree du nord sont elles a prendre au serieux ? <br> Le prochain avion mis sur le terrain aura 250 pv et 0 de degat",
     "Le Japon et ses radiations ...<br> Toutes les villes perdent 50 pv et les soldat, char et avion dans toutes les casernes ont une vitesse de 0.08",
-    "Le Bresil detruit la foret amazionienne pour l'argent... il y a un avantage a ce oui ! <br> Le prix des capacite de nation des joueurs ennemie est a nouveau a 10 et vous gagner en argent le prix que vos ennemie aurait du payer divisé par deux",
+    "Le Bresil detruit la foret amazonienne pour l'argent... il y a un avantage a ce oui ! <br> Le prix des capacites de nation des joueurs ennemie est a nouveau a 10 et vous gagner en argent le prix que vos ennemie aurait du payer divisé par deux",
     "L'Italie appel le big boss de la mafia<br>Creer un soldat avec 10 pv, 2 de degat et 0.1 de vitesse",
-    "La Grece touche les aides de l'Europe<br>Vole 20 d'argent aux autres joueurs",
+    "La Grece touche les aides de l'Europe<br>Vol 20 d'argent aux autres joueurs",
     "Le Quatar possede du petrole et du gaz a revendre<br>Le joueur gagne plus d'argent au fil du temps chaque fois qu'il utilise sa competence",
     "Tous les sportifs vont mettre leur argent dans les banques suisse, cependant il faut faire attention qu'on fait un pret...<br> Le joueur gagne (160 + prix de la competence) d'argent mais doit il perd l'argent au bout de 1 minute, il peut etre en negatif, on ne peut pas cumuler les prets"];
     for (let i = 0; i < tab.length; i++)
