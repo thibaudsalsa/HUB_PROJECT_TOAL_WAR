@@ -482,8 +482,7 @@ function Portugal(team)
 // recupere un peu d'argent
 function Monaco(team)
 {
-    team.money -= team.nation_price;
-    team.money += team.nation_price + parseInt((team.nation_price / 2), 10);
+    team.money += parseInt((team.nation_price / 2), 10);
     return ("OK");
 }
 
@@ -555,7 +554,6 @@ function Grece(team)
 		target[1].money = 0;
 	}
 	team.money += gain1 + gain2;
-	team.money -= team.nation_price;
 	return ("OK");
 }
 

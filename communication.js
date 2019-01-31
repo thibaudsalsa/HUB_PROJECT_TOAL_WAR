@@ -114,19 +114,16 @@ function respond(team, ws, wss)
     msg.info = game.info;
     fill_msg(msg, team, game);
     msg_json = JSON.stringify(msg);
-    if (players[ws.me - 1] === true)
+    try {ws.send(msg_json);}
+    catch(err)
     {
-        try {ws.send(msg_json);}
-        catch(err)
-        {
-            console.log("player " + ws.me + " left the game.");
-            players[ws.me - 1] = false;
-            if (ws.me - 1 === 0)
-                game.team1.city = -1;
-            else if (ws.me - 1 === 1)
-                game.team2.city = -1;
-            else if (ws.me - 1 === 2)
-                game.team3.city = -1;
-        }
+        console.log("player " + ws.me + " left the game.");
+        players[ws.me - 1] = false;
+        if (ws.me - 1 === 0)
+            game.team1.city = -1;
+        else if (ws.me - 1 === 1)
+            game.team2.city = -1;
+        else if (ws.me - 1 === 2)
+            game.team3.city = -1;
     }
 }
