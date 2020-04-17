@@ -1,5 +1,4 @@
 /*global game:true create_tab_nation add_fct*/
-
 const PRICE_TEAM_POWER = 5;
 const id_cartes = ["plagiat",
 			"soin",
